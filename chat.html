@@ -32,26 +32,9 @@ display:flex;
 
 flex-direction:column;
 
-animation:fadeIn 0.8s ease;
-
 }
 
 
-@keyframes fadeIn{
-
-from{
-opacity:0;
-}
-
-to{
-opacity:1;
-}
-
-}
-
-
-
-/* 顶部 */
 
 .header{
 
@@ -95,8 +78,6 @@ font-weight:normal;
 
 
 
-/* 聊天区域 */
-
 .chat{
 
 flex:1;
@@ -108,8 +89,6 @@ overflow-y:auto;
 }
 
 
-
-/* 气泡 */
 
 .message{
 
@@ -154,9 +133,6 @@ border-bottom-right-radius:5px;
 }
 
 
-
-
-/* 输入 */
 
 .input-area{
 
@@ -210,11 +186,19 @@ font-size:16px;
 
 
 
+.loading{
+
+font-size:14px;
+
+color:#999;
+
+}
+
+
 </style>
 
 
 </head>
-
 
 
 <body>
@@ -238,6 +222,7 @@ font-size:16px;
 
 
 
+
 <div class="chat" id="chat">
 
 
@@ -247,7 +232,7 @@ font-size:16px;
 
 <br><br>
 
-我是伟峰专门为你准备的小助手。
+我是伟峰为你准备的小助手。
 
 <br><br>
 
@@ -257,6 +242,7 @@ font-size:16px;
 
 
 </div>
+
 
 
 
@@ -285,28 +271,41 @@ placeholder="和我说说今天发生了什么..."
 <script>
 
 
-const chat=document.getElementById("chat");
 
-const input=document.getElementById("input");
+const chatBox =
+document.getElementById("chat");
+
+
+const input =
+document.getElementById("input");
+
+
+
+// 保存聊天记录
+
+let messages = [];
+
+
 
 
 
 function addMessage(text,type){
 
 
-let div=document.createElement("div");
+const div=document.createElement("div");
 
 
 div.className="message "+type;
 
 
-div.innerHTML=text;
+div.innerHTML=text.replace(/\n/g,"<br>");
 
 
-chat.appendChild(div);
+chatBox.appendChild(div);
 
 
-chat.scrollTop=chat.scrollHeight;
+chatBox.scrollTop =
+chatBox.scrollHeight;
 
 
 }
@@ -314,39 +313,154 @@ chat.scrollTop=chat.scrollHeight;
 
 
 
-function sendMessage(){
+
+async function sendMessage(){
 
 
-let text=input.value.trim();
+const text=input.value.trim();
 
 
-if(text===""){
+if(!text){
 
 return;
 
 }
 
 
-// 添加佳源消息
+
+// 用户消息
 
 addMessage(text,"user");
+
+
+// 保存
+
+messages.push({
+
+role:"user",
+
+content:text
+
+});
 
 
 input.value="";
 
 
-// 模拟思考
 
-setTimeout(()=>{
+// 加载提示
+
+const loading=document.createElement("div");
+
+loading.className="message ai loading";
+
+loading.innerHTML="伟峰的小助手正在想怎么抱抱你 🫂";
 
 
-let reply=getReply(text);
+chatBox.appendChild(loading);
 
 
-addMessage(reply,"ai");
+
+try{
 
 
-},700);
+const response =
+await fetch("/api/chat",{
+
+
+method:"POST",
+
+
+headers:{
+
+
+"Content-Type":"application/json"
+
+
+},
+
+
+body:JSON.stringify({
+
+messages:messages
+
+})
+
+
+});
+
+
+
+
+const data =
+await response.json();
+
+
+
+// 删除等待
+
+loading.remove();
+
+
+
+
+if(data.reply){
+
+
+
+addMessage(
+
+data.reply,
+
+"ai"
+
+);
+
+
+
+messages.push({
+
+role:"assistant",
+
+content:data.reply
+
+});
+
+
+
+}else{
+
+
+addMessage(
+
+"佳源，好像网络有一点小问题，再试一次好吗 😊",
+
+"ai"
+
+);
+
+
+}
+
+
+
+}
+
+catch(error){
+
+
+
+loading.remove();
+
+
+
+addMessage(
+
+"抱抱，连接好像出了点问题 🫂",
+
+"ai"
+
+);
 
 
 
@@ -354,147 +468,36 @@ addMessage(reply,"ai");
 
 
 
-
-function getReply(text){
-
-
-if(
-text.includes("累") ||
-text.includes("压力") ||
-text.includes("难过") ||
-text.includes("不开心")
-){
-
-
-return `
-
-抱抱伟峰的小老婆 🫂
-
-<br><br>
-
-今天是不是辛苦啦。
-
-<br>
-
-不管发生什么，
-
-佳源已经很棒了。
-
-<br><br>
-
-先休息一下，
-
-不要一个人扛所有事情 😊
-
-`;
-
 }
 
 
 
-if(
-text.includes("爱") ||
-text.includes("喜欢") ||
-text.includes("想你")
-){
+// 回车发送
 
 
-return `
+input.addEventListener(
+"keydown",
+
+function(e){
 
 
-当然爱呀 💕
+if(e.key==="Enter"){
 
-<br><br>
 
-伟峰的小老婆是很特别的人。
+sendMessage();
 
-<br>
-
-从2024年12月14日开始，
-
-我们的故事就一直在继续。
-
-<br><br>
-
-以后还有很多地方，
-
-想和你一起去。
-
-`;
 
 }
 
 
-
-if(
-text.includes("吃") ||
-text.includes("美食")
-){
-
-
-return `
-
-
-想吃什么告诉伟峰呀 😊
-
-<br><br>
-
-等伟峰忙完，
-
-马上带你去吃好吃的 💕
-
-`;
-
 }
 
-
-
-if(
-text.includes("韩国")
-){
-
-
-return `
-
-
-当然记得韩国旅行呀 🇰🇷
-
-<br><br>
-
-那段一起看风景、
-
-一起经历新鲜事的日子，
-
-一直都是很珍贵的回忆。
-
-`;
-
-}
-
-
-
-return `
-
-
-佳源，我在听呢 😊
-
-<br><br>
-
-虽然我现在只是小助手，
-
-但是我会一直站在佳源这边。
-
-<br><br>
-
-和我说说发生什么啦？
-
-`;
-
-}
+);
 
 
 
 </script>
+
 
 
 </body>
