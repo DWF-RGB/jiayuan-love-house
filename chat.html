@@ -8,7 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>爱的小助手</title>
+<title>伟峰的小老婆专属助手</title>
 
 
 <style>
@@ -36,8 +36,6 @@ animation:fadeIn 0.8s ease;
 
 }
 
-
-/* 页面进入动画 */
 
 @keyframes fadeIn{
 
@@ -71,7 +69,7 @@ justify-content:center;
 
 position:relative;
 
-font-size:21px;
+font-size:20px;
 
 font-weight:bold;
 
@@ -79,17 +77,11 @@ font-weight:bold;
 
 
 
-/* 返回按钮 */
-
 .back{
 
 position:absolute;
 
 left:18px;
-
-top:50%;
-
-transform:translateY(-50%);
 
 color:white;
 
@@ -123,11 +115,11 @@ overflow-y:auto;
 
 max-width:80%;
 
-padding:15px 18px;
+padding:14px 18px;
 
-margin-bottom:18px;
+margin-bottom:15px;
 
-border-radius:22px;
+border-radius:20px;
 
 font-size:16px;
 
@@ -136,7 +128,6 @@ line-height:1.7;
 }
 
 
-/* AI */
 
 .ai{
 
@@ -149,7 +140,6 @@ border-bottom-left-radius:5px;
 }
 
 
-/* 用户 */
 
 .user{
 
@@ -165,7 +155,8 @@ border-bottom-right-radius:5px;
 
 
 
-/* 输入区域 */
+
+/* 输入 */
 
 .input-area{
 
@@ -174,8 +165,6 @@ display:flex;
 padding:15px;
 
 background:white;
-
-border-top:1px solid #eee;
 
 }
 
@@ -203,9 +192,9 @@ outline:none;
 
 button{
 
-margin-left:10px;
-
 width:70px;
+
+margin-left:10px;
 
 border:none;
 
@@ -227,7 +216,9 @@ font-size:16px;
 </head>
 
 
+
 <body>
+
 
 
 <div class="header">
@@ -237,7 +228,7 @@ font-size:16px;
 
 ← 回到小屋
 
-</a >
+</a>
 
 
 💕 伟峰的小老婆专属助手
@@ -247,32 +238,22 @@ font-size:16px;
 
 
 
-<div class="chat">
+<div class="chat" id="chat">
 
 
 <div class="message ai">
 
-佳源，欢迎来到伟峰给你准备的小屋 😊
+佳源，欢迎回家 😊
 
 <br><br>
 
-我是专属于你的陪伴小助手。
+我是伟峰专门为你准备的小助手。
+
+<br><br>
 
 今天过得怎么样呀？
 
 </div>
-
-
-<div class="message ai">
-
-如果累了或者不开心，
-
-先让我抱抱你 🫂
-
-你不用马上变得坚强。
-
-</div>
-
 
 
 </div>
@@ -282,10 +263,13 @@ font-size:16px;
 <div class="input-area">
 
 
-<input placeholder="和我说说今天发生了什么...">
+<input 
+id="input"
+placeholder="和我说说今天发生了什么..."
+>
 
 
-<button>
+<button onclick="sendMessage()">
 
 发送
 
@@ -294,6 +278,223 @@ font-size:16px;
 
 </div>
 
+
+
+
+
+<script>
+
+
+const chat=document.getElementById("chat");
+
+const input=document.getElementById("input");
+
+
+
+function addMessage(text,type){
+
+
+let div=document.createElement("div");
+
+
+div.className="message "+type;
+
+
+div.innerHTML=text;
+
+
+chat.appendChild(div);
+
+
+chat.scrollTop=chat.scrollHeight;
+
+
+}
+
+
+
+
+function sendMessage(){
+
+
+let text=input.value.trim();
+
+
+if(text===""){
+
+return;
+
+}
+
+
+// 添加佳源消息
+
+addMessage(text,"user");
+
+
+input.value="";
+
+
+// 模拟思考
+
+setTimeout(()=>{
+
+
+let reply=getReply(text);
+
+
+addMessage(reply,"ai");
+
+
+},700);
+
+
+
+}
+
+
+
+
+function getReply(text){
+
+
+if(
+text.includes("累") ||
+text.includes("压力") ||
+text.includes("难过") ||
+text.includes("不开心")
+){
+
+
+return `
+
+抱抱伟峰的小老婆 🫂
+
+<br><br>
+
+今天是不是辛苦啦。
+
+<br>
+
+不管发生什么，
+
+佳源已经很棒了。
+
+<br><br>
+
+先休息一下，
+
+不要一个人扛所有事情 😊
+
+`;
+
+}
+
+
+
+if(
+text.includes("爱") ||
+text.includes("喜欢") ||
+text.includes("想你")
+){
+
+
+return `
+
+
+当然爱呀 💕
+
+<br><br>
+
+伟峰的小老婆是很特别的人。
+
+<br>
+
+从2024年12月14日开始，
+
+我们的故事就一直在继续。
+
+<br><br>
+
+以后还有很多地方，
+
+想和你一起去。
+
+`;
+
+}
+
+
+
+if(
+text.includes("吃") ||
+text.includes("美食")
+){
+
+
+return `
+
+
+想吃什么告诉伟峰呀 😊
+
+<br><br>
+
+等伟峰忙完，
+
+马上带你去吃好吃的 💕
+
+`;
+
+}
+
+
+
+if(
+text.includes("韩国")
+){
+
+
+return `
+
+
+当然记得韩国旅行呀 🇰🇷
+
+<br><br>
+
+那段一起看风景、
+
+一起经历新鲜事的日子，
+
+一直都是很珍贵的回忆。
+
+`;
+
+}
+
+
+
+return `
+
+
+佳源，我在听呢 😊
+
+<br><br>
+
+虽然我现在只是小助手，
+
+但是我会一直站在佳源这边。
+
+<br><br>
+
+和我说说发生什么啦？
+
+`;
+
+}
+
+
+
+</script>
 
 
 </body>
