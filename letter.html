@@ -8,7 +8,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>伟峰的情话信箱</title>
 
 
@@ -33,13 +32,51 @@ align-items:center;
 
 padding:20px;
 
-background:
-linear-gradient(135deg,#ffe8f0,#fff);
+background:linear-gradient(135deg,#ffe8f0,#fff);
 
 font-family:"Microsoft YaHei",sans-serif;
 
+animation:fadeIn 0.8s ease;
+
 }
 
+
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+
+
+/* 返回按钮 */
+
+.back{
+
+position:fixed;
+
+top:20px;
+
+left:20px;
+
+color:#ff8fb5;
+
+text-decoration:none;
+
+font-size:16px;
+
+}
+
+
+
+/* 主卡片 */
 
 .box{
 
@@ -56,9 +93,11 @@ border-radius:30px;
 text-align:center;
 
 box-shadow:
+
 0 15px 35px rgba(255,120,160,0.2);
 
 }
+
 
 
 h1{
@@ -70,16 +109,32 @@ font-size:30px;
 }
 
 
+
 .envelope{
 
 font-size:80px;
 
-margin:30px;
+margin:25px;
 
 }
 
 
+
+.tip{
+
+font-size:17px;
+
+color:#777;
+
+line-height:1.8;
+
+}
+
+
+
 button{
+
+margin-top:25px;
 
 width:90%;
 
@@ -96,6 +151,7 @@ color:white;
 font-size:18px;
 
 }
+
 
 
 .letter{
@@ -121,8 +177,8 @@ color:#666;
 }
 
 
-</style>
 
+</style>
 
 </head>
 
@@ -130,22 +186,39 @@ color:#666;
 <body>
 
 
+<a href="/" class="back">
+
+← 回到小屋
+
+</a>
+
+
+
 <div class="box">
 
 
 <h1>
+
 💌 伟峰的情话信箱
+
 </h1>
 
 
 <div class="envelope">
+
 ✉️
+
 </div>
 
 
-<p>
-佳源，今天想收到一封来自伟峰的信吗？
-</p >
+<div class="tip">
+
+佳源，
+
+今天想收到一封来自伟峰的信吗？😊
+
+</div>
+
 
 
 <button onclick="openLetter()">
@@ -167,9 +240,9 @@ color:#666;
 
 其实我一直觉得，
 
-最幸运的事情，
+人生里最幸运的事情，
 
-就是在人生里遇见你。
+就是遇见你。
 
 
 <br><br>
@@ -193,7 +266,7 @@ color:#666;
 <br><br>
 
 
-希望以后还有很多很多个普通的日子，
+希望以后还有很多很多普通的日子，
 
 可以和你一起吃饭，
 
@@ -205,7 +278,9 @@ color:#666;
 <br><br>
 
 
-永远站在你这边。
+无论什么时候，
+
+伟峰都会站在你这边。
 
 <br><br>
 
@@ -216,12 +291,13 @@ color:#666;
 </div>
 
 
+
 </div>
 
 
 
-
 <script>
+
 
 function openLetter(){
 
@@ -229,7 +305,9 @@ document.getElementById("letter").style.display="block";
 
 }
 
+
 </script>
+
 
 
 </body>
