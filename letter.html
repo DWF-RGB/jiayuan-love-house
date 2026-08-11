@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>伟峰的情话信箱</title>
@@ -13,44 +11,49 @@
 
 <style>
 
+
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 
 body{
 
-margin:0;
+    margin:0;
 
-min-height:100vh;
+    min-height:100vh;
 
-display:flex;
+    display:flex;
 
-justify-content:center;
+    justify-content:center;
 
-align-items:center;
+    align-items:center;
 
-padding:20px;
+    padding:20px;
 
-background:linear-gradient(135deg,#ffe8f0,#fff);
 
-font-family:"Microsoft YaHei",sans-serif;
+    background:
+    linear-gradient(135deg,#ffe6f0,#fff8fb);
 
-animation:fadeIn 0.8s ease;
+
+    font-family:
+    "Microsoft YaHei",
+    sans-serif;
 
 }
 
 
 
-@keyframes fadeIn{
+/* 页面盒子 */
 
-from{
-opacity:0;
-}
 
-to{
-opacity:1;
-}
+.box{
+
+    width:100%;
+
+    max-width:420px;
+
+    text-align:center;
 
 }
 
@@ -58,121 +61,204 @@ opacity:1;
 
 /* 返回按钮 */
 
+
 .back{
 
-position:fixed;
+    position:absolute;
 
-top:20px;
+    top:25px;
 
-left:20px;
-
-color:#ff8fb5;
-
-text-decoration:none;
-
-font-size:16px;
-
-}
+    left:25px;
 
 
+    color:#ff7fa8;
 
-/* 主卡片 */
-
-.box{
-
-width:100%;
-
-max-width:420px;
-
-background:white;
-
-padding:40px 25px;
-
-border-radius:30px;
-
-text-align:center;
-
-box-shadow:
-
-0 15px 35px rgba(255,120,160,0.2);
+    text-decoration:none;
 
 }
 
+
+
+/* 标题 */
 
 
 h1{
 
-color:#ff6b9d;
+    color:#ff6b9d;
 
-font-size:30px;
+    font-size:30px;
+
+    margin-bottom:40px;
 
 }
 
 
+
+/* 信封 */
 
 .envelope{
 
-font-size:80px;
 
-margin:25px;
+    width:300px;
+
+    height:200px;
+
+
+    background:#ff91b5;
+
+
+    margin:auto;
+
+
+    position:relative;
+
+
+    border-radius:15px;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+
+    0 15px 30px rgba(255,120,160,0.25);
+
+
+    overflow:hidden;
+
+}
+
+
+
+/* 信封盖 */
+
+
+.flap{
+
+
+    position:absolute;
+
+
+    width:0;
+
+    height:0;
+
+
+    border-left:150px solid transparent;
+
+    border-right:150px solid transparent;
+
+    border-top:100px solid #ffb3cc;
+
+
+    top:0;
+
+    left:0;
+
+
+    transform-origin:top;
+
+
+    transition:0.8s;
+
+
+    z-index:3;
 
 }
 
 
 
-.tip{
-
-font-size:17px;
-
-color:#777;
-
-line-height:1.8;
-
-}
-
-
-
-button{
-
-margin-top:25px;
-
-width:90%;
-
-padding:18px;
-
-border:none;
-
-border-radius:50px;
-
-background:#ff8fb5;
-
-color:white;
-
-font-size:18px;
-
-}
-
+/* 信纸 */
 
 
 .letter{
 
-display:none;
 
-margin-top:30px;
+    position:absolute;
 
-padding:25px;
 
-background:#fff8fb;
+    width:260px;
 
-border-radius:20px;
 
-text-align:left;
+    height:260px;
 
-font-size:17px;
 
-line-height:2;
+    background:white;
 
-color:#666;
+
+    left:20px;
+
+
+    top:40px;
+
+
+    padding:25px;
+
+
+    border-radius:10px;
+
+
+    text-align:left;
+
+
+    color:#666;
+
+
+    line-height:1.8;
+
+
+    font-size:16px;
+
+
+    transition:0.8s;
+
+
+    z-index:2;
+
+
+    box-shadow:
+
+    0 5px 20px rgba(0,0,0,0.08);
+
+
+}
+
+
+
+/* 点击打开 */
+
+
+.open .flap{
+
+
+    transform:rotateX(180deg);
+
+
+}
+
+
+
+.open .letter{
+
+
+    transform:translateY(-170px);
+
+
+}
+
+
+
+/* 提示文字 */
+
+
+.tip{
+
+
+    margin-top:35px;
+
+
+    color:#ff8fb5;
+
 
 }
 
@@ -180,13 +266,16 @@ color:#666;
 
 </style>
 
+
 </head>
+
 
 
 <body>
 
 
-<a href="/" class="back">
+
+<a class="back" href="index.html">
 
 ← 回到小屋
 
@@ -204,89 +293,60 @@ color:#666;
 </h1>
 
 
-<div class="envelope">
 
-✉️
+<div class="envelope" onclick="openLetter()">
+
+
+
+<div class="flap"></div>
+
+
+
+<div class="letter">
+
+
+亲爱的佳源：
+
+
+<br><br>
+
+
+这是伟峰为你准备的小信箱。
+
+
+<br><br>
+
+
+希望以后每一次打开，
+
+都能看到一点小惊喜。
+
+
+<br><br>
+
+
+愿你每天开心一点，
+
+也愿我们的故事一直继续。
+
+
+<br><br>
+
+
+——伟峰 ❤️
+
+
 
 </div>
+
+
+</div>
+
 
 
 <div class="tip">
 
-佳源，
-
-今天想收到一封来自伟峰的信吗？😊
-
-</div>
-
-
-
-<button onclick="openLetter()">
-
-拆开这封信 💕
-
-</button>
-
-
-
-<div class="letter" id="letter">
-
-
-佳源：
-
-
-<br><br>
-
-
-其实我一直觉得，
-
-人生里最幸运的事情，
-
-就是遇见你。
-
-
-<br><br>
-
-
-从2024年12月14日开始，
-
-我们的故事慢慢展开。
-
-
-<br><br>
-
-
-一起去韩国旅行，
-
-一起做海鲜葱饼，
-
-一起在杨村三中的天台留下回忆。
-
-
-<br><br>
-
-
-希望以后还有很多很多普通的日子，
-
-可以和你一起吃饭，
-
-一起散步，
-
-一起创造新的故事。
-
-
-<br><br>
-
-
-无论什么时候，
-
-伟峰都会站在你这边。
-
-<br><br>
-
-
-爱你的伟峰 ❤️
-
+点击信封，打开信件 💕
 
 </div>
 
@@ -301,16 +361,20 @@ color:#666;
 
 function openLetter(){
 
-document.getElementById("letter").style.display="block";
+
+    document
+    .querySelector(".envelope")
+    .classList
+    .toggle("open");
+
 
 }
+
 
 
 </script>
 
 
-
 </body>
-
 
 </html>
