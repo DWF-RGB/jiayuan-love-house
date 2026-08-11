@@ -2,11 +2,15 @@
 
 <html>
 
+
 <head>
+
 
 <meta charset="UTF-8">
 
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>我们的故事</title>
 
@@ -19,25 +23,34 @@ box-sizing:border-box;
 }
 
 
+
 body{
 
 margin:0;
 
-min-height:100vh;
-
 padding:30px 20px;
 
-background:
+background:#f8f1e7;
 
-linear-gradient(
-135deg,
-#ffe8f0,
-#fff9fc
-);
+font-family:"Microsoft YaHei",sans-serif;
 
-font-family:
-"Microsoft YaHei",
-sans-serif;
+color:#555;
+
+animation:fadeIn 0.8s ease;
+
+}
+
+
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+}
+
+to{
+opacity:1;
+}
 
 }
 
@@ -51,122 +64,96 @@ top:20px;
 
 left:20px;
 
-color:#ff8fb5;
+color:#8b6f47;
 
 text-decoration:none;
+
+font-size:16px;
 
 }
 
 
 
 
-.story-box{
+.container{
 
 max-width:420px;
 
 margin:auto;
 
+}
+
+
+
+
+
+.title{
+
+text-align:center;
+
+margin:40px 0;
+
+}
+
+
+
+.title h1{
+
+font-size:32px;
+
+color:#8b6f47;
+
+}
+
+
+
+
+.title p{
+
+font-size:17px;
+
+line-height:1.8;
+
+}
+
+
+
+
+.story{
+
+
 background:white;
 
-padding:35px 25px;
 
-border-radius:30px;
-
-box-shadow:
-
-0 15px 35px rgba(255,120,160,0.2);
-
-}
+padding:30px 25px;
 
 
+border-radius:25px;
 
-h1{
-
-text-align:center;
-
-color:#ff6b9d;
-
-font-size:30px;
-
-}
-
-
-
-.intro{
-
-text-align:center;
-
-color:#777;
-
-line-height:2;
-
-margin-bottom:40px;
-
-}
-
-
-
-
-/* 时间轴 */
-
-.timeline{
-
-position:relative;
-
-padding-left:35px;
-
-}
-
-
-
-/* 中间线 */
-
-.timeline::before{
-
-content:"";
-
-position:absolute;
-
-left:10px;
-
-top:0;
-
-bottom:0;
-
-width:3px;
-
-background:#ffd0df;
-
-}
-
-
-
-
-.story-card{
-
-position:relative;
-
-background:#fff7fa;
-
-padding:20px;
-
-border-radius:20px;
 
 margin-bottom:35px;
 
+
+box-shadow:
+
+0 8px 25px rgba(0,0,0,0.08);
+
+
+
 opacity:0;
+
 
 transform:translateY(40px);
 
-transition:0.8s;
+
+transition:0.8s ease;
+
 
 }
 
 
 
-/* 出现 */
-
-.story-card.show{
+.story.show{
 
 opacity:1;
 
@@ -176,74 +163,167 @@ transform:translateY(0);
 
 
 
+.story:hover{
 
-/* 时间点 */
-
-.dot{
-
-position:absolute;
-
-left:-35px;
-
-top:25px;
-
-width:22px;
-
-height:22px;
-
-background:#ff8fb5;
-
-border-radius:50%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:13px;
+transform:translateY(-5px);
 
 }
 
 
 
 
-.icon{
-
-font-size:35px;
-
-}
+.chapter{
 
 
+font-size:14px;
 
-h2{
 
-color:#ff6b9d;
+color:#b08b57;
 
-font-size:20px;
+
+letter-spacing:2px;
+
 
 }
+
 
 
 
 .date{
 
-color:#aaa;
 
-font-size:14px;
+font-size:20px;
+
+
+font-weight:bold;
+
+
+color:#8b6f47;
+
+
+margin-top:10px;
+
 
 }
 
 
 
-p{
 
-color:#777;
+h2{
 
-line-height:1.8;
+
+color:#555;
+
 
 }
 
+
+
+
+.photo{
+
+
+height:180px;
+
+
+background:#eee6da;
+
+
+border-radius:15px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+margin:20px 0;
+
+
+color:#999;
+
+
+font-size:15px;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+/* 以后照片直接替换这里 */
+
+.photo img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+
+
+.text{
+
+
+font-size:17px;
+
+
+line-height:2;
+
+
+}
+
+
+
+
+.divider{
+
+
+text-align:center;
+
+
+color:#c6a77d;
+
+
+font-size:20px;
+
+
+margin:25px 0;
+
+
+}
+
+
+
+
+.end{
+
+
+text-align:center;
+
+
+font-size:18px;
+
+
+line-height:2;
+
+
+padding:20px;
+
+
+color:#8b6f47;
+
+
+}
 
 
 
@@ -256,7 +336,9 @@ line-height:1.8;
 
 
 
+
 <body>
+
 
 
 
@@ -269,7 +351,14 @@ line-height:1.8;
 
 
 
-<div class="story-box">
+
+<div class="container">
+
+
+
+
+
+<div class="title">
 
 
 <h1>
@@ -279,73 +368,17 @@ line-height:1.8;
 </h1>
 
 
-
-<div class="intro">
-
-
-从2024年12月14日开始，
-
-<br>
-
-我们的故事慢慢展开。
-
-<br>
-
-未来还有很多页等待书写。
-
-</div>
-
-
-
-
-
-
-<div class="timeline">
-
-
-
-
-
-<div class="story-card">
-
-
-<div class="dot">
-
-❤️
-
-</div>
-
-
-<div class="icon">
-
-❤️
-
-</div>
-
-
-<h2>
-
-故事的开始
-
-</h2>
-
-
-<div class="date">
-
-2024年12月14日
-
-</div>
-
-
 <p>
 
-那一天，也许只是普通的一天。
+有些瞬间很短，
 
 <br>
 
-但后来才发现，
+但因为有你，
 
-它成为了我们故事开始的地方。
+<br>
+
+变成了值得珍藏的故事。
 
 </p>
 
@@ -358,99 +391,125 @@ line-height:1.8;
 
 
 
-<div class="story-card">
+<div class="story">
 
 
-<div class="dot">
+<div class="chapter">
 
-🇰🇷
+CHAPTER 01
 
 </div>
 
 
-<div class="icon">
+<div class="date">
 
-🇰🇷
+2024.12.14
 
 </div>
 
 
 <h2>
 
-一起去韩国
+❤️ 我们的开始
 
 </h2>
 
 
+<div class="photo">
+
+以后放照片的位置 📷
+
+</div>
+
+
+
+<div class="text">
+
+
+那一天开始，
+
+我们成为彼此生命里特别的人。
+
+
+<br><br>
+
+
+很多故事，
+
+也从这里慢慢展开。
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="divider">
+
+✦ ✦ ✦
+
+</div>
+
+
+
+
+
+
+<div class="story">
+
+
+<div class="chapter">
+
+CHAPTER 02
+
+</div>
+
+
 <div class="date">
 
-旅行回忆
-
-</div>
-
-
-<p>
-
-一起走过陌生的城市，
-
-一起吃饭，
-
-一起留下属于我们的记忆。
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="story-card">
-
-
-<div class="dot">
-
-🏫
-
-</div>
-
-
-<div class="icon">
-
-🏫
+第一次约会
 
 </div>
 
 
 <h2>
 
-杨村三中的天台
+🍽️ 和气小食
 
 </h2>
 
 
-<div class="date">
+<div class="photo">
 
-我们的回忆
+以后放照片的位置 📷
 
 </div>
 
 
-<p>
 
-有些地方其实很普通，
+<div class="text">
 
-<br>
 
-但因为和你一起去过，
+第一次一起吃饭，
+
+也是我们故事里的第一个温暖章节。
+
+
+<br><br>
+
+
+普通的一顿饭，
+
+因为身边的人是你，
 
 所以变得特别。
 
-</p>
+
+</div>
 
 
 </div>
@@ -460,51 +519,145 @@ line-height:1.8;
 
 
 
+<div class="divider">
 
-<div class="story-card">
-
-
-<div class="dot">
-
-✨
+✦ ✦ ✦
 
 </div>
 
 
-<div class="icon">
 
-✨
+
+
+
+
+<div class="story">
+
+
+<div class="chapter">
+
+CHAPTER 03
+
+</div>
+
+
+<div class="date">
+
+杨村三中天台
 
 </div>
 
 
 <h2>
 
-未完待续
+🌙 属于我们的瞬间
 
 </h2>
 
 
+
+<div class="photo">
+
+以后放照片的位置 📷
+
+</div>
+
+
+
+
+<div class="text">
+
+
+有些地方，
+
+因为某个人的存在，
+
+才拥有特别的意义。
+
+
+<br><br>
+
+
+那个天台，
+
+留下了属于我们的青春和心动。
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="divider">
+
+✦ ✦ ✦
+
+</div>
+
+
+
+
+
+
+
+
+<div class="story">
+
+
+<div class="chapter">
+
+CHAPTER 04
+
+</div>
+
+
+
 <div class="date">
 
-未来
-
-</div>
-
-
-<p>
-
-我们的故事，
-
-还有很多很多页。
-
-</p>
-
+韩国旅行 🇰🇷
 
 </div>
 
 
 
+<h2>
+
+✈️ 一起看过的风景
+
+</h2>
+
+
+
+
+<div class="photo">
+
+以后放照片的位置 📷
+
+</div>
+
+
+
+
+<div class="text">
+
+
+一起去陌生的城市，
+
+一起经历新的风景。
+
+
+<br><br>
+
+
+未来，
+
+还想和你去更多地方。
 
 
 </div>
@@ -512,6 +665,39 @@ line-height:1.8;
 
 
 </div>
+
+
+
+
+
+
+
+
+<div class="end">
+
+
+💕 未完待续……
+
+
+<br>
+
+
+还有更多故事，
+
+<br>
+
+等伟峰和佳源一起写下去。
+
+
+</div>
+
+
+
+
+
+</div>
+
+
 
 
 
@@ -520,23 +706,25 @@ line-height:1.8;
 <script>
 
 
-let cards=document.querySelectorAll(".story-card");
+let stories=document.querySelectorAll(".story");
 
 
 
-function showCards(){
+function showStory(){
 
 
-cards.forEach(card=>{
+stories.forEach(item=>{
 
 
-let top=
-card.getBoundingClientRect().top;
+let top=item.getBoundingClientRect().top;
 
 
-if(top < window.innerHeight-100){
 
-card.classList.add("show");
+if(top < window.innerHeight-80){
+
+
+item.classList.add("show");
+
 
 }
 
@@ -550,11 +738,12 @@ card.classList.add("show");
 
 window.addEventListener(
 "scroll",
-showCards
+showStory
 );
 
 
-showCards();
+
+showStory();
 
 
 
@@ -563,6 +752,8 @@ showCards();
 
 
 
+
 </body>
+
 
 </html>
