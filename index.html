@@ -13,127 +13,244 @@
     box-sizing:border-box;
 }
 
+
 body{
 
     margin:0;
+
     min-height:100vh;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     padding:20px;
 
     background:
-    linear-gradient(135deg,#ffe6f0,#fff8fb);
+    linear-gradient(135deg,#ffe8f1,#fff8fb);
+
 
     font-family:
+    "PingFang SC",
     "Microsoft YaHei",
     sans-serif;
 
 }
 
 
+
+/* 主卡片 */
+
 .box{
 
+
     width:100%;
+
     max-width:420px;
 
-    background:white;
 
-    padding:45px 25px;
+    background:
+    rgba(255,255,255,0.92);
 
-    border-radius:30px;
+
+    padding:50px 28px;
+
+
+    border-radius:35px;
+
 
     text-align:center;
 
+
     box-shadow:
-    0 15px 40px rgba(255,120,160,0.2);
+
+    0 20px 60px rgba(255,130,170,0.18);
+
 
 }
+
+
+
+/* 标题 */
 
 
 h1{
 
-    font-size:32px;
 
-    color:#ff6b9d;
+    font-size:34px;
 
-    margin-bottom:15px;
+
+    color:#ff6597;
+
+
+    margin-bottom:18px;
+
+
+    line-height:1.35;
+
+
+    font-weight:700;
+
+
+    letter-spacing:1px;
+
 
 }
+
+
+
+/* 副标题 */
 
 
 .subtitle{
 
+
     font-size:20px;
 
-    color:#ff8fb5;
 
-    margin-bottom:35px;
+    color:#ff91b7;
+
+
+    margin-bottom:38px;
+
+
+    letter-spacing:0.5px;
+
 
 }
+
+
+
+/* 正文 */
 
 
 .text{
 
-    font-size:18px;
 
-    line-height:1.8;
+    font-size:17px;
+
+
+    line-height:2;
+
 
     color:#666;
 
+
+    letter-spacing:1px;
+
+
 }
 
+
+
+/* 按钮区域 */
+
+
 .buttons{
-    margin-top:35px;
+
+    margin-top:40px;
+
 }
+
+
+
+/* 三个按钮 */
+
 
 .buttons a{
 
+
     display:block;
+
 
     width:90%;
 
-    margin:15px auto;
+
+    margin:16px auto;
+
 
     padding:18px;
 
+
     border-radius:50px;
 
-    background:#ff8fb5;
+
+    background:
+
+
+    linear-gradient(
+        135deg,
+        #ff9fc5,
+        #ff78aa
+    );
+
 
     color:white;
+
 
     text-decoration:none;
 
-    font-size:18px;
-
-}
-    
-button{
-
-    margin-top:35px;
-
-    width:90%;
-
-    padding:18px;
-
-    border:none;
-
-    border-radius:50px;
-
-    background:#ff8fb5;
-
-    color:white;
 
     font-size:18px;
 
+
+    letter-spacing:1px;
+
+
+    box-shadow:
+
+
+    0 8px 18px rgba(255,120,170,0.25);
+
+
+    transition:0.3s;
+
+
 }
 
+
+
+/* 鼠标经过 */
+
+.buttons a:hover{
+
+
+    transform:translateY(-3px);
+
+
+    box-shadow:
+
+    0 12px 25px rgba(255,120,170,0.35);
+
+
+}
+
+
+
+/* 手机适配 */
+
+@media(max-width:400px){
+
+
+    h1{
+
+        font-size:29px;
+
+    }
+
+
+    .text{
+
+        font-size:16px;
+
+    }
+
+
+}
 
 </style>
-
 </head>
 
 
