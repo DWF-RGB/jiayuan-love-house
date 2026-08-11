@@ -58,15 +58,11 @@ animation:fadeIn 0.8s ease;
 @keyframes fadeIn{
 
 from{
-
 opacity:0;
-
 }
 
 to{
-
 opacity:1;
-
 }
 
 }
@@ -74,7 +70,6 @@ opacity:1;
 
 
 /* 返回按钮 */
-
 
 .back{
 
@@ -98,7 +93,6 @@ font-size:16px;
 
 
 /* 主卡片 */
-
 
 .box{
 
@@ -130,7 +124,6 @@ box-shadow:
 
 
 /* 标题 */
-
 
 h1{
 
@@ -230,7 +223,6 @@ border-radius:50px;
 
 
 background:
-
 
 linear-gradient(
 135deg,
@@ -333,6 +325,21 @@ translateY(0);
 
 
 
+/* 信件标题 */
+
+
+.letter h2{
+
+color:#ff6b9d;
+
+text-align:center;
+
+font-size:22px;
+
+}
+
+
+
 /* 日期 */
 
 
@@ -355,10 +362,80 @@ margin-top:20px;
 
 
 
+/* 更多小信 */
+
+
+.more-letter{
+
+
+margin-top:25px;
+
+
+padding:20px;
+
+
+background:#fff5fa;
+
+
+border-radius:20px;
+
+
+text-align:left;
+
+
+color:#777;
+
+
+line-height:1.8;
+
+
+}
+
+
+
+.more-letter h3{
+
+
+text-align:center;
+
+
+color:#ff6b9d;
+
+
+}
+
+
+
+.more-letter p{
+
+
+padding:15px;
+
+
+background:white;
+
+
+border-radius:15px;
+
+
+margin:15px 0;
+
+
+box-shadow:
+
+0 5px 15px rgba(0,0,0,0.05);
+
+
+}
+
+
+
+
 </style>
 
 
 </head>
+
 
 
 
@@ -371,6 +448,7 @@ margin-top:20px;
 ← 回到小屋
 
 </a>
+
 
 
 
@@ -395,6 +473,7 @@ margin-top:20px;
 
 
 
+
 <div class="tip">
 
 佳源，
@@ -408,11 +487,13 @@ margin-top:20px;
 
 
 
+
 <button onclick="openLetter()">
 
-拆开这封信 💕
+今天收到一封信 💌
 
 </button>
+
 
 
 
@@ -421,61 +502,66 @@ margin-top:20px;
 <div class="letter" id="letter">
 
 
+
+<h2>
+
+今天想告诉你
+
+</h2>
+
+
+
+<p>
+
 佳源：
 
-
-<br><br>
-
-
-其实我一直觉得，
-
-人生里最幸运的事情，
-
-就是遇见你。
+</p>
 
 
-<br><br>
 
 
-从2024年12月14日开始，
+<p>
 
-我们的故事慢慢展开。
+今天没有发生什么特别的事情，
 
+但是想到生活里有你的存在，
 
-<br><br>
+就觉得很幸运。
 
-
-一起去韩国旅行，
-
-一起做海鲜葱饼，
-
-一起在杨村三中的天台留下回忆。
+</p>
 
 
-<br><br>
 
+<p>
 
-希望以后还有很多很多普通的日子，
+希望以后我们可以一起经历更多普通的日子，
 
-可以和你一起吃饭，
+一起吃饭，
 
 一起散步，
 
-一起创造新的故事。
+一起把平凡的生活过成我们的故事。
+
+</p>
 
 
-<br><br>
 
+<p>
 
 无论什么时候，
 
 伟峰都会站在你这边。
 
+</p>
 
-<br><br>
 
+
+<p>
 
 爱你的伟峰 ❤️
+
+</p>
+
 
 
 
@@ -486,12 +572,73 @@ margin-top:20px;
 </div>
 
 
+
+</div>
+
+
+
+
+
+
+
+<div class="more-letter">
+
+
+<h3>
+
+📮 更多的小信
+
+</h3>
+
+
+
+<p>
+
+💌 2026.08.05
+
+<br>
+
+想记录我们的日常
+
+</p>
+
+
+
+<p>
+
+💌 2026.07.20
+
+<br>
+
+想和你一起慢慢变老
+
+</p>
+
+
+
+
+<p>
+
+💌 未来信
+
+<br>
+
+写给几年后的我们
+
+</p>
+
+
+
 </div>
 
 
 
 
+
 </div>
+
+
+
 
 
 
@@ -516,12 +663,15 @@ document.querySelector(".tip").style.display="none";
 
 }
 
+
+
 </script>
 
 
 
 
-</body>
 
+
+</body>
 
 </html>
