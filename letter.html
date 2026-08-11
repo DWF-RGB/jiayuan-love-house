@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>伟峰的情话信箱</title>
@@ -13,47 +15,59 @@
 
 
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
+
 
 
 body{
 
-    margin:0;
+margin:0;
 
-    min-height:100vh;
+min-height:100vh;
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
-    padding:20px;
-
-
-    background:
-    linear-gradient(135deg,#ffe6f0,#fff8fb);
+padding:20px;
 
 
-    font-family:
-    "Microsoft YaHei",
-    sans-serif;
+background:
+
+linear-gradient(
+135deg,
+#ffe8f0,
+#fff9fc
+);
+
+
+font-family:
+"Microsoft YaHei",
+sans-serif;
+
+
+animation:fadeIn 0.8s ease;
 
 }
 
 
 
-/* 页面盒子 */
+@keyframes fadeIn{
 
+from{
 
-.box{
+opacity:0;
 
-    width:100%;
+}
 
-    max-width:420px;
+to{
 
-    text-align:center;
+opacity:1;
+
+}
 
 }
 
@@ -64,16 +78,52 @@ body{
 
 .back{
 
-    position:absolute;
+position:fixed;
 
-    top:25px;
+top:20px;
 
-    left:25px;
+left:20px;
 
 
-    color:#ff7fa8;
+color:#ff8fb5;
 
-    text-decoration:none;
+
+text-decoration:none;
+
+
+font-size:16px;
+
+}
+
+
+
+/* 主卡片 */
+
+
+.box{
+
+width:100%;
+
+
+max-width:420px;
+
+
+background:white;
+
+
+padding:40px 25px;
+
+
+border-radius:30px;
+
+
+text-align:center;
+
+
+box-shadow:
+
+0 15px 35px rgba(255,120,160,0.2);
+
 
 }
 
@@ -84,11 +134,14 @@ body{
 
 h1{
 
-    color:#ff6b9d;
+color:#ff6b9d;
 
-    font-size:30px;
 
-    margin-bottom:40px;
+font-size:30px;
+
+
+margin-bottom:25px;
+
 
 }
 
@@ -96,152 +149,40 @@ h1{
 
 /* 信封 */
 
+
 .envelope{
 
 
-    width:300px;
+font-size:75px;
 
-    height:200px;
 
+margin:25px;
 
-    background:#ff91b5;
 
+animation:
 
-    margin:auto;
-
-
-    position:relative;
-
-
-    border-radius:15px;
-
-
-    cursor:pointer;
-
-
-    box-shadow:
-
-    0 15px 30px rgba(255,120,160,0.25);
-
-
-    overflow:hidden;
-
-}
-
-
-
-/* 信封盖 */
-
-
-.flap{
-
-
-    position:absolute;
-
-
-    width:0;
-
-    height:0;
-
-
-    border-left:150px solid transparent;
-
-    border-right:150px solid transparent;
-
-    border-top:100px solid #ffb3cc;
-
-
-    top:0;
-
-    left:0;
-
-
-    transform-origin:top;
-
-
-    transition:0.8s;
-
-
-    z-index:3;
-
-}
-
-
-
-/* 信纸 */
-
-
-.letter{
-
-
-    position:absolute;
-
-
-    width:260px;
-
-
-    height:260px;
-
-
-    background:white;
-
-
-    left:20px;
-
-
-    top:40px;
-
-
-    padding:25px;
-
-
-    border-radius:10px;
-
-
-    text-align:left;
-
-
-    color:#666;
-
-
-    line-height:1.8;
-
-
-    font-size:16px;
-
-
-    transition:0.8s;
-
-
-    z-index:2;
-
-
-    box-shadow:
-
-    0 5px 20px rgba(0,0,0,0.08);
+float 2s infinite ease-in-out;
 
 
 }
 
 
 
-/* 点击打开 */
+@keyframes float{
 
 
-.open .flap{
+0%,100%{
 
-
-    transform:rotateX(180deg);
-
+transform:translateY(0);
 
 }
 
 
+50%{
 
-.open .letter{
+transform:translateY(-8px);
 
-
-    transform:translateY(-170px);
+}
 
 
 }
@@ -254,10 +195,160 @@ h1{
 .tip{
 
 
-    margin-top:35px;
+font-size:17px;
 
 
-    color:#ff8fb5;
+color:#777;
+
+
+line-height:1.8;
+
+
+}
+
+
+
+/* 按钮 */
+
+
+button{
+
+
+margin-top:25px;
+
+
+width:90%;
+
+
+padding:18px;
+
+
+border:none;
+
+
+border-radius:50px;
+
+
+background:
+
+
+linear-gradient(
+135deg,
+#ff9fc4,
+#ff7da8
+);
+
+
+color:white;
+
+
+font-size:18px;
+
+
+cursor:pointer;
+
+
+box-shadow:
+
+0 8px 20px rgba(255,120,160,0.25);
+
+
+}
+
+
+
+/* 信纸 */
+
+
+.letter{
+
+
+display:none;
+
+
+margin-top:30px;
+
+
+padding:28px;
+
+
+background:#fffdf8;
+
+
+border-radius:8px;
+
+
+text-align:left;
+
+
+font-size:17px;
+
+
+line-height:2;
+
+
+color:#666;
+
+
+box-shadow:
+
+0 10px 30px rgba(0,0,0,0.08);
+
+
+animation:
+
+letterShow 0.8s ease;
+
+
+}
+
+
+
+@keyframes letterShow{
+
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(40px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+
+}
+
+
+
+/* 日期 */
+
+
+.date{
+
+
+text-align:right;
+
+
+font-size:14px;
+
+
+color:#aaa;
+
+
+margin-top:20px;
 
 
 }
@@ -275,7 +366,7 @@ h1{
 
 
 
-<a class="back" href="index.html">
+<a href="index.html" class="back">
 
 ← 回到小屋
 
@@ -286,6 +377,7 @@ h1{
 <div class="box">
 
 
+
 <h1>
 
 💌 伟峰的情话信箱
@@ -294,51 +386,10 @@ h1{
 
 
 
-<div class="envelope" onclick="openLetter()">
 
+<div class="envelope">
 
-
-<div class="flap"></div>
-
-
-
-<div class="letter">
-
-
-亲爱的佳源：
-
-
-<br><br>
-
-
-这是伟峰为你准备的小信箱。
-
-
-<br><br>
-
-
-希望以后每一次打开，
-
-都能看到一点小惊喜。
-
-
-<br><br>
-
-
-愿你每天开心一点，
-
-也愿我们的故事一直继续。
-
-
-<br><br>
-
-
-——伟峰 ❤️
-
-
-
-</div>
-
+💌
 
 </div>
 
@@ -346,13 +397,102 @@ h1{
 
 <div class="tip">
 
-点击信封，打开信件 💕
+佳源，
+
+<br>
+
+今天想收到一封来自伟峰的信吗？😊
 
 </div>
 
 
 
+
+<button onclick="openLetter()">
+
+拆开这封信 💕
+
+</button>
+
+
+
+
+
+<div class="letter" id="letter">
+
+
+佳源：
+
+
+<br><br>
+
+
+其实我一直觉得，
+
+人生里最幸运的事情，
+
+就是遇见你。
+
+
+<br><br>
+
+
+从2024年12月14日开始，
+
+我们的故事慢慢展开。
+
+
+<br><br>
+
+
+一起去韩国旅行，
+
+一起做海鲜葱饼，
+
+一起在杨村三中的天台留下回忆。
+
+
+<br><br>
+
+
+希望以后还有很多很多普通的日子，
+
+可以和你一起吃饭，
+
+一起散步，
+
+一起创造新的故事。
+
+
+<br><br>
+
+
+无论什么时候，
+
+伟峰都会站在你这边。
+
+
+<br><br>
+
+
+爱你的伟峰 ❤️
+
+
+
+<div class="date">
+
+2026年8月11日
+
 </div>
+
+
+</div>
+
+
+
+
+</div>
+
 
 
 
@@ -362,19 +502,26 @@ h1{
 function openLetter(){
 
 
-    document
-    .querySelector(".envelope")
-    .classList
-    .toggle("open");
+let letter=document.getElementById("letter");
+
+
+letter.style.display="block";
+
+
+document.querySelector("button").style.display="none";
+
+
+document.querySelector(".tip").style.display="none";
 
 
 }
 
-
-
 </script>
 
 
+
+
 </body>
+
 
 </html>
