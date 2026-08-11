@@ -13,11 +13,9 @@
 
 <style>
 
-
 *{
 box-sizing:border-box;
 }
-
 
 
 body{
@@ -34,25 +32,17 @@ align-items:center;
 
 padding:20px;
 
-
-background:
-
-linear-gradient(
+background:linear-gradient(
 135deg,
 #ffe8f0,
 #fff9fc
 );
 
-
-font-family:
-"Microsoft YaHei",
-sans-serif;
-
+font-family:"Microsoft YaHei",sans-serif;
 
 animation:fadeIn 0.8s ease;
 
 }
-
 
 
 @keyframes fadeIn{
@@ -68,8 +58,7 @@ opacity:1;
 }
 
 
-
-/* 返回按钮 */
+/* 返回 */
 
 .back{
 
@@ -79,45 +68,33 @@ top:20px;
 
 left:20px;
 
-
-color:#ff8fb5;
-
-
 text-decoration:none;
 
+color:#ff8fb5;
 
 font-size:16px;
 
 }
 
 
-
-/* 主卡片 */
+/* 主体 */
 
 .box{
 
 width:100%;
 
-
 max-width:420px;
-
 
 background:white;
 
-
 padding:40px 25px;
-
 
 border-radius:30px;
 
-
 text-align:center;
 
-
 box-shadow:
-
 0 15px 35px rgba(255,120,160,0.2);
-
 
 }
 
@@ -129,33 +106,22 @@ h1{
 
 color:#ff6b9d;
 
-
 font-size:30px;
 
-
-margin-bottom:25px;
-
+margin-bottom:20px;
 
 }
 
 
-
 /* 信封 */
-
 
 .envelope{
 
-
 font-size:75px;
-
 
 margin:25px;
 
-
-animation:
-
-float 2s infinite ease-in-out;
-
+animation:float 2s infinite ease-in-out;
 
 }
 
@@ -163,39 +129,24 @@ float 2s infinite ease-in-out;
 
 @keyframes float{
 
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-
 50%{
 
 transform:translateY(-8px);
 
 }
 
-
 }
 
 
-
-/* 提示文字 */
-
+/* 提示 */
 
 .tip{
 
-
 font-size:17px;
-
 
 color:#777;
 
-
 line-height:1.8;
-
 
 }
 
@@ -203,136 +154,92 @@ line-height:1.8;
 
 /* 按钮 */
 
-
 button{
-
 
 margin-top:25px;
 
-
 width:90%;
-
 
 padding:18px;
 
-
 border:none;
-
 
 border-radius:50px;
 
-
 background:
-
 linear-gradient(
 135deg,
 #ff9fc4,
 #ff7da8
 );
 
-
 color:white;
-
 
 font-size:18px;
 
-
 cursor:pointer;
-
-
-box-shadow:
-
-0 8px 20px rgba(255,120,160,0.25);
-
 
 }
 
 
-
-/* 信纸 */
-
+/* 信 */
 
 .letter{
 
-
 display:none;
-
 
 margin-top:30px;
 
-
-padding:28px;
-
+padding:25px;
 
 background:#fffdf8;
 
-
-border-radius:8px;
-
+border-radius:12px;
 
 text-align:left;
 
-
 font-size:17px;
-
 
 line-height:2;
 
-
 color:#666;
 
-
 box-shadow:
-
 0 10px 30px rgba(0,0,0,0.08);
 
-
-animation:
-
-letterShow 0.8s ease;
-
+animation:show 0.8s ease;
 
 }
 
 
 
-@keyframes letterShow{
-
+@keyframes show{
 
 from{
 
 opacity:0;
 
-transform:
-
-translateY(40px);
+transform:translateY(40px);
 
 }
-
 
 to{
 
 opacity:1;
 
-transform:
-
-translateY(0);
+transform:translateY(0);
 
 }
 
-
 }
 
-
-
-/* 信件标题 */
 
 
 .letter h2{
 
-color:#ff6b9d;
-
 text-align:center;
+
+color:#ff6b9d;
 
 font-size:22px;
 
@@ -340,94 +247,67 @@ font-size:22px;
 
 
 
-/* 日期 */
-
-
 .date{
-
 
 text-align:right;
 
+color:#aaa;
 
 font-size:14px;
 
-
-color:#aaa;
-
-
 margin-top:20px;
-
 
 }
 
 
 
-/* 更多小信 */
+/* 小信列表 */
 
+.more{
 
-.more-letter{
-
+display:none;
 
 margin-top:25px;
 
-
-padding:20px;
-
-
-background:#fff5fa;
-
-
-border-radius:20px;
-
-
-text-align:left;
-
-
-color:#777;
-
-
-line-height:1.8;
-
-
 }
 
 
 
-.more-letter h3{
-
-
-text-align:center;
-
+.more h3{
 
 color:#ff6b9d;
 
-
 }
 
 
 
-.more-letter p{
+.card{
 
+background:#fff5fa;
 
 padding:15px;
 
-
-background:white;
-
-
-border-radius:15px;
-
+border-radius:18px;
 
 margin:15px 0;
 
+cursor:pointer;
 
-box-shadow:
+text-align:left;
 
-0 5px 15px rgba(0,0,0,0.05);
+line-height:1.7;
 
+transition:0.3s;
 
 }
 
+
+
+.card:hover{
+
+transform:translateY(-3px);
+
+}
 
 
 
@@ -455,13 +335,11 @@ box-shadow:
 <div class="box">
 
 
-
 <h1>
 
 💌 伟峰的情话信箱
 
 </h1>
-
 
 
 
@@ -486,14 +364,11 @@ box-shadow:
 
 
 
+<button onclick="openBox()">
 
-
-<button onclick="openLetter()">
-
-今天收到一封信 💌
+今天收到一封信 💕
 
 </button>
-
 
 
 
@@ -502,25 +377,19 @@ box-shadow:
 <div class="letter" id="letter">
 
 
-
-<h2>
+<h2 id="title">
 
 今天想告诉你
 
 </h2>
 
 
-
-<p>
+<p id="content">
 
 佳源：
 
-</p>
+<br><br>
 
-
-
-
-<p>
 
 今天没有发生什么特别的事情，
 
@@ -528,44 +397,30 @@ box-shadow:
 
 就觉得很幸运。
 
-</p>
+
+<br><br>
 
 
-
-<p>
-
-希望以后我们可以一起经历更多普通的日子，
+希望以后我们可以一起经历很多普通的日子，
 
 一起吃饭，
 
 一起散步，
 
-一起把平凡的生活过成我们的故事。
-
-</p>
+一起创造属于我们的故事。
 
 
+<br><br>
 
-<p>
-
-无论什么时候，
-
-伟峰都会站在你这边。
-
-</p>
-
-
-
-<p>
 
 爱你的伟峰 ❤️
 
+
 </p>
 
 
 
-
-<div class="date">
+<div class="date" id="date">
 
 2026年8月11日
 
@@ -580,8 +435,7 @@ box-shadow:
 
 
 
-
-<div class="more-letter">
+<div class="more" id="more">
 
 
 <h3>
@@ -592,40 +446,41 @@ box-shadow:
 
 
 
-<p>
+<div class="card" onclick="changeLetter(1)">
 
-💌 2026.08.05
-
-<br>
-
-想记录我们的日常
-
-</p>
-
-
-
-<p>
-
-💌 2026.07.20
+💌 韩国旅行回忆
 
 <br>
 
-想和你一起慢慢变老
+那次一起出发的日子
 
-</p>
-
-
+</div>
 
 
-<p>
 
-💌 未来信
+
+<div class="card" onclick="changeLetter(2)">
+
+💌 杨村三中的天台
 
 <br>
 
-写给几年后的我们
+关于我们的青春记忆
 
-</p>
+</div>
+
+
+
+
+<div class="card" onclick="changeLetter(3)">
+
+💌 写给未来的你
+
+<br>
+
+几年后的我们
+
+</div>
 
 
 
@@ -634,10 +489,7 @@ box-shadow:
 
 
 
-
 </div>
-
-
 
 
 
@@ -646,13 +498,13 @@ box-shadow:
 <script>
 
 
-function openLetter(){
+function openBox(){
 
 
-let letter=document.getElementById("letter");
+document.getElementById("letter").style.display="block";
 
 
-letter.style.display="block";
+document.getElementById("more").style.display="block";
 
 
 document.querySelector("button").style.display="none";
@@ -665,10 +517,97 @@ document.querySelector(".tip").style.display="none";
 
 
 
+
+
+function changeLetter(num){
+
+
+let title=document.getElementById("title");
+
+let content=document.getElementById("content");
+
+let date=document.getElementById("date");
+
+
+
+if(num==1){
+
+
+title.innerHTML="韩国旅行回忆";
+
+
+content.innerHTML=
+
+"佳源：<br><br>"+
+"还记得我们一起去韩国的日子吗？"+
+"<br><br>"+
+"一起走过陌生的街道，"+
+"一起吃饭，一起看风景。"+
+"<br><br>"+
+"很多时候，旅行的意义不是去了哪里，"+
+"而是身边的人是谁。❤️";
+
+
+date.innerHTML="2025年旅行记录";
+
+
+}
+
+
+
+
+if(num==2){
+
+
+title.innerHTML="杨村三中的天台";
+
+
+content.innerHTML=
+
+"佳源：<br><br>"+
+"有些地方很普通，"+
+"但是因为有了共同的回忆，"+
+"就变得特别。"+
+"<br><br>"+
+"希望以后我们还能创造更多属于我们的地方。";
+
+
+date.innerHTML="我们的回忆";
+
+
+}
+
+
+
+
+
+if(num==3){
+
+
+title.innerHTML="写给未来的你";
+
+
+content.innerHTML=
+
+"佳源：<br><br>"+
+"如果未来的某一天你打开这封信，"+
+"希望我们依然记得现在喜欢彼此的感觉。"+
+"<br><br>"+
+"愿未来的我们，"+
+"一起面对生活，也一起享受生活。❤️";
+
+
+date.innerHTML="未来信";
+
+
+}
+
+
+
+}
+
+
 </script>
-
-
-
 
 
 
