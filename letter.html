@@ -238,9 +238,11 @@ transform:translateY(0);
 }
 
 
+/* 佳源 */
+
 .letter h2{
 
-text-align:center;
+text-align:left;
 
 color:#ff6b9d;
 
@@ -254,6 +256,8 @@ margin-bottom:20px;
 
 }
 
+
+/* 日期 */
 
 .date{
 
@@ -315,6 +319,17 @@ transform:translateY(-3px);
 
 
 /* ========================= */
+/* 打开信之后 */
+/* ========================= */
+
+body.opened{
+
+align-items:flex-start;
+
+}
+
+
+/* ========================= */
 /* 手机端适配 */
 /* ========================= */
 
@@ -322,11 +337,28 @@ transform:translateY(-3px);
 
 body{
 
-display:block;
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
 
 min-height:100vh;
 
-padding:12px 7px 30px;
+padding:15px 7px 30px;
+
+}
+
+
+/* 打开信之后，允许页面从顶部开始滚动 */
+
+body.opened{
+
+justify-content:flex-start;
+
+align-items:center;
 
 }
 
@@ -345,7 +377,7 @@ display:block;
 
 width:max-content;
 
-margin:0 0 10px 4px;
+margin:0 auto 10px;
 
 font-size:15px;
 
@@ -425,8 +457,6 @@ width:100%;
 
 margin-top:25px;
 
-/* 比上一版更宽 */
-
 padding:20px 13px;
 
 font-size:15px;
@@ -442,9 +472,11 @@ word-break:break-word;
 }
 
 
-/* 信件标题 */
+/* 佳源 */
 
 .letter h2{
+
+text-align:left;
 
 font-size:20px;
 
@@ -453,6 +485,8 @@ line-height:1.6;
 margin-top:0;
 
 margin-bottom:20px;
+
+color:#ff6b9d;
 
 }
 
@@ -606,7 +640,7 @@ font-size:22px;
 
 <button onclick="openBox()">
 
-今天收到一封信 💕
+拆开这封信 💕
 
 </button>
 
@@ -616,16 +650,12 @@ font-size:22px;
 
 <h2 id="title">
 
-佳源：
+佳源
 
 </h2>
 
 
 <p id="content">
-
-佳源：
-
-<br><br>
 
 首先，弥补祝小老婆佳源生日快乐，然后祝老婆七夕快乐～
 
@@ -711,6 +741,8 @@ font-size:22px;
 
 <br><br>
 
+佳源的大老公
+
 </p>
 
 
@@ -732,28 +764,6 @@ font-size:22px;
 📮 更多的小信
 
 </h3>
-
-
-<div class="card" onclick="changeLetter(1)">
-
-💌 韩国旅行回忆
-
-<br>
-
-那次一起出发的日子
-
-</div>
-
-
-<div class="card" onclick="changeLetter(2)">
-
-💌 杨村三中的天台
-
-<br>
-
-关于我们的青春记忆
-
-</div>
 
 
 <div class="card" onclick="changeLetter(3)">
@@ -791,6 +801,9 @@ document.querySelector("button").style.display="none";
 document.querySelector(".tip").style.display="none";
 
 
+document.body.classList.add("opened");
+
+
 }
 
 
@@ -802,52 +815,6 @@ let title=document.getElementById("title");
 let content=document.getElementById("content");
 
 let date=document.getElementById("date");
-
-
-if(num==1){
-
-
-title.innerHTML="韩国旅行回忆";
-
-
-content.innerHTML=
-
-"佳源：<br><br>"+
-"还记得我们一起去韩国的日子吗？"+
-"<br><br>"+
-"一起走过陌生的街道，"+
-"一起吃饭，一起看风景。"+
-"<br><br>"+
-"很多时候，旅行的意义不是去了哪里，"+
-"而是身边的人是谁。❤️";
-
-
-date.innerHTML="2025年旅行记录";
-
-
-}
-
-
-if(num==2){
-
-
-title.innerHTML="杨村三中的天台";
-
-
-content.innerHTML=
-
-"佳源：<br><br>"+
-"有些地方很普通，"+
-"但是因为有了共同的回忆，"+
-"就变得特别。"+
-"<br><br>"+
-"希望以后我们还能创造更多属于我们的地方。";
-
-
-date.innerHTML="我们的回忆";
-
-
-}
 
 
 if(num==3){
