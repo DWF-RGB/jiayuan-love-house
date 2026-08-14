@@ -75,6 +75,8 @@ color:#ff8fb5;
 
 font-size:16px;
 
+z-index:10;
+
 }
 
 
@@ -210,6 +212,14 @@ box-shadow:
 
 animation:show 0.8s ease;
 
+/* 防止长文字撑破手机 */
+
+width:100%;
+
+overflow-wrap:break-word;
+
+word-break:break-word;
+
 }
 
 
@@ -243,6 +253,12 @@ text-align:center;
 color:#ff6b9d;
 
 font-size:22px;
+
+line-height:1.6;
+
+margin-top:0;
+
+margin-bottom:20px;
 
 }
 
@@ -311,6 +327,224 @@ transform:translateY(-3px);
 }
 
 
+/* ========================= */
+/* 手机端适配 */
+/* ========================= */
+
+@media (max-width:600px){
+
+body{
+
+display:block;
+
+min-height:100vh;
+
+padding:15px 10px 30px;
+
+}
+
+/* 返回小屋 */
+
+.back{
+
+position:relative;
+
+top:auto;
+
+left:auto;
+
+display:block;
+
+width:max-content;
+
+margin:0 0 12px 5px;
+
+font-size:15px;
+
+}
+
+/* 主体 */
+
+.box{
+
+width:100%;
+
+max-width:100%;
+
+padding:28px 16px 30px;
+
+border-radius:24px;
+
+}
+
+/* 标题 */
+
+h1{
+
+font-size:24px;
+
+margin-top:0;
+
+margin-bottom:15px;
+
+line-height:1.5;
+
+}
+
+/* 信封 */
+
+.envelope{
+
+font-size:60px;
+
+margin:18px;
+
+}
+
+/* 提示 */
+
+.tip{
+
+font-size:15px;
+
+line-height:1.8;
+
+}
+
+/* 按钮 */
+
+button{
+
+width:95%;
+
+padding:16px;
+
+font-size:17px;
+
+}
+
+/* 信 */
+
+.letter{
+
+width:100%;
+
+margin-top:25px;
+
+padding:20px 17px;
+
+font-size:15px;
+
+line-height:1.9;
+
+border-radius:12px;
+
+overflow-wrap:anywhere;
+
+word-break:break-word;
+
+}
+
+/* 信件标题 */
+
+.letter h2{
+
+font-size:20px;
+
+line-height:1.6;
+
+margin-top:0;
+
+margin-bottom:20px;
+
+}
+
+/* 信件正文 */
+
+.letter p{
+
+margin:0;
+
+padding:0;
+
+}
+
+/* 日期 */
+
+.date{
+
+font-size:13px;
+
+margin-top:20px;
+
+}
+
+/* 更多小信 */
+
+.more{
+
+width:100%;
+
+margin-top:25px;
+
+}
+
+.more h3{
+
+font-size:18px;
+
+}
+
+.card{
+
+font-size:15px;
+
+padding:14px;
+
+margin:13px 0;
+
+line-height:1.7;
+
+}
+
+}
+
+
+/* 更小的手机 */
+
+@media (max-width:380px){
+
+.box{
+
+padding-left:13px;
+
+padding-right:13px;
+
+}
+
+.letter{
+
+padding:18px 14px;
+
+font-size:14px;
+
+line-height:1.9;
+
+}
+
+.letter h2{
+
+font-size:19px;
+
+}
+
+h1{
+
+font-size:22px;
+
+}
+
+}
 
 </style>
 
