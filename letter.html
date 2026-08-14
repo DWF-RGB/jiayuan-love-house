@@ -1,614 +1,586 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="zh-CN">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>伟峰的情话信箱</title>
-
+<title>给佳源的一封信</title>
 
 <style>
 
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
-
 
 body{
+    margin:0;
+    min-height:100vh;
+    font-family:
+        "Microsoft YaHei",
+        "PingFang SC",
+        "Hiragino Sans GB",
+        sans-serif;
 
-margin:0;
+    background:
+        linear-gradient(
+            135deg,
+            #fff5f7 0%,
+            #fff9f5 45%,
+            #fff0f4 100%
+        );
 
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:20px;
-
-background:linear-gradient(
-135deg,
-#ffe8f0,
-#fff9fc
-);
-
-font-family:"Microsoft YaHei",sans-serif;
-
-animation:fadeIn 0.8s ease;
-
+    color:#5b4b4b;
+    line-height:1.9;
 }
 
+/* 页面整体 */
 
-@keyframes fadeIn{
-
-from{
-opacity:0;
+.page{
+    width:100%;
+    padding:45px 18px 70px;
 }
 
-to{
-opacity:1;
+/* 信件 */
+
+.letter{
+    max-width:760px;
+    margin:0 auto;
+
+    background:rgba(255,255,255,0.92);
+
+    border-radius:24px;
+
+    padding:45px 42px 50px;
+
+    box-shadow:
+        0 12px 40px rgba(170,120,130,0.12);
+
+    border:1px solid rgba(255,220,225,0.8);
 }
-
-}
-
-
-/* 返回 */
-
-.back{
-
-position:fixed;
-
-top:20px;
-
-left:20px;
-
-text-decoration:none;
-
-color:#ff8fb5;
-
-font-size:16px;
-
-}
-
-
-/* 主体 */
-
-.box{
-
-width:100%;
-
-max-width:420px;
-
-background:white;
-
-padding:40px 25px;
-
-border-radius:30px;
-
-text-align:center;
-
-box-shadow:
-0 15px 35px rgba(255,120,160,0.2);
-
-}
-
-
 
 /* 标题 */
 
-h1{
-
-color:#ff6b9d;
-
-font-size:30px;
-
-margin-bottom:20px;
-
+.title{
+    text-align:center;
+    margin-bottom:35px;
 }
 
-
-/* 信封 */
-
-.envelope{
-
-font-size:75px;
-
-margin:25px;
-
-animation:float 2s infinite ease-in-out;
-
+.title .heart{
+    font-size:34px;
+    margin-bottom:8px;
 }
 
+.title h1{
+    margin:0;
 
+    font-size:28px;
+    font-weight:500;
 
-@keyframes float{
+    color:#8d5b68;
 
-50%{
-
-transform:translateY(-8px);
-
+    letter-spacing:2px;
 }
 
+.title p{
+    margin:10px 0 0;
+
+    font-size:14px;
+    color:#b79a9f;
 }
 
+/* 正文 */
 
-/* 提示 */
-
-.tip{
-
-font-size:17px;
-
-color:#777;
-
-line-height:1.8;
-
+.content{
+    font-size:16px;
 }
 
-
-
-/* 按钮 */
-
-button{
-
-margin-top:25px;
-
-width:90%;
-
-padding:18px;
-
-border:none;
-
-border-radius:50px;
-
-background:
-linear-gradient(
-135deg,
-#ff9fc4,
-#ff7da8
-);
-
-color:white;
-
-font-size:18px;
-
-cursor:pointer;
-
+.content p{
+    margin:0 0 22px;
 }
 
+/* 开头 */
 
-/* 信 */
-
-.letter{
-
-display:none;
-
-margin-top:30px;
-
-padding:25px;
-
-background:#fffdf8;
-
-border-radius:12px;
-
-text-align:left;
-
-font-size:17px;
-
-line-height:2;
-
-color:#666;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.08);
-
-animation:show 0.8s ease;
-
+.greeting{
+    font-size:17px;
+    color:#76545e;
+    margin-bottom:25px !important;
 }
 
+/* 引用 */
 
+.quote{
+    margin:30px 8px;
 
-@keyframes show{
+    padding:20px 22px;
 
-from{
+    background:#fff7f8;
 
-opacity:0;
+    border-left:3px solid #e8aab8;
 
-transform:translateY(40px);
+    border-radius:8px;
 
+    color:#85636b;
+
+    font-size:15px;
 }
 
-to{
+/* 小标题 */
 
-opacity:1;
+.section-title{
+    margin-top:34px;
+    margin-bottom:18px;
 
-transform:translateY(0);
-
+    font-size:18px;
+    color:#9a6471;
+    font-weight:500;
 }
 
+/* 重点文字 */
+
+.highlight{
+    color:#b96778;
 }
 
+/* 结尾 */
 
+.ending{
+    text-align:center;
 
-.letter h2{
+    margin-top:40px;
+    padding-top:30px;
 
-text-align:center;
-
-color:#ff6b9d;
-
-font-size:22px;
-
+    border-top:1px solid #f2dfe3;
 }
 
+.ending .love{
+    font-size:23px;
+    color:#c97888;
 
-
-.date{
-
-text-align:right;
-
-color:#aaa;
-
-font-size:14px;
-
-margin-top:20px;
-
+    margin-bottom:8px;
 }
 
-
-
-/* 小信列表 */
-
-.more{
-
-display:none;
-
-margin-top:25px;
-
+.ending p{
+    margin:5px 0;
 }
 
+/* 返回按钮 */
 
-
-.more h3{
-
-color:#ff6b9d;
-
+.back{
+    text-align:center;
+    margin-top:30px;
 }
 
+.back a{
+    display:inline-block;
 
+    padding:10px 24px;
 
-.card{
+    border-radius:30px;
 
-background:#fff5fa;
+    background:#fff;
 
-padding:15px;
+    color:#a66b78;
 
-border-radius:18px;
+    text-decoration:none;
 
-margin:15px 0;
+    font-size:14px;
 
-cursor:pointer;
+    border:1px solid #efd9de;
 
-text-align:left;
-
-line-height:1.7;
-
-transition:0.3s;
-
+    transition:all .25s ease;
 }
 
-
-
-.card:hover{
-
-transform:translateY(-3px);
-
+.back a:hover{
+    background:#fff2f5;
+    transform:translateY(-2px);
 }
 
+/* 手机 */
 
+@media(max-width:600px){
+
+    .page{
+        padding:20px 12px 45px;
+    }
+
+    .letter{
+        padding:30px 23px 38px;
+        border-radius:20px;
+    }
+
+    .title h1{
+        font-size:23px;
+    }
+
+    .title .heart{
+        font-size:30px;
+    }
+
+    .content{
+        font-size:15px;
+        line-height:1.9;
+    }
+
+    .content p{
+        margin-bottom:20px;
+    }
+
+    .quote{
+        margin:25px 0;
+        padding:17px 18px;
+        font-size:14px;
+    }
+
+}
 
 </style>
 
-
 </head>
-
-
 
 
 <body>
 
 
+<div class="page">
 
-<a href="index.html" class="back">
-
-← 回到小屋
-
-</a>
+    <div class="letter">
 
 
+        <!-- 标题 -->
 
+        <div class="title">
 
-<div class="box">
+            <div class="heart">💌</div>
 
+            <h1>给小老婆佳源的一封信</h1>
 
-<h1>
+            <p>生日快乐 · 七夕快乐</p>
 
-💌 伟峰的情话信箱
-
-</h1>
+        </div>
 
 
 
-<div class="envelope">
+        <!-- 正文 -->
 
-💌
+        <div class="content">
+
+
+            <p class="greeting">
+                佳源：
+            </p>
+
+
+            <p>
+                首先，弥补祝小老婆佳源生日快乐，然后祝老婆七夕快乐～
+            </p>
+
+
+            <p>
+                这个小屋，也是我弥补给小老婆的生日礼物和七夕礼物💝
+            </p>
+
+
+            <p>
+                你可以在这里和我给你准备的小aiai聊天，也可以看看我们一路的故事瞬间。
+                我就是希望小老婆点进来，就可以获得幸福和被爱包围的感觉。
+            </p>
+
+
+            <p>
+                我在装修这个小屋的时候，这两天每天晚上老婆下班我们都在吵架，
+                我好伤心，我希望我可以快点把这个拿出来给老婆，
+                这样老婆可能就不会那么生气了，但是我还没做好……
+            </p>
+
+
+            <p>
+                好像从老婆正式上班之后，我们的吵架就越来越多了。
+                可能是因为，我们的时间和精力更多都被工作侵占了，
+                或者是被通勤消耗了，再加上各种生活上的家务琐事，
+                让我们好像变成了那种互相埋怨的中年上班无趣夫妻。
+            </p>
+
+
+            <p>
+                当然，一部分原因也是因为我犯了很多错。
+                吵架大声吼老婆、侵犯影响老婆的床头柜、头发掉得到处都是、
+                尿尿沾马桶圈等等，这些感情与生活细节问题，
+                我这些地方确实是做错了。
+            </p>
+
+
+            <p>
+                我要和老婆道歉。
+            </p>
+
+
+            <p>
+                我是很勇于认错的人
+                <span class="highlight">（我自己觉得是我的错的时候）</span>，
+                虽然很多错我经常改不过来……
+                老婆总是让我保证不犯错，我也想保证，
+                但我确实不像老婆那么细心、严格要求。
+            </p>
+
+
+            <p>
+                但我真的是发自内心肯定想改掉的，
+                也会努力做到的。
+                就像其中有一些错误，我已经改正咯。
+            </p>
+
+
+
+            <div class="section-title">
+                我也开始想念以前的我们
+            </div>
+
+
+            <p>
+                在我装修这个小屋的时候，我也流过小眼泪。
+                我看着之前最开始的照片，我感觉那时好幸福、好美好。
+            </p>
+
+
+            <p>
+                你和我说过怀念那时的激情。
+                我在看照片时，我发现我其实也怀念。
+                我感觉那时的行为好冲动、好爽，
+                好有美好的、戏剧般浪漫的感觉。
+            </p>
+
+
+            <p>
+                我其实也想回去，但回不去了。
+            </p>
+
+
+            <p>
+                其实比激情更多的是，
+                我怀念那时第一次体验这么美好爱情的初次幸福。
+            </p>
+
+
+            <p>
+                从你在韩国时我们在线上逐步暧昧聊天时，
+                这种颅内超美好的感觉就有了。
+            </p>
+
+
+            <p>
+                我每次和老婆牵手、吃饭、散步、聊天、说小情话，
+                我感觉就像在仙境里，尝着夸张的甜。
+            </p>
+
+
+            <p>
+                我那时对幸福的感受好真切。
+                我在那时就认为，我太幸福了。
+            </p>
+
+
+            <p>
+                我当时完全属于
+                <span class="highlight">“身在福中很知福”</span>。
+                现在看那些时候的那些事，我感觉还是如此。
+            </p>
+
+
+
+            <div class="section-title">
+                可是，我们真的只能这样吗？
+            </div>
+
+
+            <p>
+                而现在，或许进入上班下班的复制版枯燥生活，
+                是大多数情侣要面对的事。
+            </p>
+
+
+            <p>
+                另外随着时间，激情褪去变成相对平淡的陪伴，
+                也是好多甚至全部情侣的现实。
+                世间规律，总是难逃。
+            </p>
+
+
+            <p>
+                气胸给了一段间歇期，
+                让我真正有自己的时间回忆之前，来做这个小屋。
+            </p>
+
+
+            <p>
+                我发现我其实也不想就这样，
+                接受我们越来越无聊、越来越容易吵架。
+            </p>
+
+
+
+            <div class="quote">
+
+                “如果爱情真的一定会从最开始的轰轰烈烈，
+                慢慢变成柴米油盐，
+                那我希望我们至少可以成为那种——
+                虽然已经一起生活了很久，
+                但还是会在某一个普通的晚上，
+                突然觉得‘诶，我怎么还是这么喜欢你’的夫妻。”
+
+            </div>
+
+
+            <p>
+                我问了chat这种感觉，
+                它描述的我态度其实也有些符合。
+            </p>
+
+
+            <p>
+                说的有点2，但确实我现在有些微微这样状态的感觉。
+                比如我有时晚上在给老婆做饭时，
+                这样也是陪伴长久的舒适。
+            </p>
+
+
+
+            <div class="section-title">
+                我想和老婆继续谈很多很多恋爱
+            </div>
+
+
+            <p>
+                另外我也想到，
+                感觉我们的生活变得平淡，
+                一部分原因就是周一到周五上下班通勤，
+                周末在家躺，
+                没有什么独特的新记忆。
+            </p>
+
+
+            <p>
+                时间反复按照这种模式冲刷，
+                我们的感情自然也平淡了。
+            </p>
+
+
+            <p>
+                所以这也是我周末想叫老婆早些起床、白天出门的原因。
+            </p>
+
+
+            <p>
+                我想出门增加一些我们除了周一到周五日常循环往复之外的记忆，
+                增加像我们都没上班时的爽爽恋爱的记忆。
+            </p>
+
+
+            <p>
+                我想和老婆再去一些没去过的地方，
+                而不是只在熟悉的小空间里呆着，
+                不管近的或者远的。
+            </p>
+
+
+            <p>
+                想一起吃其他没去过的店，
+                吃新的好吃的。
+            </p>
+
+
+            <p>
+                像现在我们都不体验寿司郎的月度新品了，
+                而之前我们还没到下个月就去吃新品了。
+            </p>
+
+
+            <p>
+                我也想可以像退休老年人一样散步，
+                平静，但是能感受到那时第一次逛南湖的那种美好。
+            </p>
+
+
+            <p>
+                并且在这些时刻，我们拍下更多照片。
+            </p>
+
+
+
+            <div class="section-title">
+                我想和你一起，把日子重新过得有意思一点
+            </div>
+
+
+            <p>
+                总之，反思➕思考了这么多，
+                我知道需要改一些上面我提到的错误（生活细节）。
+            </p>
+
+
+            <p>
+                另外，还要多安抚、关心小老婆的情绪和心态，
+                多聊聊天，
+                在吵架时多哄老婆一会。
+            </p>
+
+
+            <p>
+                虽然有时小老婆情绪崩溃吵架时，
+                我可能也有点生小气，
+                但我努力多哄老婆。
+            </p>
+
+
+            <p>
+                上班后的生活也不能改变我。
+            </p>
+
+
+            <p>
+                我要和小老婆多创造新的美好记忆呢，
+                希望小老婆辅助支持我哦！
+            </p>
+
+
+
+            <!-- 结尾 -->
+
+            <div class="ending">
+
+                <div class="love">
+                    ❤️
+                </div>
+
+                <p>
+                    最后，我爱小佳源。
+                </p>
+
+                <p>
+                    很爱很爱。
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- 返回小屋 -->
+
+        <div class="back">
+
+            <a href="index.html">
+                ← 回到爱的小屋
+            </a>
+
+        </div>
+
+
+    </div>
 
 </div>
-
-
-
-
-<div class="tip">
-
-佳源，
-
-<br>
-
-今天想收到一封来自伟峰的信吗？😊
-
-</div>
-
-
-
-<button onclick="openBox()">
-
-拆开这封信 💕
-
-</button>
-
-
-
-
-
-<div class="letter" id="letter">
-
-
-<h2 id="title">
-
-今天想告诉你
-
-</h2>
-
-
-<p id="content">
-
-佳源：
-
-<br><br>
-
-
-今天没有发生什么特别的事情，
-
-但是想到生活里有你的存在，
-
-就觉得很幸运。
-
-
-<br><br>
-
-
-希望以后我们可以一起经历很多普通的日子，
-
-一起吃饭，
-
-一起散步，
-
-一起创造属于我们的故事。
-
-
-<br><br>
-
-
-爱你的伟峰 ❤️
-
-
-</p>
-
-
-
-<div class="date" id="date">
-
-2026年8月11日
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="more" id="more">
-
-
-<h3>
-
-📮 更多的小信
-
-</h3>
-
-
-
-<div class="card" onclick="changeLetter(1)">
-
-💌 韩国旅行回忆
-
-<br>
-
-那次一起出发的日子
-
-</div>
-
-
-
-
-<div class="card" onclick="changeLetter(2)">
-
-💌 杨村三中的天台
-
-<br>
-
-关于我们的青春记忆
-
-</div>
-
-
-
-
-<div class="card" onclick="changeLetter(3)">
-
-💌 写给未来的你
-
-<br>
-
-几年后的我们
-
-</div>
-
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-<script>
-
-
-function openBox(){
-
-
-document.getElementById("letter").style.display="block";
-
-
-document.getElementById("more").style.display="block";
-
-
-document.querySelector("button").style.display="none";
-
-
-document.querySelector(".tip").style.display="none";
-
-
-}
-
-
-
-
-
-function changeLetter(num){
-
-
-let title=document.getElementById("title");
-
-let content=document.getElementById("content");
-
-let date=document.getElementById("date");
-
-
-
-if(num==1){
-
-
-title.innerHTML="韩国旅行回忆";
-
-
-content.innerHTML=
-
-"佳源：<br><br>"+
-"还记得我们一起去韩国的日子吗？"+
-"<br><br>"+
-"一起走过陌生的街道，"+
-"一起吃饭，一起看风景。"+
-"<br><br>"+
-"很多时候，旅行的意义不是去了哪里，"+
-"而是身边的人是谁。❤️";
-
-
-date.innerHTML="2025年旅行记录";
-
-
-}
-
-
-
-
-if(num==2){
-
-
-title.innerHTML="杨村三中的天台";
-
-
-content.innerHTML=
-
-"佳源：<br><br>"+
-"有些地方很普通，"+
-"但是因为有了共同的回忆，"+
-"就变得特别。"+
-"<br><br>"+
-"希望以后我们还能创造更多属于我们的地方。";
-
-
-date.innerHTML="我们的回忆";
-
-
-}
-
-
-
-
-
-if(num==3){
-
-
-title.innerHTML="写给未来的你";
-
-
-content.innerHTML=
-
-"佳源：<br><br>"+
-"如果未来的某一天你打开这封信，"+
-"希望我们依然记得现在喜欢彼此的感觉。"+
-"<br><br>"+
-"愿未来的我们，"+
-"一起面对生活，也一起享受生活。❤️";
-
-
-date.innerHTML="未来信";
-
-
-}
-
-
-
-}
-
-
-</script>
-
 
 
 </body>
