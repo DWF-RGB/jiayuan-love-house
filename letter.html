@@ -58,7 +58,7 @@ opacity:1;
 }
 
 
-/* 返回 */
+/* 返回小屋 */
 
 .back{
 
@@ -257,6 +257,23 @@ margin-bottom:20px;
 }
 
 
+/* 落款 */
+
+.signature{
+
+text-align:right;
+
+color:#ff6b9d;
+
+font-size:16px;
+
+margin-top:25px;
+
+margin-bottom:0;
+
+}
+
+
 /* 日期 */
 
 .date{
@@ -267,7 +284,7 @@ color:#aaa;
 
 font-size:14px;
 
-margin-top:20px;
+margin-top:5px;
 
 }
 
@@ -318,13 +335,36 @@ transform:translateY(-3px);
 }
 
 
-/* ========================= */
-/* 打开信之后 */
-/* ========================= */
+/* 返回长信 */
 
-body.opened{
+.return-letter{
 
-align-items:flex-start;
+display:none;
+
+margin-top:18px;
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:30px;
+
+background:#fff0f5;
+
+color:#ff6b9d;
+
+font-size:15px;
+
+cursor:pointer;
+
+}
+
+
+.return-letter:hover{
+
+background:#ffe5ef;
 
 }
 
@@ -348,38 +388,6 @@ align-items:center;
 min-height:100vh;
 
 padding:15px 7px 30px;
-
-}
-
-
-/* 打开信之后，允许页面从顶部开始滚动 */
-
-body.opened{
-
-justify-content:flex-start;
-
-align-items:center;
-
-}
-
-
-/* 返回小屋 */
-
-.back{
-
-position:relative;
-
-top:auto;
-
-left:auto;
-
-display:block;
-
-width:max-content;
-
-margin:0 auto 10px;
-
-font-size:15px;
 
 }
 
@@ -491,13 +499,15 @@ color:#ff6b9d;
 }
 
 
-/* 正文 */
+/* 落款 */
 
-.letter p{
+.signature{
 
-margin:0;
+font-size:15px;
 
-padding:0;
+margin-top:25px;
+
+margin-bottom:0;
 
 }
 
@@ -508,7 +518,7 @@ padding:0;
 
 font-size:13px;
 
-margin-top:20px;
+margin-top:4px;
 
 }
 
@@ -540,6 +550,19 @@ padding:14px;
 margin:13px 0;
 
 line-height:1.7;
+
+}
+
+
+/* 返回长信 */
+
+.return-letter{
+
+font-size:15px;
+
+padding:12px;
+
+margin-top:15px;
 
 }
 
@@ -739,11 +762,14 @@ font-size:22px;
 
 最后，我爱小佳源。
 
-<br><br>
+</p>
+
+
+<div class="signature" id="signature">
 
 佳源的大老公
 
-</p>
+</div>
 
 
 <div class="date" id="date">
@@ -777,6 +803,13 @@ font-size:22px;
 </div>
 
 
+<button class="return-letter" id="returnLetter" onclick="returnLongLetter()">
+
+← 返回这封长信
+
+</button>
+
+
 </div>
 
 
@@ -788,37 +821,31 @@ font-size:22px;
 
 function openBox(){
 
-
 document.getElementById("letter").style.display="block";
-
 
 document.getElementById("more").style.display="block";
 
-
 document.querySelector("button").style.display="none";
 
-
 document.querySelector(".tip").style.display="none";
-
-
-document.body.classList.add("opened");
-
 
 }
 
 
 function changeLetter(num){
 
-
 let title=document.getElementById("title");
 
 let content=document.getElementById("content");
 
+let signature=document.getElementById("signature");
+
 let date=document.getElementById("date");
+
+let returnButton=document.getElementById("returnLetter");
 
 
 if(num==3){
-
 
 title.innerHTML="写给未来的你";
 
@@ -833,11 +860,83 @@ content.innerHTML=
 "一起面对生活，也一起享受生活。❤️";
 
 
+signature.innerHTML="";
+
 date.innerHTML="未来信";
 
+returnButton.style.display="block";
 
 }
 
+}
+
+
+function returnLongLetter(){
+
+let title=document.getElementById("title");
+
+let content=document.getElementById("content");
+
+let signature=document.getElementById("signature");
+
+let date=document.getElementById("date");
+
+let returnButton=document.getElementById("returnLetter");
+
+
+title.innerHTML="佳源";
+
+
+content.innerHTML=
+
+"首先，弥补祝小老婆佳源生日快乐，然后祝老婆七夕快乐～"+
+"<br><br>"+
+"这个小屋，也是我弥补给小老婆的生日礼物和七夕礼物💝"+
+"<br><br>"+
+"你可以在这里和我给你准备的小aiai聊天，也可以看看我们一路的故事瞬间。我就是希望小老婆点进来，就可以获得幸福和被爱包围的感觉。"+
+"<br><br>"+
+"我在装修这个小屋的时候，这两天每天晚上老婆下班我们都在吵架，我好伤心，我希望我可以快点把这个拿出来给老婆，这样老婆可能就不会那么生气了，但是我还没做好…"+
+"<br><br>"+
+"好像从老婆正式上班之后，我们的吵架就越来越多了。可能是因为，我们的时间和精力更多都被工作侵占了，或者是被通勤消耗了，在外加各种生活上的家务琐事，让我们好像变成了那种互相埋怨的中年上班无趣夫妻。"+
+"<br><br>"+
+"当然，一部分原因也是因为我犯了很多错，吵架大声吼老婆、侵犯影响老婆的床头柜、头发掉的哪都是、尿尿沾马桶圈等等，这些感情与生活细节问题。我这些地方确实是做错了，我要和老婆道歉，我是很勇于认错的人（我自己觉得是我的错的时候），虽然很多错我经常改不过来…老婆总是让我保证不犯错，我也想保证，但我确实不像老婆那么细心严格要求，但我真的是发自内心肯定想改掉的也会努力做到的。就像其中有一些错误我已经改正咯。"+
+"<br><br>"+
+"在我装修这个小屋的时候，我也流过小眼泪，我看着之前最开始的照片，我感觉那时好幸福美好。"+
+"<br><br>"+
+"你和我说过怀念那时的激情，我在看照片时，我发现我其实也怀念，我感觉那时的行为好冲动好爽、好有美好的戏剧般浪漫，我其实也想回去，但回不去了。"+
+"<br><br>"+
+"其实比激情更多的是，我怀念那时的第一次体验这么美好爱情的初次幸福。从你在韩国时我们在线上逐步暧昧聊天时，这种颅内超美好的感觉就有了。我每次和老婆牵手、吃饭、散步、聊天、说小情话，我感觉就像在仙境里，尝着夸张的甜。"+
+"<br><br>"+
+"我那时对幸福的感受好真切，我在那时就认为，我太幸福了，我当时完全属于“身在福中很知福”，现在看那些时候的那些事，我感觉还是如此。"+
+"<br><br>"+
+"而现在，或许进入上班下班的复制版枯燥生活，是大多数情侣要面对的事。另外随着时间，激情褪去变成相对平淡的陪伴，也是好多甚至全部情侣的现实。世间规律，总是难逃。"+
+"<br><br>"+
+"气胸给了一段间歇期，让我真正有自己的时间回忆之前，来做这个小屋。我发现我其实也不想就这样，接受我们越来越无聊、越来越容易吵架。"+
+"<br><br>"+
+"我问了chat这种感觉，它描述的我态度其实也有些符合："+
+"<br><br>"+
+"“如果爱情真的一定会从最开始的轰轰烈烈，慢慢变成柴米油盐，那我希望我们至少可以成为那种——虽然已经一起生活了很久，但还是会在某一个普通的晚上，突然觉得“诶，我怎么还是这么喜欢你”的夫妻。”"+
+"<br><br>"+
+"说的有点2，但确实我现在有些微微这样状态的感觉，比如我有时晚上在给老婆做饭时，这样也是陪伴长久的舒适。"+
+"<br><br>"+
+"另外我也想到，感觉我们的生活变得平淡，一部分原因就是周一到周五上下班通勤，周末在家躺，没有什么独特的新记忆，时间反复按照这种模式冲刷，我们的感情自然也平淡了。"+
+"<br><br>"+
+"所以这也是我周末想叫老婆早些起床，白天出门的原因。我想出门增加一些我们除了周一到周五日常循环往复之外的记忆，增加像我们都没上班时的爽爽恋爱的记忆。"+
+"<br><br>"+
+"我想和老婆再去一些没去过地方，而不是只在熟悉的小空间里呆着，不管近的或者远的。想一起吃其他没去过的店，吃新的好吃的（像现在我们都不体验寿司郎的月度新品了，而之前我们还没到下个月就去吃新品了）。也想可以像退休老年人散步，平静但是能感受到那时第一次逛南湖的那种美好。并且在这些时刻，我们拍下更多照片。"+
+"<br><br>"+
+"总之反思➕思考了这么多，我知道需要改一些上面我提到错误（生活细节）。另外，还要多安抚关心小老婆的情绪和心态，多聊聊天，在吵架时多哄老婆一会（虽然有时小老婆情绪b溃吵架时我可能也有点生小气，但我努力多哄老婆）。"+
+"<br><br>"+
+"上班后的生活也不能改变我，我要和小老婆多创造新的美好记忆呢，希望小老婆辅助支持我哦！"+
+"<br><br>"+
+"最后，我爱小佳源。";
+
+
+signature.innerHTML="佳源的大老公";
+
+date.innerHTML="2026年8月14日";
+
+returnButton.style.display="none";
 
 }
 
