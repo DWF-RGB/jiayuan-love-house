@@ -2,345 +2,668 @@
 
 <html>
 
-
 <head>
-
 
 <meta charset="UTF-8">
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
 <title>我们的故事</title>
 
 
 <style>
 
+/* =========================
+   基础
+========================= */
 
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
-
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
 
 body{
 
-margin:0;
+    background:#f8f1e7;
 
-padding:30px 20px;
+    font-family:"Microsoft YaHei",sans-serif;
 
-background:#f8f1e7;
+    color:#555;
 
-font-family:"Microsoft YaHei",sans-serif;
-
-color:#555;
-
-animation:fadeIn 0.8s ease;
+    overflow:hidden;
 
 }
 
 
-
-@keyframes fadeIn{
-
-from{
-opacity:0;
-}
-
-to{
-opacity:1;
-}
-
-}
-
-
+/* =========================
+   返回小屋
+========================= */
 
 .back{
 
-position:fixed;
+    position:fixed;
 
-top:20px;
+    top:20px;
 
-left:20px;
+    left:20px;
 
-color:#8b6f47;
+    z-index:100;
 
-text-decoration:none;
+    color:#8b6f47;
 
-font-size:16px;
+    text-decoration:none;
 
-}
-
-
-
-
-.container{
-
-max-width:420px;
-
-margin:auto;
+    font-size:16px;
 
 }
 
 
+/* =========================
+   整个页面
+========================= */
 
+.book-page{
 
+    width:100%;
 
-.title{
+    height:100vh;
 
-text-align:center;
+    display:flex;
 
-margin:40px 0;
+    align-items:center;
 
-}
+    justify-content:center;
 
-
-
-.title h1{
-
-font-size:32px;
-
-color:#8b6f47;
-
-}
-
-
-
-
-.title p{
-
-font-size:17px;
-
-line-height:1.8;
+    padding:65px 20px 35px;
 
 }
 
 
+/* =========================
+   书本区域
+========================= */
 
+.book{
 
-.story{
+    width:100%;
 
+    max-width:430px;
 
-background:white;
+    height:min(720px, calc(100vh - 110px));
 
+    position:relative;
 
-padding:30px 25px;
-
-
-border-radius:25px;
-
-
-margin-bottom:35px;
-
-
-box-shadow:
-
-0 8px 25px rgba(0,0,0,0.08);
-
-
-
-opacity:0;
-
-
-transform:translateY(40px);
-
-
-transition:0.8s ease;
-
+    perspective:1800px;
 
 }
 
 
+/* =========================
+   单页
+========================= */
 
-.story.show{
+.story-page{
 
-opacity:1;
+    position:absolute;
 
-transform:translateY(0);
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:#fffdf9;
+
+    border-radius:5px 18px 18px 5px;
+
+    padding:30px 27px 25px;
+
+    box-shadow:
+
+        0 12px 35px rgba(100,70,40,0.14),
+
+        inset 8px 0 15px rgba(139,111,71,0.035);
+
+    display:flex;
+
+    flex-direction:column;
+
+    backface-visibility:hidden;
+
+    transform-origin:left center;
+
+    transition:
+
+        transform 0.7s cubic-bezier(.4,.0,.2,1),
+
+        opacity 0.5s ease;
+
+    overflow:hidden;
 
 }
 
 
+/* 左边模拟书页 */
 
-.story:hover{
+.story-page::before{
 
-transform:translateY(-5px);
+    content:"";
+
+    position:absolute;
+
+    left:8px;
+
+    top:0;
+
+    bottom:0;
+
+    width:1px;
+
+    background:rgba(139,111,71,0.08);
 
 }
 
 
+/* =========================
+   当前页
+========================= */
 
+.story-page.active{
+
+    transform:rotateY(0deg);
+
+    opacity:1;
+
+    z-index:10;
+
+}
+
+
+/* =========================
+   已翻过去
+========================= */
+
+.story-page.prev{
+
+    transform:rotateY(-180deg);
+
+    opacity:0;
+
+    z-index:1;
+
+}
+
+
+/* =========================
+   还没翻到
+========================= */
+
+.story-page.next{
+
+    transform:rotateY(0deg);
+
+    opacity:0;
+
+    z-index:0;
+
+}
+
+
+/* =========================
+   封面
+========================= */
+
+.cover{
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px 30px;
+
+}
+
+
+.cover-icon{
+
+    font-size:52px;
+
+    margin-bottom:25px;
+
+}
+
+
+.cover h1{
+
+    font-family:"STKaiti",
+                "KaiTi",
+                "Microsoft YaHei",
+                sans-serif;
+
+    font-size:34px;
+
+    font-weight:normal;
+
+    color:#8b6f47;
+
+    margin:0 0 22px;
+
+}
+
+
+.cover-line{
+
+    width:55px;
+
+    height:1px;
+
+    background:#c6a77d;
+
+    margin:0 auto 25px;
+
+}
+
+
+.cover p{
+
+    font-size:16px;
+
+    line-height:2;
+
+    color:#8b7b6a;
+
+}
+
+
+.cover-bottom{
+
+    position:absolute;
+
+    bottom:35px;
+
+    font-size:13px;
+
+    letter-spacing:3px;
+
+    color:#c6a77d;
+
+}
+
+
+/* =========================
+   章节
+========================= */
 
 .chapter{
 
+    font-size:12px;
 
-font-size:14px;
+    letter-spacing:3px;
 
+    color:#b08b57;
 
-color:#b08b57;
-
-
-letter-spacing:2px;
-
+    margin-bottom:8px;
 
 }
-
-
 
 
 .date{
 
+    font-size:13px;
 
-font-size:20px;
+    color:#b49a7c;
 
-
-font-weight:bold;
-
-
-color:#8b6f47;
-
-
-margin-top:10px;
-
+    margin-bottom:8px;
 
 }
 
 
+.story-page h2{
 
+    margin:0 0 6px;
 
-h2{
+    font-size:24px;
 
+    font-weight:normal;
 
-color:#555;
-
+    color:#555;
 
 }
 
 
+.subtitle{
 
+    font-size:14px;
+
+    color:#a48c74;
+
+    line-height:1.8;
+
+    margin-bottom:18px;
+
+}
+
+
+/* =========================
+   照片
+========================= */
 
 .photo{
 
+    width:100%;
 
-height:180px;
+    height:260px;
 
+    background:#eee6da;
 
-background:#eee6da;
+    border-radius:10px;
 
+    overflow:hidden;
 
-border-radius:15px;
+    flex-shrink:0;
 
+    box-shadow:
 
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-margin:20px 0;
-
-
-color:#999;
-
-
-font-size:15px;
-
-
-overflow:hidden;
-
+        0 5px 15px rgba(0,0,0,0.08);
 
 }
 
-
-
-/* 以后照片直接替换这里 */
 
 .photo img{
 
-width:100%;
+    width:100%;
 
-height:100%;
+    height:100%;
 
-object-fit:cover;
+    object-fit:cover;
+
+    display:block;
 
 }
 
 
+/* =========================
+   文字
+========================= */
 
 .text{
 
+    margin-top:20px;
 
-font-size:17px;
+    font-size:16px;
 
+    line-height:2;
 
-line-height:2;
+    color:#666;
 
+    overflow:auto;
 
-}
-
-
-
-
-.divider{
-
-
-text-align:center;
-
-
-color:#c6a77d;
-
-
-font-size:20px;
-
-
-margin:25px 0;
-
+    padding-right:3px;
 
 }
 
 
+/* =========================
+   小装饰
+========================= */
 
+.small-heart{
 
-.end{
+    color:#d99a9a;
 
+    font-size:14px;
 
-text-align:center;
-
-
-font-size:18px;
-
-
-line-height:2;
-
-
-padding:20px;
-
-
-color:#8b6f47;
-
+    margin-right:5px;
 
 }
 
 
+/* =========================
+   底部翻页控制
+========================= */
 
+.controls{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:-48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+
+.page-number{
+
+    font-size:13px;
+
+    color:#9b846b;
+
+    letter-spacing:2px;
+
+    min-width:50px;
+
+    text-align:center;
+
+}
+
+
+.arrow{
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.75);
+
+    color:#8b6f47;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+
+}
+
+
+.arrow:active{
+
+    transform:scale(0.92);
+
+}
+
+
+/* =========================
+   手机提示
+========================= */
+
+.swipe-tip{
+
+    position:absolute;
+
+    bottom:-83px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    font-size:11px;
+
+    color:#b49a7c;
+
+    letter-spacing:1px;
+
+    opacity:0.8;
+
+}
+
+
+/* =========================
+   手机适配
+========================= */
+
+@media(max-width:600px){
+
+    .book-page{
+
+        padding:
+
+            58px 15px 70px;
+
+    }
+
+
+    .book{
+
+        height:
+
+            min(
+
+                690px,
+
+                calc(100vh - 125px)
+
+            );
+
+    }
+
+
+    .story-page{
+
+        padding:
+
+            25px 21px 20px;
+
+    }
+
+
+    .cover h1{
+
+        font-size:31px;
+
+    }
+
+
+    .cover-icon{
+
+        font-size:46px;
+
+    }
+
+
+    .photo{
+
+        height:220px;
+
+    }
+
+
+    .story-page h2{
+
+        font-size:22px;
+
+    }
+
+
+    .subtitle{
+
+        font-size:13px;
+
+        margin-bottom:15px;
+
+    }
+
+
+    .text{
+
+        font-size:15px;
+
+        line-height:1.9;
+
+        margin-top:16px;
+
+    }
+
+}
+
+
+/* =========================
+   小屏手机
+========================= */
+
+@media(max-height:700px){
+
+    .book{
+
+        height:calc(100vh - 115px);
+
+    }
+
+
+    .photo{
+
+        height:185px;
+
+    }
+
+
+    .story-page{
+
+        padding:
+
+            20px 20px 18px;
+
+    }
+
+
+    .text{
+
+        margin-top:13px;
+
+        font-size:14px;
+
+        line-height:1.8;
+
+    }
+
+}
 
 </style>
 
-
 </head>
-
-
 
 
 
 <body>
 
 
-
+<!-- 返回小屋 -->
 
 <a href="index.html" class="back">
 
@@ -350,48 +673,61 @@ color:#8b6f47;
 
 
 
+<div class="book-page">
 
 
-<div class="container">
+<div class="book" id="book">
 
 
+<!-- =========================
+     封面
+========================= -->
 
+<div class="story-page cover active">
 
+<div class="cover-icon">
 
-<div class="title">
+📖
+
+</div>
 
 
 <h1>
 
-📖 我们的故事
+我们的故事
 
 </h1>
 
 
+<div class="cover-line"></div>
+
+
 <p>
 
-有些瞬间很短，
+有些瞬间很短，<br>
 
-<br>
-
-但因为有你，
-
-<br>
+但因为有你，<br>
 
 变成了值得珍藏的故事。
 
 </p>
 
 
+<div class="cover-bottom">
+
+伟峰 × 佳源
+
+</div>
+
 </div>
 
 
 
+<!-- =========================
+     第一页
+========================= -->
 
-
-
-
-<div class="story">
+<div class="story-page">
 
 
 <div class="chapter">
@@ -415,6 +751,13 @@ CHAPTER 01
 </h2>
 
 
+<div class="subtitle">
+
+故事，从这一天开始。
+
+</div>
+
+
 <div class="photo">
 
 <img src="images/6.jpg">
@@ -422,9 +765,9 @@ CHAPTER 01
 </div>
 
 
-
 <div class="text">
 
+<span class="small-heart">♥</span>
 
 那一天开始，
 
@@ -434,32 +777,33 @@ CHAPTER 01
 <br><br>
 
 
+现在回头看，
+
+其实当时的我们可能都没有想到，
+
+这一份缘分会一直走到今天。
+
+
+<br><br>
+
+
 很多故事，
 
-也从这里慢慢展开。
+也就是从那个时候，
 
-
-</div>
-
+慢慢展开了。
 
 </div>
-
-
-
-
-
-<div class="divider">
-
-✦ ✦ ✦
 
 </div>
 
 
 
+<!-- =========================
+     第二页
+========================= -->
 
-
-
-<div class="story">
+<div class="story-page">
 
 
 <div class="chapter">
@@ -483,55 +827,68 @@ CHAPTER 02
 </h2>
 
 
+<div class="subtitle">
+
+第一次一起吃饭，也是故事的开始。
+
+</div>
+
+
 <div class="photo">
+
+<!-- 以后把下面这一段换成你的照片 -->
+
+<div style="
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#999;
+font-size:14px;
+">
 
 以后放照片的位置 📷
 
 </div>
 
+</div>
 
 
 <div class="text">
 
-
 第一次一起吃饭，
 
-也是我们故事里的第一个温暖章节。
+其实只是一顿很普通的饭。
 
 
 <br><br>
 
 
-普通的一顿饭，
+可是现在想起来，
 
-因为身边的人是你，
+那个时候坐在我对面的那个人，
 
-所以变得特别。
+是你。
 
+
+<br><br>
+
+
+所以那顿饭，
+
+也就变成了我记忆里很特别的一顿饭。
 
 </div>
-
-
-</div>
-
-
-
-
-
-
-<div class="divider">
-
-✦ ✦ ✦
 
 </div>
 
 
 
+<!-- =========================
+     第三页
+========================= -->
 
-
-
-
-<div class="story">
+<div class="story-page">
 
 
 <div class="chapter">
@@ -555,24 +912,44 @@ CHAPTER 03
 </h2>
 
 
+<div class="subtitle">
+
+有些地方，因为你而变得特别。
+
+</div>
+
 
 <div class="photo">
+
+<div style="
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#999;
+font-size:14px;
+">
 
 以后放照片的位置 📷
 
 </div>
 
-
+</div>
 
 
 <div class="text">
 
-
 有些地方，
 
-因为某个人的存在，
+本来只是一个很普通的地方。
 
-才拥有特别的意义。
+
+<br><br>
+
+
+可是因为在那里和你拥有过一个瞬间，
+
+它就突然有了属于我们的意义。
 
 
 <br><br>
@@ -580,34 +957,21 @@ CHAPTER 03
 
 那个天台，
 
-留下了属于我们的青春和心动。
+留下了属于我们的青春，
 
-
-</div>
-
+也留下了属于我们的心动。
 
 </div>
-
-
-
-
-
-
-
-<div class="divider">
-
-✦ ✦ ✦
 
 </div>
 
 
 
+<!-- =========================
+     第四页
+========================= -->
 
-
-
-
-
-<div class="story">
+<div class="story-page">
 
 
 <div class="chapter">
@@ -617,13 +981,11 @@ CHAPTER 04
 </div>
 
 
-
 <div class="date">
 
 韩国旅行 🇰🇷
 
 </div>
-
 
 
 <h2>
@@ -633,127 +995,401 @@ CHAPTER 04
 </h2>
 
 
+<div class="subtitle">
+
+和喜欢的人，一起去看没看过的世界。
+
+</div>
 
 
 <div class="photo">
+
+<div style="
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#999;
+font-size:14px;
+">
 
 以后放照片的位置 📷
 
 </div>
 
-
+</div>
 
 
 <div class="text">
 
-
 一起去陌生的城市，
 
-一起经历新的风景。
+一起看新的风景，
+
+也一起经历那些没有经历过的事情。
 
 
 <br><br>
 
 
-未来，
+旅行最重要的，
+
+好像从来都不是去了哪里。
+
+
+<br><br>
+
+
+而是那一路上，
+
+身边的人一直是你。
+
+
+<br><br>
+
+
+以后，
 
 还想和你去更多地方。
 
+</div>
 
 </div>
 
 
 
-</div>
+<!-- =========================
+     最后一页
+========================= -->
+
+<div class="story-page cover">
 
 
+<div class="cover-icon">
 
-
-
-
-
-
-<div class="end">
-
-
-💕 未完待续……
-
-
-<br>
-
-
-还有更多故事，
-
-<br>
-
-等伟峰和佳源一起写下去。
-
+💕 
 
 </div>
 
 
+<h1>
+
+未完待续
+
+</h1>
 
 
+<div class="cover-line"></div>
+
+
+<p>
+
+我们的故事还没有结束。<br>
+
+还有很多很多页，<br>
+
+等着我们一起写下去。
+
+</p>
+
+
+<div class="cover-bottom">
+
+伟峰 × 佳源 · FOREVER
+
+</div>
 
 </div>
 
 
 
+<!-- =========================
+     翻页按钮
+========================= -->
 
+<div class="controls">
+
+
+<button class="arrow" id="prevBtn">
+
+‹
+
+</button>
+
+
+<div class="page-number">
+
+<span id="currentPage">01</span>
+
+&nbsp;/&nbsp;
+
+<span id="totalPage">06</span>
+
+</div>
+
+
+<button class="arrow" id="nextBtn">
+
+›
+
+</button>
+
+
+</div>
+
+
+<div class="swipe-tip">
+
+← 左右滑动翻页 →
+
+</div>
+
+
+</div>
+
+</div>
 
 
 
 <script>
 
+/* =========================
+   翻页系统
+========================= */
 
-let stories=document.querySelectorAll(".story");
+const pages =
+document.querySelectorAll(".story-page");
+
+const prevBtn =
+document.getElementById("prevBtn");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+const currentPage =
+document.getElementById("currentPage");
+
+const totalPage =
+document.getElementById("totalPage");
 
 
+let current = 0;
 
-function showStory(){
-
-
-stories.forEach(item=>{
+const total = pages.length;
 
 
-let top=item.getBoundingClientRect().top;
+totalPage.textContent =
+String(total).padStart(2,"0");
 
 
+/* =========================
+   更新页面
+========================= */
 
-if(top < window.innerHeight-80){
+function updatePage(){
+
+    pages.forEach((page,index)=>{
+
+        page.classList.remove(
+            "active",
+            "prev",
+            "next"
+        );
 
 
-item.classList.add("show");
+        if(index === current){
 
+            page.classList.add("active");
+
+        }
+
+        else if(index < current){
+
+            page.classList.add("prev");
+
+        }
+
+        else{
+
+            page.classList.add("next");
+
+        }
+
+    });
+
+
+    currentPage.textContent =
+        String(current + 1).padStart(2,"0");
 
 }
 
 
-});
+/* =========================
+   下一页
+========================= */
 
+function nextPage(){
+
+    if(current < total - 1){
+
+        current++;
+
+        updatePage();
+
+    }
 
 }
 
 
+/* =========================
+   上一页
+========================= */
 
-window.addEventListener(
-"scroll",
-showStory
+function prevPage(){
+
+    if(current > 0){
+
+        current--;
+
+        updatePage();
+
+    }
+
+}
+
+
+nextBtn.addEventListener(
+    "click",
+    nextPage
 );
 
 
+prevBtn.addEventListener(
+    "click",
+    prevPage
+);
 
-showStory();
+
+/* =========================
+   键盘翻页
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "ArrowRight"){
+
+            nextPage();
+
+        }
 
 
+        if(e.key === "ArrowLeft"){
+
+            prevPage();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   手机触摸滑动
+========================= */
+
+let startX = 0;
+
+let startY = 0;
+
+let endX = 0;
+
+let endY = 0;
+
+
+const book =
+document.getElementById("book");
+
+
+book.addEventListener(
+    "touchstart",
+    function(e){
+
+        startX =
+            e.touches[0].clientX;
+
+        startY =
+            e.touches[0].clientY;
+
+    },
+    {passive:true}
+);
+
+
+book.addEventListener(
+    "touchend",
+    function(e){
+
+        endX =
+            e.changedTouches[0].clientX;
+
+        endY =
+            e.changedTouches[0].clientY;
+
+
+        const diffX =
+            endX - startX;
+
+        const diffY =
+            endY - startY;
+
+
+        /*
+
+        只有横向滑动距离足够大，
+
+        才进行翻页。
+
+        防止正常上下滑动文字
+
+        被误判成翻页。
+
+        */
+
+        if(
+            Math.abs(diffX) > 50 &&
+            Math.abs(diffX) > Math.abs(diffY)
+        ){
+
+            if(diffX < 0){
+
+                nextPage();
+
+            }
+
+            else{
+
+                prevPage();
+
+            }
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+/* =========================
+   初始化
+========================= */
+
+updatePage();
 
 </script>
 
 
-
-
-
 </body>
-
 
 </html>
