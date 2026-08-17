@@ -15,7 +15,8 @@
 
 
 /* ========================= */
-/* 方正大标宋简体 */
+/* 方正大标宋 */
+/* 用于信件标题 */
 /* ========================= */
 
 @font-face{
@@ -23,6 +24,26 @@
 font-family:"FZDaBiaoSong";
 
 src:url("fonts/FZDaBiaoSong.TTF") format("truetype");
+
+font-weight:normal;
+
+font-style:normal;
+
+font-display:swap;
+
+}
+
+
+/* ========================= */
+/* 霞鹜文楷 */
+/* 用于信件正文 */
+/* ========================= */
+
+@font-face{
+
+font-family:"LXGWWenKai";
+
+src:url("fonts/LXGWWenKai-Regular.ttf") format("truetype");
 
 font-weight:normal;
 
@@ -137,7 +158,7 @@ box-shadow:
 
 
 /* ========================= */
-/* 标题 */
+/* 页面标题 */
 /* ========================= */
 
 h1{
@@ -230,7 +251,7 @@ cursor:pointer;
 
 
 /* ========================= */
-/* 信件 */
+/* 信件主体 */
 /* ========================= */
 
 .letter{
@@ -239,7 +260,7 @@ display:none;
 
 margin-top:30px;
 
-padding:25px;
+padding:28px 25px;
 
 background:#fffdf8;
 
@@ -248,19 +269,19 @@ border-radius:12px;
 text-align:left;
 
 
-/* 方正大标宋 */
+/* 霞鹜文楷 */
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
 
-/* 字体 */
+/* 正文字体 */
 
 font-size:17px;
 
-line-height:2;
+line-height:2.05;
 
 
-/* 颜色 */
+/* 文字颜色 */
 
 color:#666;
 
@@ -304,7 +325,7 @@ transform:translateY(0);
 
 
 /* ========================= */
-/* 佳源 */
+/* 信件标题 */
 /* ========================= */
 
 .letter h2{
@@ -313,15 +334,20 @@ text-align:left;
 
 color:#ff6b9d;
 
-font-size:22px;
+font-size:25px;
 
 line-height:1.6;
 
 margin-top:0;
 
-margin-bottom:20px;
+margin-bottom:22px;
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+
+/* 方正大标宋 */
+
+font-family:"FZDaBiaoSong",serif;
+
+font-weight:normal;
 
 }
 
@@ -332,7 +358,7 @@ font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
 
 .letter p{
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
 margin-top:0;
 
@@ -353,11 +379,11 @@ color:#666;
 
 font-size:16px;
 
-margin-top:25px;
+margin-top:28px;
 
 margin-bottom:0;
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
 }
 
@@ -376,7 +402,7 @@ font-size:14px;
 
 margin-top:5px;
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
 }
 
@@ -471,6 +497,7 @@ background:#ffe5ef;
 
 @media (max-width:600px){
 
+
 body{
 
 display:flex;
@@ -526,7 +553,7 @@ border-radius:24px;
 }
 
 
-/* 标题 */
+/* 页面标题 */
 
 h1{
 
@@ -586,13 +613,13 @@ width:100%;
 
 margin-top:25px;
 
-padding:20px 13px;
+padding:22px 15px;
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
-font-size:15px;
+font-size:15.5px;
 
-line-height:2;
+line-height:2.05;
 
 border-radius:12px;
 
@@ -603,15 +630,17 @@ word-break:break-word;
 }
 
 
-/* 佳源 */
+/* ========================= */
+/* 手机信件标题 */
+/* ========================= */
 
 .letter h2{
 
 text-align:left;
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"FZDaBiaoSong",serif;
 
-font-size:20px;
+font-size:22px;
 
 line-height:1.6;
 
@@ -621,47 +650,65 @@ margin-bottom:20px;
 
 color:#ff6b9d;
 
+font-weight:normal;
+
 }
 
 
-/* 正文 */
+/* ========================= */
+/* 手机正文 */
+/* ========================= */
 
 .letter p{
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
+
+font-size:15.5px;
+
+line-height:2.05;
 
 }
 
 
-/* 落款 */
+/* ========================= */
+/* 手机落款 */
+/* ========================= */
 
 .signature{
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
 font-size:15px;
 
-margin-top:25px;
+line-height:1.8;
+
+margin-top:28px;
 
 margin-bottom:0;
 
 }
 
 
-/* 日期 */
+/* ========================= */
+/* 手机日期 */
+/* ========================= */
 
 .date{
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
 font-size:13px;
+
+line-height:1.8;
 
 margin-top:4px;
 
 }
 
 
+/* ========================= */
 /* 更多小信 */
+/* ========================= */
 
 .more{
 
@@ -681,18 +728,22 @@ font-size:18px;
 
 .card{
 
+font-family:"LXGWWenKai",serif;
+
 font-size:15px;
 
 padding:14px;
 
 margin:13px 0;
 
-line-height:1.7;
+line-height:1.8;
 
 }
 
 
+/* ========================= */
 /* 返回长信 */
+/* ========================= */
 
 .return-letter{
 
@@ -712,6 +763,7 @@ margin-top:15px;
 /* ========================= */
 
 @media (max-width:380px){
+
 
 body{
 
@@ -733,20 +785,31 @@ padding-right:8px;
 
 .letter{
 
-padding:18px 11px;
+padding:20px 12px;
 
-font-family:"FZDaBiaoSong","FangSong","STFangsong",serif;
+font-family:"LXGWWenKai",serif;
 
-font-size:14px;
+font-size:15px;
 
-line-height:1.95;
+line-height:2;
+
+}
+
+
+.letter p{
+
+font-size:15px;
+
+line-height:2;
 
 }
 
 
 .letter h2{
 
-font-size:19px;
+font-family:"FZDaBiaoSong",serif;
+
+font-size:21px;
 
 }
 
