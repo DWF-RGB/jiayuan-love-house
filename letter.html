@@ -16,7 +16,6 @@
 
 /* ========================= */
 /* 方正大标宋 */
-/* 用于信件标题 */
 /* ========================= */
 
 @font-face{
@@ -36,7 +35,6 @@ font-display:swap;
 
 /* ========================= */
 /* 霞鹜文楷 */
-/* 用于信件正文 */
 /* ========================= */
 
 @font-face{
@@ -268,25 +266,13 @@ border-radius:12px;
 
 text-align:left;
 
-
-/* 霞鹜文楷 */
-
 font-family:"LXGWWenKai",serif;
-
-
-/* 正文字体 */
 
 font-size:17px;
 
 line-height:2.05;
 
-
-/* 文字颜色 */
-
 color:#666;
-
-
-/* 阴影 */
 
 box-shadow:
 
@@ -325,7 +311,8 @@ transform:translateY(0);
 
 
 /* ========================= */
-/* 信件标题 */
+/* 长信“佳源：” */
+/* 方正大标宋 + 左对齐 */
 /* ========================= */
 
 .letter h2{
@@ -342,12 +329,61 @@ margin-top:0;
 
 margin-bottom:22px;
 
-
-/* 方正大标宋 */
-
 font-family:"FZDaBiaoSong",serif;
 
 font-weight:normal;
+
+}
+
+
+/* ========================= */
+/* 写给未来的你 */
+/* 普通字体 + 居中 */
+/* ========================= */
+
+.future-title{
+
+font-family:"Microsoft YaHei",sans-serif !important;
+
+text-align:center !important;
+
+font-size:24px;
+
+font-weight:normal;
+
+color:#ff6b9d;
+
+line-height:1.6;
+
+margin-top:0;
+
+margin-bottom:22px;
+
+}
+
+
+/* ========================= */
+/* 未来信里的“佳源：” */
+/* 方正大标宋 + 左对齐 */
+/* ========================= */
+
+.future-content-title{
+
+font-family:"FZDaBiaoSong",serif !important;
+
+text-align:left !important;
+
+font-size:25px;
+
+font-weight:normal;
+
+color:#ff6b9d;
+
+line-height:1.6;
+
+display:inline-block;
+
+margin-bottom:0;
 
 }
 
@@ -497,7 +533,6 @@ background:#ffe5ef;
 
 @media (max-width:600px){
 
-
 body{
 
 display:flex;
@@ -631,7 +666,7 @@ word-break:break-word;
 
 
 /* ========================= */
-/* 手机信件标题 */
+/* 手机长信“佳源：” */
 /* ========================= */
 
 .letter h2{
@@ -651,6 +686,56 @@ margin-bottom:20px;
 color:#ff6b9d;
 
 font-weight:normal;
+
+}
+
+
+/* ========================= */
+/* 手机“写给未来的你” */
+/* ========================= */
+
+.future-title{
+
+font-family:"Microsoft YaHei",sans-serif !important;
+
+text-align:center !important;
+
+font-size:21px;
+
+font-weight:normal;
+
+line-height:1.6;
+
+margin-top:0;
+
+margin-bottom:20px;
+
+color:#ff6b9d;
+
+}
+
+
+/* ========================= */
+/* 手机未来信“佳源：” */
+/* ========================= */
+
+.future-content-title{
+
+font-family:"FZDaBiaoSong",serif !important;
+
+text-align:left !important;
+
+font-size:22px;
+
+font-weight:normal;
+
+line-height:1.6;
+
+display:inline-block;
+
+margin-bottom:0;
+
+color:#ff6b9d;
 
 }
 
@@ -764,7 +849,6 @@ margin-top:15px;
 
 @media (max-width:380px){
 
-
 body{
 
 padding-left:6px;
@@ -810,6 +894,28 @@ line-height:2;
 font-family:"FZDaBiaoSong",serif;
 
 font-size:21px;
+
+}
+
+
+.future-title{
+
+font-family:"Microsoft YaHei",sans-serif !important;
+
+font-size:20px;
+
+text-align:center !important;
+
+}
+
+
+.future-content-title{
+
+font-family:"FZDaBiaoSong",serif !important;
+
+font-size:21px;
+
+text-align:left !important;
 
 }
 
@@ -1024,6 +1130,10 @@ font-size:22px;
 <script>
 
 
+/* ========================= */
+/* 打开信箱 */
+/* ========================= */
+
 function openBox(){
 
 document.getElementById("letter").style.display="block";
@@ -1036,6 +1146,10 @@ document.querySelector(".tip").style.display="none";
 
 }
 
+
+/* ========================= */
+/* 切换小信 */
+/* ========================= */
 
 function changeLetter(num){
 
@@ -1052,12 +1166,24 @@ let returnButton=document.getElementById("returnLetter");
 
 if(num==3){
 
+/* 标题 */
+
 title.innerHTML="写给未来的你";
 
+/* 使用普通字体 + 居中 */
+
+title.classList.add("future-title");
+
+
+/* ========================= */
+/* 未来信正文 */
+/* ========================= */
 
 content.innerHTML=
 
-"佳源：<br><br>"+
+'<span class="future-content-title">佳源：</span>'+
+
+"<br><br>"+
 
 "如果未来的某一天小佳源打开这封信，"+
 
@@ -1070,9 +1196,17 @@ content.innerHTML=
 "永远一起面对生活，and享受生活。❤️";
 
 
+/* 未来信没有落款 */
+
 signature.innerHTML="";
 
+
+/* 日期 */
+
 date.innerHTML="未来信";
+
+
+/* 显示返回按钮 */
 
 returnButton.style.display="block";
 
@@ -1080,6 +1214,10 @@ returnButton.style.display="block";
 
 }
 
+
+/* ========================= */
+/* 返回长信 */
+/* ========================= */
 
 function returnLongLetter(){
 
@@ -1094,8 +1232,18 @@ let date=document.getElementById("date");
 let returnButton=document.getElementById("returnLetter");
 
 
+/* 恢复标题 */
+
 title.innerHTML="佳源：";
 
+/* 移除未来信标题样式 */
+
+title.classList.remove("future-title");
+
+
+/* ========================= */
+/* 恢复长信正文 */
+/* ========================= */
 
 content.innerHTML=
 
@@ -1182,9 +1330,17 @@ content.innerHTML=
 "最后，我爱小佳源。";
 
 
+/* 恢复落款 */
+
 signature.innerHTML="佳源的大老公";
 
+
+/* 恢复日期 */
+
 date.innerHTML="2026年8月14日";
+
+
+/* 隐藏返回按钮 */
 
 returnButton.style.display="none";
 
