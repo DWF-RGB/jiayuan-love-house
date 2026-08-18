@@ -61,7 +61,7 @@ body{
 
     position:fixed;
 
-    top:15px;
+    top:8px;
     left:15px;
 
     z-index:1000;
@@ -72,11 +72,11 @@ body{
 
     font-size:15px;
 
-    padding:7px 11px;
+    padding:5px 10px;
 
     border-radius:20px;
 
-    background:rgba(248,241,231,.95);
+    background:rgba(248,241,231,.96);
 
 }
 
@@ -98,7 +98,7 @@ body{
     align-items:center;
 
     padding:
-    48px 9px 55px;
+    42px 9px 55px;
 
 }
 
@@ -114,7 +114,7 @@ body{
     width:min(420px,95vw);
 
     height:
-    calc(100dvh - 103px);
+    calc(100dvh - 97px);
 
     min-height:500px;
 
@@ -147,10 +147,6 @@ body{
     box-shadow:
     0 8px 24px
     rgba(70,50,30,.13);
-
-    /*
-       只使用 GPU 比较友好的属性
-    */
 
     transform:translateX(0);
 
@@ -544,10 +540,23 @@ body{
 
 @media(max-width:600px){
 
+    .back{
+
+        top:7px;
+
+        left:13px;
+
+        font-size:14px;
+
+        padding:4px 9px;
+
+    }
+
+
     .book-wrapper{
 
         padding:
-        47px
+        40px
         8px
         52px;
 
@@ -559,7 +568,7 @@ body{
         width:95vw;
 
         height:
-        calc(100dvh - 99px);
+        calc(100dvh - 92px);
 
     }
 
@@ -615,7 +624,7 @@ body{
     .book{
 
         height:
-        calc(100dvh - 90px);
+        calc(100dvh - 85px);
 
     }
 
@@ -1878,11 +1887,6 @@ function nextPage(){
     next.style.zIndex=101;
 
 
-    /*
-       强制浏览器完成一次布局
-       避免动画失效
-    */
-
     next.offsetWidth;
 
 
@@ -2084,13 +2088,6 @@ function(e){
     const dy=
     endY-startY;
 
-
-    /*
-       只有明显横向滑动
-       才触发翻页
-
-       这样上下滚动不会误触
-    */
 
     if(
         Math.abs(dx)<55
