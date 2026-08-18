@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 
 <html>
@@ -6,20 +7,26 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
 <title>佳源的小助手</title>
 
 
 <style>
 
-/* =========================
+/* ==================================================
    基础
-========================= */
+================================================== */
 
 *{
+
     box-sizing:border-box;
+
 }
+
 
 html,
 body{
@@ -34,13 +41,30 @@ body{
 
     overflow:hidden;
 
+    overscroll-behavior:none;
+
 }
+
 
 body{
 
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
     /*
+       与主界面完全统一的
        明亮奶油粉背景
-       不使用灰粉色
     */
 
     background:
@@ -69,36 +93,33 @@ body{
     "Noto Sans SC",
     sans-serif;
 
-    display:flex;
-
-    flex-direction:column;
-
     color:#555;
+
+    /*
+       防止手机浏览器出现
+       横向拖动
+    */
+
+    touch-action:pan-y;
 
 }
 
 
-/* =========================
+/* ==================================================
    顶部
-========================= */
+================================================== */
 
 .header{
 
+    position:relative;
+
+    width:100%;
+
     height:68px;
 
+    min-height:68px;
+
     flex-shrink:0;
-
-    /*
-       奶油白顶部
-    */
-
-    background:
-    rgba(255,253,250,0.94);
-
-    backdrop-filter:blur(10px);
-
-    border-bottom:
-    1px solid #f8dce5;
 
     display:flex;
 
@@ -106,23 +127,30 @@ body{
 
     justify-content:center;
 
-    position:relative;
+    background:
 
-    color:#ec7098;
+    rgba(255,253,250,0.96);
+
+    border-bottom:
+    1px solid #ffd9e4;
+
+    box-shadow:
+
+    0 3px 12px
+    rgba(255,120,160,0.07);
+
+    color:#ff5f91;
 
     font-size:18px;
 
     font-weight:500;
 
-    box-shadow:
-    0 2px 10px rgba(245,150,175,0.08);
-
 }
 
 
-/* =========================
+/* ==================================================
    回到小屋
-========================= */
+================================================== */
 
 .back{
 
@@ -130,13 +158,17 @@ body{
 
     left:18px;
 
+    top:50%;
+
+    transform:translateY(-50%);
+
     display:flex;
 
     align-items:center;
 
     gap:5px;
 
-    color:#e681a2;
+    color:#f0789f;
 
     text-decoration:none;
 
@@ -144,12 +176,14 @@ body{
 
     font-weight:normal;
 
+    white-space:nowrap;
+
 }
 
 
-/* =========================
+/* ==================================================
    聊天区域
-========================= */
+================================================== */
 
 .chat{
 
@@ -157,21 +191,28 @@ body{
 
     min-height:0;
 
+    width:100%;
+
     padding:
+
     24px 18px 20px;
 
     overflow-y:auto;
 
     overflow-x:hidden;
 
+    overscroll-behavior:contain;
+
+    -webkit-overflow-scrolling:touch;
+
     scroll-behavior:smooth;
 
 }
 
 
-/* =========================
+/* ==================================================
    滚动条
-========================= */
+================================================== */
 
 .chat::-webkit-scrollbar{
 
@@ -179,13 +220,15 @@ body{
 
 }
 
+
 .chat::-webkit-scrollbar-thumb{
 
-    background:#f5bfd0;
+    background:#ffbfd2;
 
     border-radius:10px;
 
 }
+
 
 .chat::-webkit-scrollbar-track{
 
@@ -194,15 +237,18 @@ body{
 }
 
 
-/* =========================
+/* ==================================================
    消息
-========================= */
+================================================== */
 
 .message{
+
+    display:block;
 
     max-width:82%;
 
     padding:
+
     13px 16px;
 
     margin-bottom:18px;
@@ -215,40 +261,42 @@ body{
 
     word-break:break-word;
 
+    overflow-wrap:break-word;
+
 }
 
 
-/* =========================
-   AI消息
-========================= */
+/* ==================================================
+   AI 消息
+================================================== */
 
 .ai{
 
     margin-left:0;
 
-    /*
-       奶油白
-    */
-
     background:
+
     #fffdf9;
 
     color:#555;
 
     border:
-    1px solid #f7e3e8;
+
+    1px solid #f8dce5;
 
     border-bottom-left-radius:6px;
 
     box-shadow:
-    0 5px 16px rgba(245,145,170,0.07);
+
+    0 5px 16px
+    rgba(255,120,160,0.07);
 
 }
 
 
-/* =========================
+/* ==================================================
    用户消息
-========================= */
+================================================== */
 
 .user{
 
@@ -256,15 +304,12 @@ body{
 
     margin-right:0;
 
-    /*
-       清爽明亮的珊瑚粉
-    */
-
     background:
+
     linear-gradient(
         135deg,
         #ff9fbd,
-        #ff8daf
+        #ff87ad
     );
 
     color:white;
@@ -272,14 +317,16 @@ body{
     border-bottom-right-radius:6px;
 
     box-shadow:
-    0 6px 17px rgba(255,125,160,0.16);
+
+    0 6px 17px
+    rgba(255,110,150,0.16);
 
 }
 
 
-/* =========================
-   加载状态
-========================= */
+/* ==================================================
+   加载
+================================================== */
 
 .loading{
 
@@ -287,17 +334,22 @@ body{
 
     font-size:14px;
 
-    background:
-    #fffdf9;
+    background:#fffdf9;
 
 }
 
 
-/* =========================
-   输入区域
-========================= */
+/* ==================================================
+   底部输入区域
+================================================== */
 
 .input-area{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:73px;
 
     flex-shrink:0;
 
@@ -308,44 +360,52 @@ body{
     gap:10px;
 
     padding:
+
     12px 15px 15px;
 
-    /*
-       明亮奶油色
-    */
-
     background:
-    rgba(255,253,249,0.96);
+
+    rgba(255,253,250,0.97);
 
     border-top:
-    1px solid #f8dfe6;
+
+    1px solid #ffd9e4;
 
     box-shadow:
-    0 -3px 12px rgba(245,150,175,0.05);
+
+    0 -3px 12px
+    rgba(255,120,160,0.06);
 
 }
 
 
-/* =========================
+/* ==================================================
    输入框
-========================= */
+================================================== */
 
 input{
 
     flex:1;
+
+    min-width:0;
+
+    width:100%;
 
     height:46px;
 
     border-radius:25px;
 
     border:
-    1px solid #f3d5df;
 
-    background:
-    #fffaf8;
+    1px solid #ffcbd9;
+
+    background:#fff9f7;
 
     padding:
+
     0 18px;
+
+    font-family:inherit;
 
     font-size:15px;
 
@@ -353,34 +413,35 @@ input{
 
     outline:none;
 
-    transition:
-    border 0.2s ease,
-    box-shadow 0.2s ease;
+    -webkit-appearance:none;
+
+    appearance:none;
 
 }
 
 
 input:focus{
 
-    border-color:#ffabc2;
+    border-color:#ff9fbd;
 
     box-shadow:
+
     0 0 0 3px
-    rgba(255,170,195,0.12);
+    rgba(255,130,170,0.12);
 
 }
 
 
 input::placeholder{
 
-    color:#bba4aa;
+    color:#b89da6;
 
 }
 
 
-/* =========================
+/* ==================================================
    发送按钮
-========================= */
+================================================== */
 
 button{
 
@@ -390,15 +451,14 @@ button{
 
     height:46px;
 
+    padding:0;
+
     border:none;
 
     border-radius:24px;
 
-    /*
-       明亮粉色
-    */
-
     background:
+
     linear-gradient(
         135deg,
         #ff9fbd,
@@ -407,36 +467,42 @@ button{
 
     color:white;
 
+    font-family:inherit;
+
     font-size:15px;
 
     cursor:pointer;
 
-    box-shadow:
-    0 6px 14px rgba(255,125,160,0.17);
+    -webkit-appearance:none;
 
-    transition:
-    transform 0.15s ease;
+    appearance:none;
+
+    box-shadow:
+
+    0 6px 14px
+    rgba(255,110,150,0.17);
 
 }
 
 
 button:active{
 
-    transform:
-    scale(0.96);
+    transform:scale(0.96);
 
 }
 
 
-/* =========================
+/* ==================================================
    手机端
-========================= */
+================================================== */
 
 @media(max-width:480px){
 
     .header{
 
         height:62px;
+
+        min-height:62px;
 
         font-size:17px;
 
@@ -455,6 +521,7 @@ button:active{
     .chat{
 
         padding:
+
         20px 14px 16px;
 
     }
@@ -465,6 +532,7 @@ button:active{
         max-width:86%;
 
         padding:
+
         12px 15px;
 
         font-size:15px;
@@ -478,7 +546,10 @@ button:active{
 
     .input-area{
 
+        min-height:67px;
+
         padding:
+
         10px 12px 13px;
 
     }
@@ -505,6 +576,44 @@ button:active{
 
 }
 
+
+/* ==================================================
+   超小屏幕
+================================================== */
+
+@media(max-width:360px){
+
+    .back{
+
+        font-size:14px;
+
+        left:10px;
+
+    }
+
+
+    .header{
+
+        font-size:16px;
+
+    }
+
+
+    .input-area{
+
+        gap:7px;
+
+    }
+
+
+    button{
+
+        width:58px;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -513,14 +622,17 @@ button:active{
 <body>
 
 
-<!-- =========================
+<!-- ==================================================
      顶部
-========================= -->
+================================================== -->
 
 <div class="header">
 
 
-    <a href="/" class="back">
+    <a
+    href="/"
+    class="back"
+    >
 
         ← 回到小屋
 
@@ -534,11 +646,14 @@ button:active{
 
 
 
-<!-- =========================
+<!-- ==================================================
      聊天区域
-========================= -->
+================================================== -->
 
-<div class="chat" id="chat">
+<div
+class="chat"
+id="chat"
+>
 
 
     <div class="message ai">
@@ -560,21 +675,28 @@ button:active{
 
 
 
-<!-- =========================
+<!-- ==================================================
      输入区域
-========================= -->
+================================================== -->
 
 <div class="input-area">
 
 
     <input
         id="input"
+        type="text"
         placeholder="和我说说今天发生了什么..."
         autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
     >
 
 
-    <button onclick="sendMessage()">
+    <button
+        id="sendButton"
+        onclick="sendMessage()"
+    >
 
         发送
 
@@ -588,9 +710,9 @@ button:active{
 <script>
 
 
-/* =========================
+/* ==================================================
    获取元素
-========================= */
+================================================== */
 
 const chatBox =
 document.getElementById("chat");
@@ -600,42 +722,54 @@ const input =
 document.getElementById("input");
 
 
+const sendButton =
+document.getElementById("sendButton");
 
-/* =========================
+
+
+/* ==================================================
    聊天记录
-========================= */
+================================================== */
 
 let messages = [];
 
 
 
-/* =========================
+/* ==================================================
    添加消息
-========================= */
+================================================== */
 
 function addMessage(text,type){
 
     const div =
     document.createElement("div");
 
+
     div.className =
     "message " + type;
+
 
     div.innerHTML =
     text.replace(/\n/g,"<br>");
 
+
     chatBox.appendChild(div);
 
-    chatBox.scrollTop =
-    chatBox.scrollHeight;
+
+    requestAnimationFrame(function(){
+
+        chatBox.scrollTop =
+        chatBox.scrollHeight;
+
+    });
 
 }
 
 
 
-/* =========================
+/* ==================================================
    发送消息
-========================= */
+================================================== */
 
 async function sendMessage(){
 
@@ -651,11 +785,15 @@ async function sendMessage(){
     }
 
 
+    /* 用户消息 */
+
     addMessage(
         text,
         "user"
     );
 
+
+    /* 保存 */
 
     messages.push({
 
@@ -666,8 +804,12 @@ async function sendMessage(){
     });
 
 
+    /* 清空 */
+
     input.value="";
 
+
+    /* 加载提示 */
 
     const loading =
     document.createElement("div");
@@ -722,6 +864,8 @@ async function sendMessage(){
         const data =
         await response.json();
 
+
+        /* 删除加载 */
 
         loading.remove();
 
@@ -782,13 +926,14 @@ async function sendMessage(){
 
     }
 
+
 }
 
 
 
-/* =========================
+/* ==================================================
    回车发送
-========================= */
+================================================== */
 
 input.addEventListener(
 
@@ -798,9 +943,37 @@ input.addEventListener(
 
         if(e.key==="Enter"){
 
+            e.preventDefault();
+
             sendMessage();
 
         }
+
+    }
+
+);
+
+
+
+/* ==================================================
+   输入框获得焦点时
+   保持页面位置稳定
+================================================== */
+
+input.addEventListener(
+
+    "focus",
+
+    function(){
+
+        setTimeout(function(){
+
+            window.scrollTo(0,0);
+
+            chatBox.scrollTop =
+            chatBox.scrollHeight;
+
+        },100);
 
     }
 
@@ -812,3 +985,4 @@ input.addEventListener(
 </body>
 
 </html>
+```
