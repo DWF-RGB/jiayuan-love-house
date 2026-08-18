@@ -1,136 +1,446 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>佳源充满爱的小屋</title>
 
 <style>
 
+/* =========================
+   基础设置
+========================= */
+
 *{
     box-sizing:border-box;
 }
 
+html,
+body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
 body{
 
-    margin:0;
     min-height:100vh;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    padding:20px;
+    padding:24px 18px;
 
     background:
-    linear-gradient(135deg,#ffe6f0,#fff8fb);
+    radial-gradient(
+        circle at 15% 15%,
+        rgba(255,210,225,0.55),
+        transparent 28%
+    ),
+    radial-gradient(
+        circle at 85% 85%,
+        rgba(255,225,235,0.6),
+        transparent 30%
+    ),
+    linear-gradient(
+        135deg,
+        #fff0f5,
+        #fffafd
+    );
 
     font-family:
     "Microsoft YaHei",
+    "PingFang SC",
+    "Noto Sans SC",
     sans-serif;
+
+    color:#666;
 
 }
 
 
+/* =========================
+   小屋主体
+========================= */
+
 .box{
 
+    position:relative;
+
     width:100%;
-    max-width:420px;
+    max-width:430px;
 
-    background:white;
+    padding:42px 27px 34px;
 
-    padding:45px 25px;
+    background:
+    rgba(255,255,255,0.96);
 
     border-radius:30px;
 
     text-align:center;
 
     box-shadow:
-    0 15px 40px rgba(255,120,160,0.2);
+    0 18px 50px rgba(235,135,165,0.16);
+
+    border:1px solid rgba(255,255,255,0.9);
+
+    overflow:hidden;
 
 }
 
 
-h1{
+/* =========================
+   装饰爱心
+========================= */
 
-    font-size:32px;
+.box::before{
 
-    color:#ff6b9d;
+    content:"♡";
 
-    margin-bottom:15px;
+    position:absolute;
+
+    top:15px;
+    right:23px;
+
+    font-size:24px;
+
+    color:#ffd0df;
+
+    transform:rotate(12deg);
 
 }
 
 
-.subtitle{
+.box::after{
+
+    content:"♡";
+
+    position:absolute;
+
+    bottom:18px;
+    left:20px;
 
     font-size:20px;
 
-    color:#ff8fb5;
+    color:#ffe0e9;
 
-    margin-bottom:35px;
+    transform:rotate(-12deg);
 
 }
 
 
+/* =========================
+   主标题
+========================= */
+
+h1{
+
+    margin:0;
+
+    font-family:
+    "STKaiti",
+    "KaiTi",
+    "Microsoft YaHei",
+    sans-serif;
+
+    font-size:30px;
+
+    font-weight:600;
+
+    line-height:1.45;
+
+    letter-spacing:1px;
+
+    color:#f36f9b;
+
+}
+
+
+/* 小房子 */
+
+.house{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    font-family:
+    sans-serif;
+
+    font-size:30px;
+
+}
+
+
+/* =========================
+   副标题
+========================= */
+
+.subtitle{
+
+    margin-top:12px;
+    margin-bottom:30px;
+
+    font-family:
+    "STKaiti",
+    "KaiTi",
+    "Microsoft YaHei",
+    sans-serif;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    letter-spacing:0.5px;
+
+    color:#e993af;
+
+}
+
+
+/* =========================
+   欢迎文字
+========================= */
+
 .text{
 
-    font-size:18px;
+    padding:0 7px;
 
-    line-height:1.8;
+    font-size:16px;
+
+    line-height:2;
+
+    letter-spacing:0.3px;
+
+    color:#777;
+
+}
+
+
+.welcome{
+
+    font-size:18px;
 
     color:#666;
 
 }
 
-.buttons{
-    margin-top:35px;
+
+.love{
+
+    color:#f38cac;
+
 }
+
+
+/* =========================
+   按钮区域
+========================= */
+
+.buttons{
+
+    margin-top:32px;
+
+}
+
+
+/* =========================
+   单个按钮
+========================= */
 
 .buttons a{
 
-    display:block;
+    position:relative;
 
-    width:90%;
+    display:flex;
 
-    margin:15px auto;
+    align-items:center;
 
-    padding:18px;
+    justify-content:center;
 
-    border-radius:50px;
+    width:100%;
 
-    background:#ff8fb5;
+    min-height:58px;
 
-    color:white;
+    margin:13px 0;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    background:#fff5f8;
+
+    border:1px solid #ffe0e9;
+
+    color:#e96f98;
 
     text-decoration:none;
 
-    font-size:18px;
+    font-size:16px;
 
-}
-    
-button{
+    letter-spacing:0.5px;
 
-    margin-top:35px;
+    box-shadow:
+    0 5px 15px rgba(255,150,180,0.08);
 
-    width:90%;
-
-    padding:18px;
-
-    border:none;
-
-    border-radius:50px;
-
-    background:#ff8fb5;
-
-    color:white;
-
-    font-size:18px;
+    transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 
 }
 
+
+/* 鼠标经过 */
+
+.buttons a:hover{
+
+    transform:translateY(-2px);
+
+    background:#ffedf3;
+
+    box-shadow:
+    0 8px 20px rgba(255,150,180,0.14);
+
+}
+
+
+/* 点击 */
+
+.buttons a:active{
+
+    transform:scale(0.98);
+
+}
+
+
+/* =========================
+   按钮中的文字
+========================= */
+
+.button-title{
+
+    display:block;
+
+    font-size:17px;
+
+    font-weight:500;
+
+}
+
+
+/* =========================
+   底部小字
+========================= */
+
+.footer{
+
+    margin-top:27px;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+    color:#d9a7b8;
+
+}
+
+
+/* =========================
+   手机端
+========================= */
+
+@media(max-width:480px){
+
+    body{
+
+        padding:18px 15px;
+
+    }
+
+
+    .box{
+
+        padding:
+        36px 22px
+        28px;
+
+        border-radius:27px;
+
+    }
+
+
+    h1{
+
+        font-size:28px;
+
+    }
+
+
+    .house{
+
+        font-size:28px;
+
+    }
+
+
+    .subtitle{
+
+        font-size:16px;
+
+        margin-top:10px;
+
+        margin-bottom:26px;
+
+    }
+
+
+    .text{
+
+        font-size:15px;
+
+        line-height:1.9;
+
+    }
+
+
+    .welcome{
+
+        font-size:17px;
+
+    }
+
+
+    .buttons{
+
+        margin-top:27px;
+
+    }
+
+
+    .buttons a{
+
+        min-height:55px;
+
+        margin:11px 0;
+
+        border-radius:17px;
+
+    }
+
+
+    .button-title{
+
+        font-size:16px;
+
+    }
+
+}
 
 </style>
 
@@ -143,61 +453,112 @@ button{
 <div class="box">
 
 
-<h1>
-🏡<br>
-佳源充满爱的小屋
-</h1>
+    <!-- 主标题 -->
+
+    <h1>
+
+        <span class="house">🏡</span>
+
+        佳源充满爱的小屋
+
+    </h1>
 
 
-<div class="subtitle">
+    <!-- 副标题 -->
 
-伟峰给佳源的休闲爱乐园 💕
+    <div class="subtitle">
 
-</div>
+        伟峰给佳源的休闲爱乐园 💕
 
-
-<div class="text">
-
-欢迎回来，佳源～
-
-<br><br>
-
-这里藏着伟峰准备的小惊喜，
-
-<br>
-
-也藏着属于我们的故事。
-
-<br><br>
-
-希望每一次打开，
-
-都能让你开心一点。
-
-</div>
+    </div>
 
 
+    <!-- 欢迎文字 -->
 
-<div class="buttons">
+    <div class="text">
 
-<a href="chat.html">
-💕 爱的小助手
-</a >
+        <div class="welcome">
 
-<a href="letter.html">
-💌 伟峰的情话信箱
-</a >
+            欢迎回来，佳源 <span class="love">♡</span>
 
-<a href="story.html">
-📖 我们的故事
-</a >
+        </div>
 
-</div>
+        <br>
 
+        这里藏着伟峰准备的小惊喜，
+
+        <br>
+
+        也藏着属于我们的故事。
+
+        <br><br>
+
+        希望你每一次打开这里，
+
+        <br>
+
+        都能感觉到一点点开心，
+
+        <br>
+
+        和很多很多的爱。
+
+    </div>
+
+
+    <!-- 功能入口 -->
+
+    <div class="buttons">
+
+
+        <a href="chat.html">
+
+            <span class="button-title">
+
+                💕 爱的小助手
+
+            </span>
+
+        </a>
+
+
+        <a href="letter.html">
+
+            <span class="button-title">
+
+                💌 伟峰的情话信箱
+
+            </span>
+
+        </a>
+
+
+        <a href="story.html">
+
+            <span class="button-title">
+
+                📖 我们的故事
+
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- 底部 -->
+
+    <div class="footer">
+
+        made with love ♡
+
+    </div>
 
 
 </div>
 
 
 </body>
+
 </html>
