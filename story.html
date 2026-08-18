@@ -1,27 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 
 <head>
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width,
-             initial-scale=1,
-             maximum-scale=1,
-             viewport-fit=cover,
-             user-scalable=no"
->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>我们的故事</title>
 
-
 <style>
 
-/* =====================================================
-   基础
-===================================================== */
+/* =========================
+   基础设置
+========================= */
 
 *{
     box-sizing:border-box;
@@ -30,22 +24,15 @@
 
 html,
 body{
-
     margin:0;
     padding:0;
-
     width:100%;
-    height:100%;
-
-    background:#f8f1e7;
-
-    overflow:hidden;
-
-    overscroll-behavior:none;
-
+    min-height:100%;
 }
 
 body{
+
+    background:#f8f1e7;
 
     font-family:
         "Microsoft YaHei",
@@ -54,64 +41,25 @@ body{
 
     color:#555;
 
-}
-
-
-/* =====================================================
-   页面整体
-===================================================== */
-
-.story-app{
-
-    width:100%;
-    height:100%;
-
-    min-height:100vh;
-    min-height:100dvh;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
     overflow:hidden;
 
-    padding-top:
-
-        calc(
-            52px +
-            env(safe-area-inset-top)
-        );
-
-    padding-bottom:
-
-        calc(
-            12px +
-            env(safe-area-inset-bottom)
-        );
+    touch-action:pan-y;
 
 }
 
 
-/* =====================================================
+/* =========================
    返回小屋
-===================================================== */
+========================= */
 
 .back{
 
     position:fixed;
 
-    top:
-
-        calc(
-            13px +
-            env(safe-area-inset-top)
-        );
-
+    top:18px;
     left:18px;
 
-    z-index:99999;
+    z-index:1000;
 
     color:#8b6f47;
 
@@ -119,137 +67,99 @@ body{
 
     font-size:15px;
 
-    line-height:22px;
+    padding:7px 11px;
 
-    padding:4px 7px;
+    border-radius:20px;
 
-    background:rgba(248,241,231,0.92);
+    background:rgba(248,241,231,0.88);
 
-    border-radius:8px;
+    backdrop-filter:blur(5px);
+
+    -webkit-backdrop-filter:blur(5px);
 
 }
 
 
-/* =====================================================
+/* =========================
+   页面标题
+========================= */
+
+.book-title{
+
+    position:fixed;
+
+    top:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:900;
+
+    width:calc(100% - 150px);
+
+    text-align:center;
+
+    color:#8b6f47;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    pointer-events:none;
+
+}
+
+
+/* =========================
    书本区域
+========================= */
 
-   注意：
-   不再让 controls 压在书上
-===================================================== */
-
-.book-area{
+.book-wrapper{
 
     width:100%;
 
-    flex:1;
+    height:100vh;
 
-    min-height:0;
+    height:100dvh;
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     padding:
 
-        5px 14px 0;
+        62px
+        20px
+        62px;
 
 }
 
 
-/* =====================================================
+/* =========================
    书本
-===================================================== */
+========================= */
 
 .book{
 
     position:relative;
 
-    width:min(430px,100%);
+    width:min(420px, 92vw);
 
-    height:min(
-        690px,
-        100%
-    );
+    height:min(690px, calc(100dvh - 124px));
 
-    max-height:100%;
+    min-height:520px;
 
-    perspective:2200px;
-
-    transform-style:preserve-3d;
-
-    touch-action:none;
+    perspective:1800px;
 
 }
 
 
-/* =====================================================
-   书本底板
-===================================================== */
-
-.book-cover{
-
-    position:absolute;
-
-    inset:0;
-
-    background:#e7d8c6;
-
-    border-radius:
-        5px 16px 16px 5px;
-
-    box-shadow:
-
-        0 18px 42px
-        rgba(80,55,35,0.16),
-
-        inset
-        -2px 0 0
-        rgba(139,111,71,0.08);
-
-}
-
-
-/* =====================================================
-   书页底部厚度
-
-   只露一点点
-===================================================== */
-
-.book-thickness{
-
-    position:absolute;
-
-    top:4px;
-
-    right:-3px;
-
-    bottom:4px;
-
-    width:8px;
-
-    background:
-
-        repeating-linear-gradient(
-            to bottom,
-            #f8f1e7 0,
-            #f8f1e7 2px,
-            #e7dccd 2px,
-            #e7dccd 3px
-        );
-
-    border-radius:
-        0 12px 12px 0;
-
-    z-index:1;
-
-}
-
-
-/* =====================================================
-   纸页
-===================================================== */
+/* =========================
+   每一页
+========================= */
 
 .page{
 
@@ -258,16 +168,32 @@ body{
     inset:0;
 
     width:100%;
+
     height:100%;
 
-    background:#fffdf9;
+    background:#fffdf8;
 
-    border-radius:
-        4px 15px 15px 4px;
+    border-radius:3px 10px 10px 3px;
+
+    box-shadow:
+
+        0 12px 35px
+        rgba(70,50,30,0.13),
+
+        inset 2px 0 0
+        rgba(180,150,110,0.08);
 
     transform-origin:left center;
 
-    transform-style:preserve-3d;
+    transition:
+
+        transform 0.85s cubic-bezier(.22,.61,.36,1),
+
+        box-shadow 0.85s ease,
+
+        z-index 0s linear 0.2s;
+
+    overflow:hidden;
 
     backface-visibility:hidden;
 
@@ -275,476 +201,483 @@ body{
 
     will-change:transform;
 
-    overflow:hidden;
-
-    box-shadow:
-
-        0 5px 18px
-        rgba(80,55,35,0.08);
-
 }
 
 
-/* =====================================================
-   纸张正面
-===================================================== */
+/* 左侧书页边缘 */
 
-.page-front{
-
-    position:absolute;
-
-    inset:0;
-
-    background:#fffdf9;
-
-    backface-visibility:hidden;
-
-    -webkit-backface-visibility:hidden;
-
-}
-
-
-/* =====================================================
-   纸张背面
-===================================================== */
-
-.page-back{
-
-    position:absolute;
-
-    inset:0;
-
-    background:#faf3e9;
-
-    transform:rotateY(180deg);
-
-    backface-visibility:hidden;
-
-    -webkit-backface-visibility:hidden;
-
-}
-
-
-/* =====================================================
-   页面内容
-===================================================== */
-
-.page-inner{
-
-    position:absolute;
-
-    inset:0;
-
-    padding:
-
-        22px 22px 18px;
-
-    overflow:hidden;
-
-}
-
-
-/* =====================================================
-   书脊细线
-===================================================== */
-
-.page-inner::before{
+.page::before{
 
     content:"";
 
     position:absolute;
 
-    left:8px;
+    left:0;
 
     top:0;
 
     bottom:0;
 
-    width:1px;
+    width:7px;
 
     background:
 
         linear-gradient(
-            to bottom,
-            transparent,
-            rgba(139,111,71,0.12) 10%,
-            rgba(139,111,71,0.12) 90%,
-            transparent
+            to right,
+            rgba(130,100,65,0.13),
+            rgba(255,255,255,0)
         );
+
+    pointer-events:none;
 
 }
 
 
-/* =====================================================
-   翻页阴影
+/* 纸张纹理 */
 
-   阴影不是整页黑，而是靠近书脊的位置
-===================================================== */
+.page::after{
 
-.page-shadow{
+    content:"";
 
     position:absolute;
 
     inset:0;
 
-    z-index:30;
-
     pointer-events:none;
 
-    opacity:0;
+    opacity:0.22;
 
-    background:
+    background-image:
 
-        linear-gradient(
-            90deg,
-            rgba(54,37,24,0.24) 0%,
-            rgba(54,37,24,0.11) 16%,
-            rgba(54,37,24,0.035) 35%,
-            transparent 58%
+        repeating-linear-gradient(
+            0deg,
+            rgba(130,100,65,0.018) 0px,
+            rgba(130,100,65,0.018) 1px,
+            transparent 1px,
+            transparent 4px
         );
 
 }
 
 
-/* =====================================================
-   故事页面
-===================================================== */
+/* 翻过去 */
 
-.story-content{
+.page.flipped{
 
-    height:100%;
+    transform:
 
-    display:flex;
-
-    flex-direction:column;
-
-    min-height:0;
-
-}
-
-
-/* =====================================================
-   日期
-===================================================== */
-
-.date{
-
-    color:#b08b57;
-
-    font-size:13px;
-
-    line-height:1.5;
-
-    margin-bottom:6px;
-
-}
-
-
-/* =====================================================
-   标题
-===================================================== */
-
-.title{
-
-    color:#8b6f47;
-
-    font-size:21px;
-
-    font-weight:500;
-
-    line-height:1.45;
-
-    margin-bottom:8px;
-
-}
-
-
-/* =====================================================
-   副标题
-===================================================== */
-
-.subtitle{
-
-    color:#555;
-
-    font-size:16px;
-
-    line-height:1.5;
-
-    margin-bottom:12px;
-
-}
-
-
-/* =====================================================
-   图片
-
-   横版、竖版都完整显示
-===================================================== */
-
-.photo{
-
-    width:100%;
-
-    height:205px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    overflow:hidden;
-
-    border-radius:9px;
-
-    background:#eee6da;
+        rotateY(-178deg);
 
     box-shadow:
 
-        0 4px 13px
-        rgba(70,50,30,0.07);
+        -8px 10px 25px
+        rgba(70,50,30,0.08);
 
 }
 
 
-.photo img{
+/* =========================
+   页面内部
+========================= */
+
+.page-inner{
+
+    position:relative;
 
     width:100%;
+
     height:100%;
 
-    display:block;
+    overflow-y:auto;
 
-    object-fit:contain;
+    overflow-x:hidden;
 
-}
+    padding:
 
+        42px
+        28px
+        35px;
 
-/* =====================================================
-   正文
+    -webkit-overflow-scrolling:touch;
 
-   给正文独立空间，避免底部被遮
-===================================================== */
-
-.text{
-
-    margin-top:13px;
-
-    color:#666;
-
-    font-size:14.5px;
-
-    line-height:1.78;
-
-    overflow:hidden;
+    scrollbar-width:none;
 
 }
 
-
-/* =====================================================
-   封面
-===================================================== */
-
-.cover{
-
-    width:100%;
-    height:100%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    padding:30px;
-
+.page-inner::-webkit-scrollbar{
+    display:none;
 }
 
 
-.cover-icon{
-
-    font-size:45px;
-
-    margin-bottom:22px;
-
-}
-
-
-.cover h1{
-
-    margin:0 0 20px;
-
-    color:#8b6f47;
-
-    font-family:
-        "STKaiti",
-        "KaiTi",
-        "Microsoft YaHei",
-        sans-serif;
-
-    font-size:32px;
-
-    font-weight:normal;
-
-}
-
-
-.cover-line{
-
-    width:52px;
-
-    height:1px;
-
-    background:#c6a77d;
-
-    margin-bottom:22px;
-
-}
-
-
-.cover p{
-
-    margin:0;
-
-    color:#8b7b6a;
-
-    font-size:15px;
-
-    line-height:2;
-
-}
-
-
-.cover-bottom{
-
-    position:absolute;
-
-    bottom:25px;
-
-    left:0;
-    right:0;
-
-    color:#c6a77d;
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-}
-
-
-/* =====================================================
-   底部操作区
-
-   现在完全在书外
-===================================================== */
-
-.controls{
-
-    width:100%;
-
-    flex-shrink:0;
-
-    height:52px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:18px;
-
-    margin-top:6px;
-
-}
-
-
-.arrow{
-
-    width:34px;
-    height:34px;
-
-    border:0;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,0.82);
-
-    color:#8b6f47;
-
-    font-size:23px;
-
-    line-height:34px;
-
-    padding:0;
-
-    box-shadow:
-
-        0 3px 10px
-        rgba(0,0,0,0.07);
-
-}
-
-
-.arrow:active{
-
-    transform:scale(0.90);
-
-}
-
+/* =========================
+   页码
+========================= */
 
 .page-number{
 
-    min-width:70px;
+    position:absolute;
 
-    text-align:center;
+    top:22px;
 
-    color:#9b846b;
+    right:24px;
 
-    font-size:12px;
+    font-size:11px;
 
-    letter-spacing:2px;
-
-}
-
-
-/* =====================================================
-   提示
-===================================================== */
-
-.swipe-tip{
-
-    height:18px;
-
-    flex-shrink:0;
-
-    color:#b49a7c;
-
-    font-size:10px;
+    color:#c2a982;
 
     letter-spacing:1px;
 
 }
 
 
-/* =====================================================
-   手机
-===================================================== */
+/* =========================
+   chapter
+========================= */
+
+.chapter{
+
+    font-size:11px;
+
+    color:#b08b57;
+
+    letter-spacing:3px;
+
+    margin-bottom:8px;
+
+}
+
+
+/* =========================
+   日期
+========================= */
+
+.date{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#8b6f47;
+
+    margin-bottom:7px;
+
+}
+
+
+/* =========================
+   标题
+========================= */
+
+.story-title{
+
+    font-size:22px;
+
+    line-height:1.45;
+
+    color:#555;
+
+    margin:
+
+        0
+        0
+        17px;
+
+    font-weight:bold;
+
+}
+
+
+/* =========================
+   照片区域
+========================= */
+
+.photo{
+
+    width:100%;
+
+    min-height:120px;
+
+    max-height:255px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:#eee6da;
+
+    border-radius:7px;
+
+    padding:7px;
+
+    margin:
+
+        0
+        0
+        20px;
+
+    box-shadow:
+
+        0 5px 16px
+        rgba(70,50,30,0.08);
+
+}
+
+
+/* =========================
+   图片本体
+
+   核心：
+   不裁剪
+   不拉伸
+   自动适应横竖比例
+========================= */
+
+.photo img{
+
+    display:block;
+
+    width:auto;
+
+    height:auto;
+
+    max-width:100%;
+
+    max-height:241px;
+
+    object-fit:contain;
+
+    border-radius:4px;
+
+}
+
+
+/* =========================
+   没照片时
+========================= */
+
+.photo.empty{
+
+    height:180px;
+
+    color:#aaa;
+
+    font-size:13px;
+
+}
+
+
+/* =========================
+   正文
+========================= */
+
+.text{
+
+    font-size:15px;
+
+    line-height:1.95;
+
+    color:#666;
+
+    white-space:pre-line;
+
+    padding-bottom:10px;
+
+}
+
+
+/* =========================
+   分割线
+========================= */
+
+.divider{
+
+    width:60px;
+
+    height:1px;
+
+    background:#d8c2a2;
+
+    margin:
+
+        23px
+        auto;
+
+    opacity:.65;
+
+}
+
+
+/* =========================
+   最后一页
+========================= */
+
+.end{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:#8b6f47;
+
+    font-size:16px;
+
+    line-height:2;
+
+    padding:30px;
+
+}
+
+.end-heart{
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+
+/* =========================
+   左右提示
+========================= */
+
+.swipe-tip{
+
+    position:fixed;
+
+    bottom:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:1000;
+
+    font-size:12px;
+
+    color:#b08b57;
+
+    background:rgba(248,241,231,0.88);
+
+    padding:6px 13px;
+
+    border-radius:20px;
+
+    pointer-events:none;
+
+    opacity:.85;
+
+}
+
+
+/* =========================
+   翻页按钮
+========================= */
+
+.nav{
+
+    position:fixed;
+
+    bottom:48px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:1100;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.nav button{
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.86);
+
+    color:#8b6f47;
+
+    font-size:18px;
+
+    box-shadow:
+
+        0 4px 12px
+        rgba(70,50,30,.10);
+
+    cursor:pointer;
+
+}
+
+
+.nav button:active{
+
+    transform:scale(.92);
+
+}
+
+
+.counter{
+
+    font-size:12px;
+
+    color:#9b805e;
+
+    min-width:48px;
+
+    text-align:center;
+
+}
+
+
+/* =========================
+   手机端
+========================= */
 
 @media(max-width:600px){
 
-    .book-area{
+    .book-wrapper{
 
         padding:
-            3px 13px 0;
+
+            58px
+            13px
+            65px;
+
+    }
+
+
+    .book{
+
+        width:94vw;
+
+        height:
+
+            calc(100dvh - 123px);
+
+        min-height:500px;
 
     }
 
@@ -752,28 +685,24 @@ body{
     .page-inner{
 
         padding:
-            19px 18px 16px;
+
+            39px
+            22px
+            30px;
 
     }
 
 
-    .photo{
+    .story-title{
 
-        height:190px;
-
-    }
-
-
-    .title{
-
-        font-size:19px;
+        font-size:20px;
 
     }
 
 
-    .subtitle{
+    .date{
 
-        font-size:15.5px;
+        font-size:17px;
 
     }
 
@@ -782,89 +711,79 @@ body{
 
         font-size:14px;
 
-        line-height:1.72;
-
-        margin-top:11px;
-
-    }
-
-
-    .cover h1{
-
-        font-size:30px;
-
-    }
-
-}
-
-
-/* =====================================================
-   很矮的手机
-
-   微信里尤其重要
-===================================================== */
-
-@media(
-    max-height:720px
-){
-
-    .story-app{
-
-        padding-top:
-
-            calc(
-                47px +
-                env(safe-area-inset-top)
-            );
-
-    }
-
-
-    .book-area{
-
-        padding-top:2px;
-
-    }
-
-
-    .page-inner{
-
-        padding:
-            16px 17px 14px;
+        line-height:1.9;
 
     }
 
 
     .photo{
 
-        height:160px;
+        max-height:235px;
 
     }
 
 
-    .date{
+    .photo img{
 
-        font-size:12px;
-
-        margin-bottom:4px;
+        max-height:221px;
 
     }
 
 
-    .title{
+    .book-title{
 
-        font-size:18px;
+        font-size:14px;
 
-        margin-bottom:5px;
+    }
+
+}
+
+
+/* =========================
+   小屏手机
+========================= */
+
+@media(max-height:700px){
+
+    .book-wrapper{
+
+        padding-top:55px;
+
+        padding-bottom:60px;
 
     }
 
 
-    .subtitle{
+    .page-inner{
 
-        font-size:14.5px;
+        padding-top:34px;
 
-        margin-bottom:8px;
+        padding-bottom:24px;
+
+    }
+
+
+    .photo{
+
+        max-height:195px;
+
+        margin-bottom:15px;
+
+    }
+
+
+    .photo img{
+
+        max-height:181px;
+
+    }
+
+
+    .story-title{
+
+        font-size:19px;
+
+        margin-bottom:13px;
 
     }
 
@@ -873,68 +792,47 @@ body{
 
         font-size:13.5px;
 
-        line-height:1.65;
-
-        margin-top:8px;
-
-    }
-
-
-    .controls{
-
-        height:45px;
-
-        margin-top:2px;
-
-    }
-
-
-    .swipe-tip{
-
-        height:13px;
-
-        font-size:9px;
+        line-height:1.8;
 
     }
 
 }
 
 
-/* =====================================================
-   超小屏
-===================================================== */
+/* =========================
+   进入动画
+========================= */
 
-@media(
-    max-height:620px
-){
+.book{
 
-    .photo{
+    animation:
 
-        height:135px;
+        bookAppear .8s ease;
 
-    }
+}
 
 
-    .page-inner{
+@keyframes bookAppear{
 
-        padding:
-            13px 15px 11px;
+    from{
 
-    }
+        opacity:0;
 
+        transform:
 
-    .text{
-
-        font-size:12.5px;
-
-        line-height:1.55;
+            translateY(18px)
+            scale(.97);
 
     }
 
+    to{
 
-    .cover h1{
+        opacity:1;
 
-        font-size:26px;
+        transform:
+
+            translateY(0)
+            scale(1);
 
     }
 
@@ -945,106 +843,51 @@ body{
 </head>
 
 
-
 <body>
 
 
-<div class="story-app">
+<!-- =========================
+     返回
+========================= -->
 
+<a href="index.html" class="back">
 
-<a
-    href="index.html"
-    class="back"
->
-    ← 回到小屋
+← 回到小屋
+
 </a>
 
 
+<div class="book-title">
 
-<!-- =====================================================
-     书本
-===================================================== -->
-
-<div class="book-area">
-
-<div
-    class="book"
-    id="book"
->
-
-
-<div class="book-cover"></div>
-
-<div class="book-thickness"></div>
-
-
-
-<!-- =====================================================
-     01 封面
-===================================================== -->
-
-<div
-    class="page"
-    data-index="0"
->
-
-<div class="page-front">
-
-<div class="page-inner">
-
-<div class="cover">
-
-<div class="cover-icon">
-📖
-</div>
-
-<h1>
 我们的故事
-</h1>
-
-<div class="cover-line"></div>
-
-<p>
-有些瞬间很短，<br>
-但因为有你，<br>
-变成了值得珍藏的故事。
-</p>
-
-<div class="cover-bottom">
-伟峰 × 佳源
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="page-back"></div>
-
-<div class="page-shadow"></div>
 
 </div>
 
 
+<!-- =========================
+     书本
+========================= -->
 
-<!-- =====================================================
-     02
-===================================================== -->
+<div class="book-wrapper">
 
-<div class="page" data-index="1">
+<div class="book" id="book">
 
-<div class="page-front">
+
+<!-- =========================
+     第1页
+========================= -->
+
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">01</div>
 
-<div class="date">
-2024.12.14-16
-</div>
+<div class="chapter">CHAPTER 01</div>
 
-<div class="title">
+<div class="date">2024.12.14-16</div>
+
+<div class="story-title">
 源峰的开始
 </div>
 
@@ -1055,8 +898,6 @@ body{
 <div class="text">
 我和佳源第一次牵手，我们没那么直接地确定了关系，小老婆这时心里貌似还没底也很忐忑。
 
-<br><br>
-
 故事也就从这里慢慢展开。
 </div>
 
@@ -1064,35 +905,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第2页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     03
-===================================================== -->
-
-<div class="page" data-index="2">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">02</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 02</div>
+
+<div class="story-title">
 开始的开始
 </div>
 
-<div class="subtitle">
-我加老婆好友
-</div>
+<div class="date">我加老婆好友</div>
 
 <div class="photo">
 <img src="images/story02.jpg">
@@ -1106,35 +936,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第3页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     04
-===================================================== -->
-
-<div class="page" data-index="3">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">03</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 03</div>
+
+<div class="story-title">
 第一次小约会
 </div>
 
-<div class="subtitle">
-和气小食
-</div>
+<div class="date">和气小食</div>
 
 <div class="photo">
 <img src="images/story03.jpg">
@@ -1148,33 +967,22 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第4页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     05
-===================================================== -->
-
-<div class="page" data-index="4">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">04</div>
 
-<div class="date">
-2025.12.25
-</div>
+<div class="chapter">CHAPTER 04</div>
 
-<div class="title">
+<div class="date">2025.12.25</div>
+
+<div class="story-title">
 美丽的圣诞
 </div>
 
@@ -1190,33 +998,22 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第5页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     06
-===================================================== -->
-
-<div class="page" data-index="5">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">05</div>
 
-<div class="date">
-2025.1.1
-</div>
+<div class="chapter">CHAPTER 05</div>
 
-<div class="title">
+<div class="date">2025.1.1</div>
+
+<div class="story-title">
 杨村三中天台
 </div>
 
@@ -1232,35 +1029,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第6页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     07
-===================================================== -->
-
-<div class="page" data-index="6">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">06</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 06</div>
+
+<div class="story-title">
 咖喱鸡腿饭+凉菜
 </div>
 
-<div class="subtitle">
-和老婆一起在武清做饭吃饭
-</div>
+<div class="date">和老婆一起在武清做饭吃饭</div>
 
 <div class="photo">
 <img src="images/story06.jpg">
@@ -1274,35 +1060,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第7页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     08
-===================================================== -->
-
-<div class="page" data-index="7">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">07</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 07</div>
+
+<div class="story-title">
 栗子馒头&小熊
 </div>
 
-<div class="subtitle">
-老婆给我的毛绒物品
-</div>
+<div class="date">老婆给我的毛绒物品</div>
 
 <div class="photo">
 <img src="images/story07.jpg">
@@ -1316,35 +1091,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第8页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     09
-===================================================== -->
-
-<div class="page" data-index="8">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">08</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 08</div>
+
+<div class="story-title">
 南湖散步
 </div>
 
-<div class="subtitle">
-和老婆的春游
-</div>
+<div class="date">和老婆的春游</div>
 
 <div class="photo">
 <img src="images/story08.jpg">
@@ -1358,35 +1122,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第9页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     10
-===================================================== -->
-
-<div class="page" data-index="9">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">09</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 09</div>
+
+<div class="story-title">
 老婆实习
 </div>
 
-<div class="subtitle">
-下班我接接
-</div>
+<div class="date">下班我接接</div>
 
 <div class="photo">
 <img src="images/story09.jpg">
@@ -1400,35 +1153,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第10页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     11
-===================================================== -->
-
-<div class="page" data-index="10">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">10</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 10</div>
+
+<div class="story-title">
 双影奇境
 </div>
 
-<div class="subtitle">
-源❤️峰❤️
-</div>
+<div class="date">源❤️峰❤️</div>
 
 <div class="photo">
 <img src="images/story10.jpg">
@@ -1442,35 +1184,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第11页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     12
-===================================================== -->
-
-<div class="page" data-index="11">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">11</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 11</div>
+
+<div class="story-title">
 贸大
 </div>
 
-<div class="subtitle">
-和老婆爽多次进母校
-</div>
+<div class="date">和老婆爽多次进母校</div>
 
 <div class="photo">
 <img src="images/story11.jpg">
@@ -1484,35 +1215,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第12页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     13
-===================================================== -->
-
-<div class="page" data-index="12">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">12</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 12</div>
+
+<div class="story-title">
 理发
 </div>
 
-<div class="subtitle">
-探老婆推荐之店
-</div>
+<div class="date">探老婆推荐之店</div>
 
 <div class="photo">
 <img src="images/story12.jpg">
@@ -1526,35 +1246,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第13页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     14
-===================================================== -->
-
-<div class="page" data-index="13">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">13</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 13</div>
+
+<div class="story-title">
 继续做饭
 </div>
 
-<div class="subtitle">
-（阵地转移北京版）
-</div>
+<div class="date">（阵地转移北京版）</div>
 
 <div class="photo">
 <img src="images/story13.jpg">
@@ -1568,35 +1277,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第14页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     15
-===================================================== -->
-
-<div class="page" data-index="14">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">14</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 14</div>
+
+<div class="story-title">
 看直火帮
 </div>
 
-<div class="subtitle">
-杰巴的婚礼
-</div>
+<div class="date">杰巴的婚礼</div>
 
 <div class="photo">
 <img src="images/story14.jpg">
@@ -1610,35 +1308,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第15页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     16
-===================================================== -->
-
-<div class="page" data-index="15">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">15</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 15</div>
+
+<div class="story-title">
 许嵩
 </div>
 
-<div class="subtitle">
-爽拍vlog爽亲
-</div>
+<div class="date">爽拍vlog爽亲</div>
 
 <div class="photo">
 <img src="images/story15.jpg">
@@ -1652,35 +1339,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第16页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     17
-===================================================== -->
-
-<div class="page" data-index="16">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">16</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 16</div>
+
+<div class="story-title">
 和老婆重游九中
 </div>
 
-<div class="subtitle">
-重新坐到以前的座位上
-</div>
+<div class="date">重新坐到以前的座位上</div>
 
 <div class="photo">
 <img src="images/story16.jpg">
@@ -1694,29 +1370,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第17页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     18
-===================================================== -->
-
-<div class="page" data-index="17">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">17</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 17</div>
+
+<div class="story-title">
 老婆偶遇陆沉
 </div>
 
@@ -1732,29 +1399,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第18页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     19
-===================================================== -->
-
-<div class="page" data-index="18">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">18</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 18</div>
+
+<div class="story-title">
 泰达航母看烟花
 </div>
 
@@ -1770,29 +1428,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第19页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     20
-===================================================== -->
-
-<div class="page" data-index="19">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">19</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 19</div>
+
+<div class="story-title">
 我和小咪同床共枕
 </div>
 
@@ -1808,29 +1457,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第20页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     21
-===================================================== -->
-
-<div class="page" data-index="20">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">20</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 20</div>
+
+<div class="story-title">
 小老婆论文期
 </div>
 
@@ -1846,29 +1486,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第21页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     22
-===================================================== -->
-
-<div class="page" data-index="21">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">21</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 21</div>
+
+<div class="story-title">
 和老婆秋游
 </div>
 
@@ -1884,29 +1515,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第22页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     23
-===================================================== -->
-
-<div class="page" data-index="22">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">22</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 22</div>
+
+<div class="story-title">
 老婆治痘期
 </div>
 
@@ -1922,29 +1544,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第23页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     24
-===================================================== -->
-
-<div class="page" data-index="23">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">23</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 23</div>
+
+<div class="story-title">
 我的腹肌锻炼期
 </div>
 
@@ -1960,29 +1573,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第24页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     25
-===================================================== -->
-
-<div class="page" data-index="24">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">24</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 24</div>
+
+<div class="story-title">
 2026年的跨年
 </div>
 
@@ -1998,35 +1602,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第25页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     26
-===================================================== -->
-
-<div class="page" data-index="25">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">25</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 25</div>
+
+<div class="story-title">
 去韩国旅游
 </div>
 
-<div class="subtitle">
-老婆毕业了
-</div>
+<div class="date">老婆毕业了</div>
 
 <div class="photo">
 <img src="images/story25.jpg">
@@ -2040,29 +1633,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第26页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     27
-===================================================== -->
-
-<div class="page" data-index="26">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">26</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 26</div>
+
+<div class="story-title">
 毕业回国后
 </div>
 
@@ -2078,29 +1662,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第27页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     28
-===================================================== -->
-
-<div class="page" data-index="27">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">27</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 27</div>
+
+<div class="story-title">
 理新发型
 </div>
 
@@ -2116,29 +1691,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第28页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     29
-===================================================== -->
-
-<div class="page" data-index="28">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">28</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 28</div>
+
+<div class="story-title">
 脚美甲
 </div>
 
@@ -2154,29 +1720,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第29页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     30
-===================================================== -->
-
-<div class="page" data-index="29">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">29</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 29</div>
+
+<div class="story-title">
 老婆实习期
 </div>
 
@@ -2192,29 +1749,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第30页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     31
-===================================================== -->
-
-<div class="page" data-index="30">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">30</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 30</div>
+
+<div class="story-title">
 进入租房阶段
 </div>
 
@@ -2230,29 +1778,20 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第31页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     32
-===================================================== -->
-
-<div class="page" data-index="31">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">31</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 31</div>
+
+<div class="story-title">
 搬家定居
 </div>
 
@@ -2268,33 +1807,24 @@ body{
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第32页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     33
-===================================================== -->
-
-<div class="page" data-index="32">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="story-content">
+<div class="page-number">32</div>
 
-<div class="title">
+<div class="chapter">CHAPTER 32</div>
+
+<div class="story-title">
 和老婆去看蔡依林
 </div>
 
-<div class="subtitle">
+<div class="date">
 Baby u u me
 </div>
 
@@ -2310,44 +1840,41 @@ Baby u u me
 
 </div>
 
-</div>
 
-<div class="page-back"></div>
+<!-- =========================
+     第33页
+========================= -->
 
-<div class="page-shadow"></div>
-
-</div>
-
-
-
-<!-- =====================================================
-     34
-===================================================== -->
-
-<div class="page" data-index="33">
-
-<div class="page-front">
+<div class="page">
 
 <div class="page-inner">
 
-<div class="cover">
+<div class="page-number">33</div>
 
-<div class="cover-icon">
+<div class="chapter">CHAPTER 33</div>
+
+<div class="end">
+
+<div class="end-heart">
 💕
 </div>
 
-<h1>
+<div>
 故事内容未完待续
-</h1>
+</div>
 
-<div class="cover-line"></div>
+<br>
 
-<p>
-希望有一天我们都可以不上班，让时间都充满对方，被各种各样不重复的内容填满。
-</p>
+<div>
+希望有一天我们都可以不上班，
+</div>
 
-<div class="cover-bottom">
-伟峰 × 佳源
+<div>
+让时间都充满对方，
+</div>
+
+<div>
+被各种各样不重复的内容填满。
 </div>
 
 </div>
@@ -2356,74 +1883,49 @@ Baby u u me
 
 </div>
 
-<div class="page-back"></div>
-
-<div class="page-shadow"></div>
-
-</div>
-
 
 </div>
 
 </div>
 
 
+<!-- =========================
+     翻页提示
+========================= -->
 
-<!-- =====================================================
-     控制
-===================================================== -->
-
-<div class="controls">
-
-<button
-    class="arrow"
-    id="prevBtn"
->
-‹
-</button>
-
-
-<div class="page-number">
-
-<span id="currentPage">
-01
-</span>
-
-&nbsp;/&nbsp;
-
-<span id="totalPage">
-34
-</span>
-
-</div>
-
-
-<button
-    class="arrow"
-    id="nextBtn"
->
-›
-</button>
-
-</div>
-
-
-<div class="swipe-tip">
+<div class="swipe-tip" id="swipeTip">
 
 ← 左右滑动翻页 →
 
 </div>
 
 
+<!-- =========================
+     底部控制
+========================= -->
+
+<div class="nav">
+
+<button id="prevBtn">
+‹
+</button>
+
+<div class="counter" id="counter">
+1 / 33
 </div>
 
+<button id="nextBtn">
+›
+</button>
+
+</div>
 
 
 <script>
 
-/* =====================================================
-   页面
-===================================================== */
+/* =========================================
+   翻页系统
+========================================= */
 
 const pages =
     Array.from(
@@ -2433,858 +1935,329 @@ const pages =
 const book =
     document.getElementById("book");
 
+const counter =
+    document.getElementById("counter");
+
 const prevBtn =
     document.getElementById("prevBtn");
 
 const nextBtn =
     document.getElementById("nextBtn");
 
-const currentPage =
-    document.getElementById("currentPage");
+const swipeTip =
+    document.getElementById("swipeTip");
 
-const totalPage =
-    document.getElementById("totalPage");
 
-
-const total =
-    pages.length;
-
-
-/*
-    current 的含义：
-
-    0 = 封面
-
-    1 = 第一段故事
-
-    ...
-
-    33 = 最后一页
-*/
-
-let current = 0;
-
-
-/* =====================================================
-   正确初始化页面层级
-===================================================== */
-
-function setInitialState(){
-
-    pages.forEach(
-        (page,index)=>{
-
-            /*
-                所有已经翻过去的页：
-                -180deg
-
-                当前页：
-                0deg
-
-                后面的页：
-                0deg
-            */
-
-            page.style.transform =
-                index < current
-                    ? "rotateY(-180deg)"
-                    : "rotateY(0deg)";
-
-
-            /*
-                关键：
-
-                当前页和前面的页，
-                必须处在正确层级。
-
-                后面的页稍微往后。
-            */
-
-            if(index < current){
-
-                page.style.zIndex =
-                    index + 1;
-
-            }
-            else{
-
-                page.style.zIndex =
-                    total - index + 10;
-
-            }
-
-            page.style.transition =
-                "none";
-
-        }
-    );
-
-
-    updateNumber();
-
-}
-
-
-function updateNumber(){
-
-    currentPage.textContent =
-        String(current + 1)
-            .padStart(2,"0");
-
-}
-
-
-/* =====================================================
-   下一页
-
-   重新设计过：
-
-   只有当前页自己翻过去
-===================================================== */
-
-function nextPage(){
-
-    if(current >= total - 1){
-        return;
-    }
-
-
-    const page =
-        pages[current];
-
-
-    /*
-        当前页永远在最上面
-    */
-
-    page.style.zIndex =
-        total + 100;
-
-
-    page.style.transition =
-        "transform 0.78s cubic-bezier(.22,.61,.36,1)";
-
-
-    page.style.transform =
-        "rotateY(-180deg)";
-
-
-    const shadow =
-        page.querySelector(".page-shadow");
-
-
-    shadow.style.transition =
-        "opacity .78s ease";
-
-
-    shadow.style.opacity =
-        "0.58";
-
-
-    current++;
-
-
-    updateNumber();
-
-
-    setTimeout(
-        ()=>{
-
-            /*
-                翻过去之后放到底层
-            */
-
-            page.style.zIndex =
-                current;
-
-            shadow.style.opacity =
-                "0";
-
-        },
-        780
-    );
-
-}
-
-
-/* =====================================================
-   上一页
-
-   这部分修复了上一版最后几页无法返回的问题
-===================================================== */
-
-function prevPage(){
-
-    if(current <= 0){
-        return;
-    }
-
-
-    /*
-        先把 current 减一
-
-        这样：
-        current 指向真正需要翻回来的那一页
-    */
-
-    current--;
-
-
-    const page =
-        pages[current];
-
-
-    /*
-        需要翻回来的页面，
-        必须马上放到最上层。
-    */
-
-    page.style.zIndex =
-        total + 100;
-
-
-    /*
-        关键：
-
-        页面目前一定是 -180deg。
-
-        然后从 -180deg
-        平滑翻回 0deg。
-    */
-
-    page.style.transition =
-        "transform 0.78s cubic-bezier(.22,.61,.36,1)";
-
-
-    page.style.transform =
-        "rotateY(0deg)";
-
-
-    const shadow =
-        page.querySelector(".page-shadow");
-
-
-    shadow.style.transition =
-        "opacity .78s ease";
-
-
-    shadow.style.opacity =
-        "0.50";
-
-
-    updateNumber();
-
-
-    setTimeout(
-        ()=>{
-
-            shadow.style.opacity =
-                "0";
-
-            /*
-                重新整理所有页的层级。
-
-                这是上一版容易出错的地方。
-            */
-
-            rebuildStack();
-
-        },
-        780
-    );
-
-}
-
-
-/* =====================================================
-   重新整理书页层级
-
-   防止翻到后面再翻回来时页面卡死
-===================================================== */
-
-function rebuildStack(){
-
-    pages.forEach(
-        (page,index)=>{
-
-            if(index < current){
-
-                page.style.zIndex =
-                    index + 1;
-
-            }
-            else{
-
-                page.style.zIndex =
-                    total - index + 10;
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   手指拖动
-===================================================== */
-
-let dragging = false;
+let currentPage = 0;
 
 let startX = 0;
+let startY = 0;
 
-let lastX = 0;
+let isDragging = false;
 
 let moved = false;
 
+
+/* =========================================
+   初始化页面层级
+========================================= */
+
+function updatePages(){
+
+    pages.forEach((page,index)=>{
+
+        page.classList.remove("flipped");
+
+        /*
+         * 已经翻过去的页面
+         */
+
+        if(index < currentPage){
+
+            page.classList.add("flipped");
+
+        }
+
+        /*
+         * 当前页面
+         */
+
+        if(index === currentPage){
+
+            page.style.zIndex =
+                pages.length + 10;
+
+        }
+
+        /*
+         * 当前页面后面的页面
+         */
+
+        else{
+
+            page.style.zIndex =
+                pages.length - index;
+
+        }
+
+    });
+
+
+    counter.textContent =
+        `${currentPage + 1} / ${pages.length}`;
+
+
+    /*
+     * 第一页不能上一页
+     */
+
+    prevBtn.style.opacity =
+        currentPage === 0 ? ".35" : "1";
+
+
+    /*
+     * 最后一页不能下一页
+     */
+
+    nextBtn.style.opacity =
+        currentPage === pages.length - 1
+        ? ".35"
+        : "1";
+
+
+    /*
+     * 第一次翻页以后隐藏提示
+     */
+
+    if(currentPage > 0){
+
+        swipeTip.style.opacity = "0";
+
+    }
+
+}
+
+
+/* =========================================
+   下一页
+========================================= */
+
+function nextPage(){
+
+    if(currentPage >= pages.length - 1){
+
+        return;
+
+    }
+
+    currentPage++;
+
+    updatePages();
+
+}
+
+
+/* =========================================
+   上一页
+========================================= */
+
+function prevPage(){
+
+    if(currentPage <= 0){
+
+        return;
+
+    }
+
+    currentPage--;
+
+    updatePages();
+
+}
+
+
+/* =========================================
+   按钮
+========================================= */
+
+nextBtn.addEventListener(
+    "click",
+    nextPage
+);
+
+prevBtn.addEventListener(
+    "click",
+    prevPage
+);
+
+
+/* =========================================
+   手机触摸
+
+   核心逻辑：
+
+   横向移动明显
+   才触发翻页
+
+   竖向移动
+   不翻页
+========================================= */
 
 book.addEventListener(
     "touchstart",
     function(e){
 
-        if(
-            e.target.closest(".arrow")
-        ){
-            return;
-        }
-
-
         if(e.touches.length !== 1){
+
             return;
+
         }
-
-
-        dragging = true;
-
-        moved = false;
 
         startX =
             e.touches[0].clientX;
 
-        lastX =
-            startX;
+        startY =
+            e.touches[0].clientY;
+
+        isDragging = true;
+
+        moved = false;
 
     },
-    {
-        passive:true
-    }
+    {passive:true}
 );
 
-
-/* =====================================================
-   手指移动
-
-   页面跟着手指走
-===================================================== */
 
 book.addEventListener(
     "touchmove",
     function(e){
 
-        if(!dragging){
+        if(!isDragging){
+
             return;
+
         }
 
-
-        if(e.touches.length !== 1){
-            return;
-        }
-
-
-        lastX =
+        const x =
             e.touches[0].clientX;
 
+        const y =
+            e.touches[0].clientY;
 
-        const delta =
-            lastX - startX;
+        const dx =
+            x - startX;
 
-
-        if(Math.abs(delta) < 6){
-            return;
-        }
-
-
-        moved = true;
+        const dy =
+            y - startY;
 
 
         /*
-            向左：
-            下一页
-        */
+         * 只有明显横向滑动
+         * 才认为是翻页
+         */
 
-        if(delta < 0){
+        if(
+            Math.abs(dx) > 12 &&
+            Math.abs(dx) > Math.abs(dy) * 1.25
+        ){
 
-            if(current >= total - 1){
-                return;
-            }
+            moved = true;
 
+            /*
+             * 阻止页面横向移动
+             */
 
-            const page =
-                pages[current];
-
-
-            const width =
-                book.offsetWidth;
-
-
-            let progress =
-                Math.abs(delta) / width;
-
-
-            progress =
-                Math.min(
-                    progress,
-                    0.98
-                );
-
-
-            const angle =
-                -180 * progress;
-
-
-            page.style.transition =
-                "none";
-
-
-            page.style.zIndex =
-                total + 100;
-
-
-            page.style.transform =
-                "rotateY(" +
-                angle +
-                "deg)";
-
-
-            const shadow =
-                page.querySelector(".page-shadow");
-
-
-            shadow.style.opacity =
-                String(
-                    0.58 * progress
-                );
-
-        }
-
-
-        /*
-            向右：
-            上一页
-        */
-
-        else{
-
-            if(current <= 0){
-                return;
-            }
-
-
-            const page =
-                pages[current - 1];
-
-
-            const width =
-                book.offsetWidth;
-
-
-            let progress =
-                1 -
-                Math.min(
-                    delta / width,
-                    0.98
-                );
-
-
-            const angle =
-                -180 * progress;
-
-
-            page.style.transition =
-                "none";
-
-
-            page.style.zIndex =
-                total + 100;
-
-
-            page.style.transform =
-                "rotateY(" +
-                angle +
-                "deg)";
-
-
-            const shadow =
-                page.querySelector(".page-shadow");
-
-
-            shadow.style.opacity =
-                String(
-                    0.58 * progress
-                );
+            e.preventDefault();
 
         }
 
     },
-    {
-        passive:true
-    }
+    {passive:false}
 );
 
-
-/* =====================================================
-   手指松开
-===================================================== */
 
 book.addEventListener(
     "touchend",
-    function(){
+    function(e){
 
-        if(!dragging){
+        if(!isDragging){
+
             return;
+
         }
 
-
-        dragging = false;
-
-
-        const delta =
-            lastX - startX;
+        isDragging = false;
 
 
-        /*
-            需要滑过约 20%
-        */
+        const dx =
+            e.changedTouches[0].clientX -
+            startX;
 
-        const threshold =
-            book.offsetWidth * 0.20;
+        const dy =
+            e.changedTouches[0].clientY -
+            startY;
 
 
         /*
-            左滑
-        */
+         * 必须满足：
+         *
+         * 1. 横向距离 > 55px
+         * 2. 横向明显大于纵向
+         */
 
         if(
-            delta < -threshold &&
-            current < total - 1
+            moved &&
+            Math.abs(dx) > 55 &&
+            Math.abs(dx) > Math.abs(dy) * 1.25
         ){
 
-            finishNext();
+            if(dx < 0){
 
-            return;
+                /*
+                 * 手指向左
+                 * 下一页
+                 */
+
+                nextPage();
+
+            }
+
+            else{
+
+                /*
+                 * 手指向右
+                 * 上一页
+                 */
+
+                prevPage();
+
+            }
 
         }
-
-
-        /*
-            右滑
-        */
-
-        if(
-            delta > threshold &&
-            current > 0
-        ){
-
-            finishPrev();
-
-            return;
-
-        }
-
-
-        /*
-            没达到阈值：
-            弹回
-        */
-
-        cancelDrag(delta);
 
     },
-    {
-        passive:true
-    }
+    {passive:true}
 );
 
 
-/* =====================================================
-   左滑完成
-===================================================== */
-
-function finishNext(){
-
-    const page =
-        pages[current];
-
-
-    page.style.zIndex =
-        total + 100;
-
-
-    page.style.transition =
-        "transform .62s cubic-bezier(.22,.61,.36,1)";
-
-
-    page.style.transform =
-        "rotateY(-180deg)";
-
-
-    const shadow =
-        page.querySelector(".page-shadow");
-
-
-    shadow.style.transition =
-        "opacity .62s ease";
-
-
-    shadow.style.opacity =
-        "0";
-
-
-    current++;
-
-
-    updateNumber();
-
-
-    setTimeout(
-        rebuildStack,
-        620
-    );
-
-}
-
-
-/* =====================================================
-   右滑完成
-===================================================== */
-
-function finishPrev(){
-
-    current--;
-
-
-    const page =
-        pages[current];
-
-
-    page.style.zIndex =
-        total + 100;
-
-
-    page.style.transition =
-        "transform .62s cubic-bezier(.22,.61,.36,1)";
-
-
-    page.style.transform =
-        "rotateY(0deg)";
-
-
-    const shadow =
-        page.querySelector(".page-shadow");
-
-
-    shadow.style.transition =
-        "opacity .62s ease";
-
-
-    shadow.style.opacity =
-        "0";
-
-
-    updateNumber();
-
-
-    setTimeout(
-        rebuildStack,
-        620
-    );
-
-}
-
-
-/* =====================================================
-   拖动取消
-===================================================== */
-
-function cancelDrag(delta){
-
-    if(delta < 0){
-
-        const page =
-            pages[current];
-
-
-        page.style.transition =
-            "transform .38s cubic-bezier(.25,.8,.25,1)";
-
-
-        page.style.transform =
-            "rotateY(0deg)";
-
-
-        page.querySelector(".page-shadow")
-            .style.opacity =
-            "0";
-
-    }
-
-
-    else if(delta > 0){
-
-        const page =
-            pages[current - 1];
-
-
-        page.style.transition =
-            "transform .38s cubic-bezier(.25,.8,.25,1)";
-
-
-        page.style.transform =
-            "rotateY(-180deg)";
-
-
-        page.querySelector(".page-shadow")
-            .style.opacity =
-            "0";
-
-    }
-
-}
-
-
-/* =====================================================
+/* =========================================
    鼠标拖动
 
-   电脑也可以体验
-===================================================== */
+   电脑上也可以左右拖
+========================================= */
 
 let mouseDown = false;
 
-let mouseStart = 0;
-
-let mouseLast = 0;
+let mouseStartX = 0;
 
 
 book.addEventListener(
     "mousedown",
     function(e){
 
-        if(
-            e.target.closest(".controls")
-        ){
-            return;
-        }
-
-
         mouseDown = true;
 
-        mouseStart =
-            e.clientX;
-
-        mouseLast =
-            e.clientX;
-
-    }
-);
-
-
-window.addEventListener(
-    "mousemove",
-    function(e){
-
-        if(!mouseDown){
-            return;
-        }
-
-
-        mouseLast =
-            e.clientX;
-
-
-        const delta =
-            mouseLast - mouseStart;
-
-
-        if(
-            Math.abs(delta) < 5
-        ){
-            return;
-        }
-
-
-        /*
-            和手机使用相同逻辑
-        */
-
-        if(delta < 0){
-
-            if(current >= total - 1){
-                return;
-            }
-
-
-            const page =
-                pages[current];
-
-
-            const progress =
-                Math.min(
-                    Math.abs(delta) /
-                    book.offsetWidth,
-                    .98
-                );
-
-
-            page.style.zIndex =
-                total + 100;
-
-
-            page.style.transition =
-                "none";
-
-
-            page.style.transform =
-                "rotateY(" +
-                (-180 * progress) +
-                "deg)";
-
-        }
-
-        else{
-
-            if(current <= 0){
-                return;
-            }
-
-
-            const page =
-                pages[current - 1];
-
-
-            const progress =
-                1 -
-                Math.min(
-                    delta /
-                    book.offsetWidth,
-                    .98
-                );
-
-
-            page.style.zIndex =
-                total + 100;
-
-
-            page.style.transition =
-                "none";
-
-
-            page.style.transform =
-                "rotateY(" +
-                (-180 * progress) +
-                "deg)";
-
-        }
+        mouseStartX = e.clientX;
 
     }
 );
@@ -3292,45 +2265,33 @@ window.addEventListener(
 
 window.addEventListener(
     "mouseup",
-    function(){
+    function(e){
 
         if(!mouseDown){
-            return;
-        }
 
+            return;
+
+        }
 
         mouseDown = false;
 
-
-        const delta =
-            mouseLast - mouseStart;
-
-
-        const threshold =
-            book.offsetWidth * .20;
+        const dx =
+            e.clientX - mouseStartX;
 
 
-        if(
-            delta < -threshold &&
-            current < total - 1
-        ){
+        if(Math.abs(dx) > 70){
 
-            finishNext();
+            if(dx < 0){
 
-        }
+                nextPage();
 
-        else if(
-            delta > threshold &&
-            current > 0
-        ){
+            }
 
-            finishPrev();
+            else{
 
-        }
+                prevPage();
 
-        else{
-
-            cancelDrag(delta);
+            }
 
         }
 
@@ -3338,33 +2299,13 @@ window.addEventListener(
 );
 
 
-/* =====================================================
-   按钮
-===================================================== */
-
-prevBtn.addEventListener(
-    "click",
-    function(){
-
-        prevPage();
-
-    }
-);
-
-
-nextBtn.addEventListener(
-    "click",
-    function(){
-
-        nextPage();
-
-    }
-);
-
-
-/* =====================================================
+/* =========================================
    键盘
-===================================================== */
+
+   电脑上：
+   ← 上一页
+   → 下一页
+========================================= */
 
 document.addEventListener(
     "keydown",
@@ -3376,7 +2317,6 @@ document.addEventListener(
 
         }
 
-
         if(e.key === "ArrowRight"){
 
             nextPage();
@@ -3387,37 +2327,54 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   图片加载失败
-===================================================== */
+/* =========================================
+   图片加载失败处理
+========================================= */
 
 document
-    .querySelectorAll(".photo img")
-    .forEach(
-        function(img){
+.querySelectorAll(".photo img")
+.forEach(img=>{
 
-            img.addEventListener(
-                "error",
-                function(){
+    img.addEventListener(
+        "error",
+        function(){
 
-                    img.style.display =
-                        "none";
+            const box =
+                img.parentElement;
 
-                    img.parentElement.innerHTML =
-                        '<span style="color:#999;font-size:13px;">以后放照片的位置 📷</span>';
+            img.style.display = "none";
 
-                }
-            );
+            box.classList.add("empty");
+
+            box.innerHTML =
+                "📷 以后放照片的位置";
 
         }
     );
 
+});
 
-/* =====================================================
+
+/* =========================================
    初始化
-===================================================== */
+========================================= */
 
-setInitialState();
+updatePages();
+
+
+/* =========================================
+   第一次打开时自动隐藏提示
+========================================= */
+
+setTimeout(
+    function(){
+
+        swipeTip.style.transition =
+            "opacity .8s ease";
+
+    },
+    100
+);
 
 </script>
 
