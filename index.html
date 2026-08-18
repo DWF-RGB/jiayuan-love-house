@@ -13,6 +13,10 @@
 
 <style>
 
+/* =========================
+   基础
+========================= */
+
 *{
     box-sizing:border-box;
 }
@@ -40,145 +44,54 @@ body{
 
     align-items:center;
 
-    padding:24px 18px;
+    padding:20px;
 
 
     /*
 
-       温暖柔和的奶油暖粉
+       正常、干净的浅粉色
 
        不灰
-       不亮
-       不暗
+       不棕
+       不发暗
 
     */
 
-    background:
-
-    radial-gradient(
-        circle at 8% 8%,
-        #FFE8EE 0%,
-        transparent 30%
-    ),
-
-    radial-gradient(
-        circle at 92% 92%,
-        #FFE8E3 0%,
-        transparent 30%
-    ),
-
-    linear-gradient(
-        135deg,
-        #FFF1F3,
-        #FFF8F3
-    );
+    background:#FFF0F5;
 
 
     font-family:
     "Microsoft YaHei",
     "PingFang SC",
-    "Noto Sans SC",
     sans-serif;
-
-
-    color:#555;
 
 }
 
 
 /* =========================
-   小屋卡片
+   主卡片
 ========================= */
 
 .box{
 
-    position:relative;
-
     width:100%;
 
-    max-width:430px;
+    max-width:420px;
 
     padding:
-    42px 27px 34px;
+    44px 26px 36px;
 
-
-    /*
-
-       温暖米白
-       不使用纯白
-
-    */
-
-    background:#FFFBF8;
-
+    background:#FFFFFF;
 
     border-radius:30px;
-
 
     text-align:center;
 
 
-    /*
-       非常柔和的暖色阴影
-    */
-
     box-shadow:
 
-    0 18px 45px
-    rgba(210,125,145,0.13),
-
-    0 3px 10px
-    rgba(210,125,145,0.06);
-
-
-    border:
-    1px solid
-    rgba(255,255,255,0.9);
-
-
-    overflow:hidden;
-
-}
-
-
-/* =========================
-   装饰爱心
-========================= */
-
-.box::before{
-
-    content:"♡";
-
-    position:absolute;
-
-    top:15px;
-
-    right:23px;
-
-    font-size:24px;
-
-    color:#EFB4C5;
-
-    transform:rotate(12deg);
-
-}
-
-
-.box::after{
-
-    content:"♡";
-
-    position:absolute;
-
-    bottom:18px;
-
-    left:20px;
-
-    font-size:20px;
-
-    color:#F2C8D4;
-
-    transform:rotate(-12deg);
+    0 15px 40px
+    rgba(255,107,157,0.16);
 
 }
 
@@ -192,28 +105,25 @@ h1{
     margin:0;
 
     font-family:
-    "STKaiti",
-    "KaiTi",
     "Microsoft YaHei",
     sans-serif;
 
-
-    font-size:30px;
+    font-size:31px;
 
     font-weight:600;
 
     line-height:1.45;
 
-    letter-spacing:1px;
+    letter-spacing:0.5px;
 
 
     /*
-       柔和玫瑰粉
 
-       比上一版明显柔和
+       正常明亮粉色
+
     */
 
-    color:#E87898;
+    color:#FF6B9D;
 
 }
 
@@ -226,9 +136,7 @@ h1{
 
     display:block;
 
-    margin-bottom:7px;
-
-    font-family:sans-serif;
+    margin-bottom:6px;
 
     font-size:30px;
 
@@ -245,22 +153,11 @@ h1{
 
     margin-bottom:30px;
 
-
-    font-family:
-    "STKaiti",
-    "KaiTi",
-    "Microsoft YaHei",
-    sans-serif;
-
-
     font-size:17px;
 
     line-height:1.7;
 
-    letter-spacing:0.5px;
-
-
-    color:#D9859F;
+    color:#FF8FB5;
 
 }
 
@@ -278,9 +175,7 @@ h1{
 
     line-height:2;
 
-    letter-spacing:0.3px;
-
-    color:#555;
+    color:#555555;
 
 }
 
@@ -289,20 +184,20 @@ h1{
 
     font-size:18px;
 
-    color:#505050;
+    color:#555555;
 
 }
 
 
 .love{
 
-    color:#E87898;
+    color:#FF6B9D;
 
 }
 
 
 /* =========================
-   按钮
+   按钮区域
 ========================= */
 
 .buttons{
@@ -312,9 +207,11 @@ h1{
 }
 
 
-.buttons a{
+/* =========================
+   按钮
+========================= */
 
-    position:relative;
+.buttons a{
 
     display:flex;
 
@@ -322,63 +219,52 @@ h1{
 
     justify-content:center;
 
-
     width:100%;
 
     min-height:58px;
 
-
     margin:13px 0;
 
-    padding:14px 18px;
-
+    padding:
+    14px 18px;
 
     border-radius:18px;
 
 
     /*
-       柔和暖粉
 
-       不刺眼
+       干净浅粉
+
     */
 
-    background:
-
-    linear-gradient(
-        135deg,
-        #FDE8ED,
-        #FBE3E7
-    );
+    background:#FFE4EC;
 
 
     border:
-    1px solid #F3CBD7;
+    1px solid #FFC4D5;
 
 
-    color:#D96F91;
+    color:#FF6B9D;
 
 
     text-decoration:none;
 
+    font-size:17px;
 
-    font-size:16px;
+    font-weight:500;
 
-    letter-spacing:0.5px;
+    letter-spacing:0.3px;
 
 
     box-shadow:
 
     0 5px 15px
-    rgba(210,120,145,0.08);
+    rgba(255,107,157,0.08);
 
 
     transition:
-
     transform 0.2s ease,
-
-    background 0.2s ease,
-
-    box-shadow 0.2s ease;
+    background 0.2s ease;
 
 }
 
@@ -392,20 +278,7 @@ h1{
     transform:
     translateY(-2px);
 
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #FBE1E8,
-        #F9DDE4
-    );
-
-
-    box-shadow:
-
-    0 8px 20px
-    rgba(210,120,145,0.12);
+    background:#FFDCE7;
 
 }
 
@@ -423,21 +296,6 @@ h1{
 
 
 /* =========================
-   按钮文字
-========================= */
-
-.button-title{
-
-    display:block;
-
-    font-size:17px;
-
-    font-weight:500;
-
-}
-
-
-/* =========================
    底部
 ========================= */
 
@@ -449,7 +307,7 @@ h1{
 
     letter-spacing:1px;
 
-    color:#D89BAE;
+    color:#FF9FBC;
 
 }
 
@@ -471,7 +329,7 @@ h1{
     .box{
 
         padding:
-        36px 22px 28px;
+        37px 22px 29px;
 
         border-radius:27px;
 
@@ -537,13 +395,6 @@ h1{
     }
 
 
-    .button-title{
-
-        font-size:16px;
-
-    }
-
-
     .footer{
 
         margin-top:24px;
@@ -565,6 +416,8 @@ h1{
 <div class="box">
 
 
+    <!-- 主标题 -->
+
     <h1>
 
         <span class="house">🏡</span>
@@ -574,12 +427,16 @@ h1{
     </h1>
 
 
+    <!-- 副标题 -->
+
     <div class="subtitle">
 
         伟峰给佳源的休闲爱乐园 💕
 
     </div>
 
+
+    <!-- 正文 -->
 
     <div class="text">
 
@@ -618,44 +475,36 @@ h1{
     </div>
 
 
+    <!-- 按钮 -->
+
     <div class="buttons">
 
 
         <a href="chat.html">
 
-            <span class="button-title">
-
-                💕 爱的小助手
-
-            </span>
+            💕 爱的小助手
 
         </a>
 
 
         <a href="letter.html">
 
-            <span class="button-title">
-
-                💌 伟峰的情话信箱
-
-            </span>
+            💌 伟峰的情话信箱
 
         </a>
 
 
         <a href="story.html">
 
-            <span class="button-title">
-
-                📖 我们的故事
-
-            </span>
+            📖 我们的故事
 
         </a>
 
 
     </div>
 
+
+    <!-- 底部 -->
 
     <div class="footer">
 
