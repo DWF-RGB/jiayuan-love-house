@@ -6,18 +6,18 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
 
 <title>我们的故事</title>
 
 <style>
 
-/* =========================================================
+/* ==============================
    基础
-========================================================= */
+============================== */
 
 *{
     box-sizing:border-box;
@@ -40,9 +40,9 @@ body{
     background:#f8f1e7;
 
     font-family:
-        "Microsoft YaHei",
-        "PingFang SC",
-        sans-serif;
+    "Microsoft YaHei",
+    "PingFang SC",
+    sans-serif;
 
     color:#555;
 
@@ -53,9 +53,9 @@ body{
 }
 
 
-/* =========================================================
+/* ==============================
    回到小屋
-========================================================= */
+============================== */
 
 .back{
 
@@ -64,7 +64,7 @@ body{
     top:15px;
     left:15px;
 
-    z-index:9000;
+    z-index:1000;
 
     color:#8b6f47;
 
@@ -76,19 +76,14 @@ body{
 
     border-radius:20px;
 
-    background:
-        rgba(248,241,231,.94);
-
-    backdrop-filter:blur(6px);
-
-    -webkit-backdrop-filter:blur(6px);
+    background:rgba(248,241,231,.95);
 
 }
 
 
-/* =========================================================
+/* ==============================
    书本区域
-========================================================= */
+============================== */
 
 .book-wrapper{
 
@@ -99,21 +94,18 @@ body{
 
     display:flex;
 
+    justify-content:center;
     align-items:center;
 
-    justify-content:center;
-
     padding:
-        48px
-        10px
-        28px;
+    48px 9px 55px;
 
 }
 
 
-/* =========================================================
+/* ==============================
    书本
-========================================================= */
+============================== */
 
 .book{
 
@@ -122,23 +114,20 @@ body{
     width:min(420px,95vw);
 
     height:
-        min(
-            720px,
-            calc(100dvh - 76px)
-        );
+    calc(100dvh - 103px);
 
     min-height:500px;
 
-    perspective:2000px;
+    overflow:hidden;
 
-    transform-style:preserve-3d;
+    border-radius:8px;
 
 }
 
 
-/* =========================================================
+/* ==============================
    页面
-========================================================= */
+============================== */
 
 .page{
 
@@ -151,73 +140,32 @@ body{
 
     background:#fffdf8;
 
-    border-radius:
-        3px
-        10px
-        10px
-        3px;
+    border-radius:8px;
 
     overflow:hidden;
 
-    transform-origin:left center;
-
-    transform-style:preserve-3d;
-
-    backface-visibility:hidden;
-
-    -webkit-backface-visibility:hidden;
-
     box-shadow:
+    0 8px 24px
+    rgba(70,50,30,.13);
 
-        0 13px 35px
-        rgba(70,50,30,.13),
+    /*
+       只使用 GPU 比较友好的属性
+    */
 
-        inset
-        2px 0
-        0
-        rgba(150,120,80,.08);
+    transform:translateX(0);
 
-}
+    opacity:1;
 
-
-/* =========================================================
-   页面纸张纹理
-========================================================= */
-
-.page::after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    z-index:50;
-
-    pointer-events:none;
-
-    opacity:.16;
-
-    background:
-
-        repeating-linear-gradient(
-            0deg,
-            rgba(120,90,55,.025)
-            0px,
-            rgba(120,90,55,.025)
-            1px,
-            transparent
-            1px,
-            transparent
-            4px
-        );
+    will-change:
+    transform,
+    opacity;
 
 }
 
 
-/* =========================================================
-   左侧书脊
-========================================================= */
+/* ==============================
+   页面轻微纸张边缘
+============================== */
 
 .page::before{
 
@@ -225,34 +173,31 @@ body{
 
     position:absolute;
 
-    top:0;
     left:0;
+    top:0;
     bottom:0;
 
-    width:9px;
+    width:5px;
 
-    z-index:60;
+    z-index:20;
 
     pointer-events:none;
 
     background:
-
-        linear-gradient(
-            to right,
-            rgba(120,90,55,.15),
-            rgba(255,255,255,0)
-        );
+    linear-gradient(
+        to right,
+        rgba(120,90,55,.12),
+        transparent
+    );
 
 }
 
 
-/* =========================================================
-   页面内部
-========================================================= */
+/* ==============================
+   页面内容
+============================== */
 
 .page-inner{
-
-    position:relative;
 
     width:100%;
     height:100%;
@@ -262,9 +207,9 @@ body{
     overflow-x:hidden;
 
     padding:
-        32px
-        21px
-        48px;
+    31px
+    20px
+    50px;
 
     -webkit-overflow-scrolling:touch;
 
@@ -279,19 +224,19 @@ body{
 }
 
 
-/* =========================================================
+/* ==============================
    页码
-========================================================= */
+============================== */
 
 .page-number{
 
     position:absolute;
 
-    right:20px;
+    right:19px;
 
     bottom:14px;
 
-    z-index:100;
+    z-index:50;
 
     font-size:11px;
 
@@ -299,12 +244,16 @@ body{
 
     letter-spacing:1px;
 
+    background:#fffdf8;
+
+    padding:2px 5px;
+
 }
 
 
-/* =========================================================
+/* ==============================
    章节
-========================================================= */
+============================== */
 
 .chapter{
 
@@ -319,9 +268,9 @@ body{
 }
 
 
-/* =========================================================
+/* ==============================
    日期
-========================================================= */
+============================== */
 
 .date{
 
@@ -331,16 +280,16 @@ body{
 
     color:#8b6f47;
 
-    line-height:1.45;
+    line-height:1.5;
 
     margin-bottom:7px;
 
 }
 
 
-/* =========================================================
+/* ==============================
    标题
-========================================================= */
+============================== */
 
 .story-title{
 
@@ -350,33 +299,30 @@ body{
 
     color:#555;
 
-    margin:
-        0
-        0
-        15px;
-
     font-weight:bold;
+
+    margin:
+    0 0 15px;
 
 }
 
 
-/* =========================================================
-   照片
-========================================================= */
+/* ==============================
+   图片区域
+============================== */
 
 .photo{
 
     width:100%;
 
-    min-height:110px;
+    min-height:100px;
 
     max-height:340px;
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
+    align-items:center;
 
     overflow:hidden;
 
@@ -384,20 +330,17 @@ body{
 
     border-radius:7px;
 
-    padding:6px;
+    padding:5px;
 
     margin:
-        0
-        0
-        18px;
-
-    box-shadow:
-
-        0 5px 16px
-        rgba(70,50,30,.08);
+    0 0 18px;
 
 }
 
+
+/* ==============================
+   图片
+============================== */
 
 .photo img{
 
@@ -409,7 +352,7 @@ body{
 
     max-width:100%;
 
-    max-height:328px;
+    max-height:330px;
 
     object-fit:contain;
 
@@ -418,9 +361,9 @@ body{
 }
 
 
-/* =========================================================
+/* ==============================
    正文
-========================================================= */
+============================== */
 
 .text{
 
@@ -432,14 +375,14 @@ body{
 
     white-space:pre-line;
 
-    padding-bottom:25px;
+    padding-bottom:20px;
 
 }
 
 
-/* =========================================================
+/* ==============================
    结尾
-========================================================= */
+============================== */
 
 .end{
 
@@ -451,7 +394,6 @@ body{
     flex-direction:column;
 
     justify-content:center;
-
     align-items:center;
 
     text-align:center;
@@ -468,105 +410,58 @@ body{
 
 .end-heart{
 
-    font-size:36px;
+    font-size:35px;
 
     margin-bottom:18px;
 
 }
 
 
-/* =========================================================
-   翻页时的纸张折痕
-========================================================= */
+/* ==============================
+   翻页时的小阴影
+============================== */
 
-.page-fold{
+.page.turning-next{
 
-    position:absolute;
-
-    top:0;
-    bottom:0;
-
-    right:0;
-
-    width:0;
-
-    z-index:500;
-
-    pointer-events:none;
-
-    opacity:0;
-
-    background:
-
-        linear-gradient(
-            to left,
-            rgba(80,55,35,.30),
-            rgba(255,255,255,.15),
-            transparent
-        );
+    box-shadow:
+    -10px 5px 22px
+    rgba(70,50,30,.08);
 
 }
 
 
-/* =========================================================
-   翻页时的阴影
-========================================================= */
+.page.turning-prev{
 
-.page-shadow{
-
-    position:absolute;
-
-    top:0;
-    bottom:0;
-
-    right:0;
-
-    width:0;
-
-    z-index:490;
-
-    pointer-events:none;
-
-    opacity:0;
-
-    background:
-
-        linear-gradient(
-            to left,
-            rgba(50,35,20,.25),
-            rgba(50,35,20,.08),
-            transparent
-        );
-
-    filter:blur(5px);
+    box-shadow:
+    10px 5px 22px
+    rgba(70,50,30,.08);
 
 }
 
 
-/* =========================================================
-   翻页提示
-========================================================= */
+/* ==============================
+   提示
+============================== */
 
 .swipe-tip{
 
     position:fixed;
 
-    bottom:12px;
-
     left:50%;
+
+    bottom:15px;
 
     transform:translateX(-50%);
 
-    z-index:9500;
+    z-index:1000;
 
     color:#b08b57;
 
     background:
-        rgba(248,241,231,.92);
+    rgba(248,241,231,.94);
 
     padding:
-        6px
-        13px;
+    6px 13px;
 
     border-radius:20px;
 
@@ -576,30 +471,31 @@ body{
 
     opacity:.85;
 
-    transition:opacity .8s ease;
+    transition:
+    opacity .6s ease;
 
 }
 
 
-/* =========================================================
-   底部控制
-========================================================= */
+/* ==============================
+   底部按钮
+============================== */
 
 .nav{
 
     position:fixed;
 
-    right:13px;
+    right:12px;
 
     bottom:13px;
 
-    z-index:9500;
+    z-index:1001;
 
     display:flex;
 
     align-items:center;
 
-    gap:6px;
+    gap:5px;
 
 }
 
@@ -614,7 +510,7 @@ body{
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.84);
+    rgba(255,255,255,.9);
 
     color:#8b6f47;
 
@@ -623,23 +519,15 @@ body{
     padding:0;
 
     box-shadow:
-
-        0 3px 10px
-        rgba(70,50,30,.10);
-
-}
-
-
-.nav button:active{
-
-    transform:scale(.91);
+    0 3px 9px
+    rgba(70,50,30,.1);
 
 }
 
 
 .counter{
 
-    min-width:38px;
+    min-width:40px;
 
     text-align:center;
 
@@ -650,18 +538,18 @@ body{
 }
 
 
-/* =========================================================
+/* ==============================
    手机
-========================================================= */
+============================== */
 
 @media(max-width:600px){
 
     .book-wrapper{
 
         padding:
-            46px
-            8px
-            27px;
+        47px
+        8px
+        52px;
 
     }
 
@@ -671,7 +559,7 @@ body{
         width:95vw;
 
         height:
-            calc(100dvh - 73px);
+        calc(100dvh - 99px);
 
     }
 
@@ -679,9 +567,9 @@ body{
     .page-inner{
 
         padding:
-            31px
-            20px
-            46px;
+        30px
+        19px
+        48px;
 
     }
 
@@ -702,7 +590,7 @@ body{
 
     .photo img{
 
-        max-height:323px;
+        max-height:325px;
 
     }
 
@@ -718,16 +606,16 @@ body{
 }
 
 
-/* =========================================================
+/* ==============================
    矮屏手机
-========================================================= */
+============================== */
 
 @media(max-height:700px){
 
     .book{
 
         height:
-            calc(100dvh - 68px);
+        calc(100dvh - 90px);
 
     }
 
@@ -735,9 +623,9 @@ body{
     .page-inner{
 
         padding:
-            27px
-            18px
-            43px;
+        26px
+        18px
+        45px;
 
     }
 
@@ -760,21 +648,21 @@ body{
 
         font-size:13px;
 
-        line-height:1.78;
+        line-height:1.8;
 
     }
 
 
     .photo{
 
-        max-height:275px;
+        max-height:270px;
 
     }
 
 
     .photo img{
 
-        max-height:263px;
+        max-height:260px;
 
     }
 
@@ -788,19 +676,25 @@ body{
 <body>
 
 
-<a href="index.html" class="back">
+<a
+href="index.html"
+class="back"
+>
 ← 回到小屋
 </a>
 
 
 <div class="book-wrapper">
 
-<div class="book" id="book">
+<div
+class="book"
+id="book"
+>
 
 
-<!-- =====================================================
-     01
-===================================================== -->
+<!-- =========================
+01
+========================= -->
 
 <div class="page">
 
@@ -808,9 +702,13 @@ body{
 
 <div class="page-number">01</div>
 
-<div class="chapter">CHAPTER 01</div>
+<div class="chapter">
+CHAPTER 01
+</div>
 
-<div class="date">2024.12.14-16</div>
+<div class="date">
+2024.12.14-16
+</div>
 
 <div class="story-title">
 源峰的开始
@@ -827,7 +725,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -839,7 +736,9 @@ body{
 
 <div class="page-number">02</div>
 
-<div class="chapter">CHAPTER 02</div>
+<div class="chapter">
+CHAPTER 02
+</div>
 
 <div class="story-title">
 开始的开始
@@ -858,7 +757,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -870,7 +768,9 @@ body{
 
 <div class="page-number">03</div>
 
-<div class="chapter">CHAPTER 03</div>
+<div class="chapter">
+CHAPTER 03
+</div>
 
 <div class="story-title">
 第一次小约会
@@ -889,7 +789,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -901,7 +800,9 @@ body{
 
 <div class="page-number">04</div>
 
-<div class="chapter">CHAPTER 04</div>
+<div class="chapter">
+CHAPTER 04
+</div>
 
 <div class="date">
 2025.12.25
@@ -920,7 +821,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -932,7 +832,9 @@ body{
 
 <div class="page-number">05</div>
 
-<div class="chapter">CHAPTER 05</div>
+<div class="chapter">
+CHAPTER 05
+</div>
 
 <div class="date">
 2025.1.1
@@ -951,7 +853,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -963,7 +864,9 @@ body{
 
 <div class="page-number">06</div>
 
-<div class="chapter">CHAPTER 06</div>
+<div class="chapter">
+CHAPTER 06
+</div>
 
 <div class="story-title">
 咖喱鸡腿饭+凉菜
@@ -982,7 +885,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -994,7 +896,9 @@ body{
 
 <div class="page-number">07</div>
 
-<div class="chapter">CHAPTER 07</div>
+<div class="chapter">
+CHAPTER 07
+</div>
 
 <div class="story-title">
 栗子馒头&小熊
@@ -1013,7 +917,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1025,7 +928,9 @@ body{
 
 <div class="page-number">08</div>
 
-<div class="chapter">CHAPTER 08</div>
+<div class="chapter">
+CHAPTER 08
+</div>
 
 <div class="story-title">
 南湖散步
@@ -1044,7 +949,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1056,7 +960,9 @@ body{
 
 <div class="page-number">09</div>
 
-<div class="chapter">CHAPTER 09</div>
+<div class="chapter">
+CHAPTER 09
+</div>
 
 <div class="story-title">
 老婆实习
@@ -1075,7 +981,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1087,7 +992,9 @@ body{
 
 <div class="page-number">10</div>
 
-<div class="chapter">CHAPTER 10</div>
+<div class="chapter">
+CHAPTER 10
+</div>
 
 <div class="story-title">
 双影奇境
@@ -1106,7 +1013,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1118,7 +1024,9 @@ body{
 
 <div class="page-number">11</div>
 
-<div class="chapter">CHAPTER 11</div>
+<div class="chapter">
+CHAPTER 11
+</div>
 
 <div class="story-title">
 贸大
@@ -1137,7 +1045,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1149,7 +1056,9 @@ body{
 
 <div class="page-number">12</div>
 
-<div class="chapter">CHAPTER 12</div>
+<div class="chapter">
+CHAPTER 12
+</div>
 
 <div class="story-title">
 理发
@@ -1168,7 +1077,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1180,7 +1088,9 @@ body{
 
 <div class="page-number">13</div>
 
-<div class="chapter">CHAPTER 13</div>
+<div class="chapter">
+CHAPTER 13
+</div>
 
 <div class="story-title">
 继续做饭
@@ -1199,7 +1109,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1211,7 +1120,9 @@ body{
 
 <div class="page-number">14</div>
 
-<div class="chapter">CHAPTER 14</div>
+<div class="chapter">
+CHAPTER 14
+</div>
 
 <div class="story-title">
 看直火帮
@@ -1230,7 +1141,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1242,7 +1152,9 @@ body{
 
 <div class="page-number">15</div>
 
-<div class="chapter">CHAPTER 15</div>
+<div class="chapter">
+CHAPTER 15
+</div>
 
 <div class="story-title">
 许嵩
@@ -1261,7 +1173,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1273,7 +1184,9 @@ body{
 
 <div class="page-number">16</div>
 
-<div class="chapter">CHAPTER 16</div>
+<div class="chapter">
+CHAPTER 16
+</div>
 
 <div class="story-title">
 和老婆重游九中
@@ -1292,7 +1205,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1304,7 +1216,9 @@ body{
 
 <div class="page-number">17</div>
 
-<div class="chapter">CHAPTER 17</div>
+<div class="chapter">
+CHAPTER 17
+</div>
 
 <div class="story-title">
 老婆偶遇陆沉
@@ -1319,7 +1233,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1331,7 +1244,9 @@ body{
 
 <div class="page-number">18</div>
 
-<div class="chapter">CHAPTER 18</div>
+<div class="chapter">
+CHAPTER 18
+</div>
 
 <div class="story-title">
 泰达航母看烟花
@@ -1346,7 +1261,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1358,7 +1272,9 @@ body{
 
 <div class="page-number">19</div>
 
-<div class="chapter">CHAPTER 19</div>
+<div class="chapter">
+CHAPTER 19
+</div>
 
 <div class="story-title">
 我和小咪同床共枕
@@ -1373,7 +1289,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1385,7 +1300,9 @@ body{
 
 <div class="page-number">20</div>
 
-<div class="chapter">CHAPTER 20</div>
+<div class="chapter">
+CHAPTER 20
+</div>
 
 <div class="story-title">
 小老婆论文期
@@ -1400,7 +1317,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1412,7 +1328,9 @@ body{
 
 <div class="page-number">21</div>
 
-<div class="chapter">CHAPTER 21</div>
+<div class="chapter">
+CHAPTER 21
+</div>
 
 <div class="story-title">
 和老婆秋游
@@ -1427,7 +1345,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1439,7 +1356,9 @@ body{
 
 <div class="page-number">22</div>
 
-<div class="chapter">CHAPTER 22</div>
+<div class="chapter">
+CHAPTER 22
+</div>
 
 <div class="story-title">
 老婆治痘期
@@ -1454,7 +1373,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1466,7 +1384,9 @@ body{
 
 <div class="page-number">23</div>
 
-<div class="chapter">CHAPTER 23</div>
+<div class="chapter">
+CHAPTER 23
+</div>
 
 <div class="story-title">
 我的腹肌锻炼期
@@ -1481,7 +1401,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1493,7 +1412,9 @@ body{
 
 <div class="page-number">24</div>
 
-<div class="chapter">CHAPTER 24</div>
+<div class="chapter">
+CHAPTER 24
+</div>
 
 <div class="story-title">
 2026年的跨年
@@ -1508,7 +1429,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1520,7 +1440,9 @@ body{
 
 <div class="page-number">25</div>
 
-<div class="chapter">CHAPTER 25</div>
+<div class="chapter">
+CHAPTER 25
+</div>
 
 <div class="story-title">
 去韩国旅游
@@ -1539,7 +1461,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1551,7 +1472,9 @@ body{
 
 <div class="page-number">26</div>
 
-<div class="chapter">CHAPTER 26</div>
+<div class="chapter">
+CHAPTER 26
+</div>
 
 <div class="story-title">
 毕业回国后
@@ -1566,7 +1489,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1578,7 +1500,9 @@ body{
 
 <div class="page-number">27</div>
 
-<div class="chapter">CHAPTER 27</div>
+<div class="chapter">
+CHAPTER 27
+</div>
 
 <div class="story-title">
 理新发型
@@ -1593,7 +1517,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1605,7 +1528,9 @@ body{
 
 <div class="page-number">28</div>
 
-<div class="chapter">CHAPTER 28</div>
+<div class="chapter">
+CHAPTER 28
+</div>
 
 <div class="story-title">
 脚美甲
@@ -1620,7 +1545,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1632,7 +1556,9 @@ body{
 
 <div class="page-number">29</div>
 
-<div class="chapter">CHAPTER 29</div>
+<div class="chapter">
+CHAPTER 29
+</div>
 
 <div class="story-title">
 老婆实习期
@@ -1647,7 +1573,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1659,7 +1584,9 @@ body{
 
 <div class="page-number">30</div>
 
-<div class="chapter">CHAPTER 30</div>
+<div class="chapter">
+CHAPTER 30
+</div>
 
 <div class="story-title">
 进入租房阶段
@@ -1674,7 +1601,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1686,7 +1612,9 @@ body{
 
 <div class="page-number">31</div>
 
-<div class="chapter">CHAPTER 31</div>
+<div class="chapter">
+CHAPTER 31
+</div>
 
 <div class="story-title">
 搬家定居
@@ -1701,7 +1629,6 @@ body{
 </div>
 
 </div>
-
 </div>
 
 
@@ -1713,7 +1640,9 @@ body{
 
 <div class="page-number">32</div>
 
-<div class="chapter">CHAPTER 32</div>
+<div class="chapter">
+CHAPTER 32
+</div>
 
 <div class="story-title">
 和老婆去看蔡依林
@@ -1732,7 +1661,6 @@ Baby u u me
 </div>
 
 </div>
-
 </div>
 
 
@@ -1776,14 +1704,14 @@ Baby u u me
 
 
 </div>
-
 </div>
 
 
-<div class="swipe-tip" id="swipeTip">
-
+<div
+class="swipe-tip"
+id="swipeTip"
+>
 ← 左右滑动翻页 →
-
 </div>
 
 
@@ -1793,7 +1721,10 @@ Baby u u me
 ‹
 </button>
 
-<div class="counter" id="counter">
+<div
+class="counter"
+id="counter"
+>
 1 / 33
 </div>
 
@@ -1806,847 +1737,116 @@ Baby u u me
 
 <script>
 
-/* =========================================================
-   纸张翻页引擎
-========================================================= */
+/* =========================================
+   简单、流畅的翻页系统
+========================================= */
 
 const pages =
-    Array.from(
-        document.querySelectorAll(".page")
-    );
+Array.from(
+document.querySelectorAll(".page")
+);
 
 const book =
-    document.getElementById("book");
+document.getElementById("book");
 
 const counter =
-    document.getElementById("counter");
+document.getElementById("counter");
 
 const prevBtn =
-    document.getElementById("prevBtn");
+document.getElementById("prevBtn");
 
 const nextBtn =
-    document.getElementById("nextBtn");
+document.getElementById("nextBtn");
 
 const swipeTip =
-    document.getElementById("swipeTip");
+document.getElementById("swipeTip");
 
 
-let currentPage = 0;
+let currentPage=0;
+
+let startX=0;
+
+let startY=0;
+
+let tracking=false;
 
 
-/* =========================================================
-   当前拖动状态
-========================================================= */
+/* =========================================
+   初始化页面层级
+========================================= */
 
-let dragging = false;
-
-let startX = 0;
-
-let startY = 0;
-
-let currentX = 0;
-
-let dragDirection = null;
-
-let dragPage = null;
-
-let dragProgress = 0;
-
-
-/* =========================================================
-   页面层级
-========================================================= */
-
-function updateStack(){
+function updatePages(){
 
     pages.forEach(
         (page,index)=>{
 
-            page.style.zIndex =
-                pages.length - index;
+            if(index===currentPage){
 
-        }
-    );
+                page.style.zIndex=100;
 
+                page.style.transform=
+                "translateX(0)";
 
-    /*
-       已翻过去的页面放到后面
-    */
+                page.style.opacity="1";
 
-    pages.forEach(
-        (page,index)=>{
+            }
 
-            if(index < currentPage){
+            else if(index<currentPage){
 
-                page.style.zIndex=index;
+                page.style.zIndex=
+                index;
+
+                page.style.transform=
+                "translateX(-105%)";
+
+                page.style.opacity="0";
 
             }
 
             else{
 
                 page.style.zIndex=
-                    pages.length-index;
+                100-index;
+
+                page.style.transform=
+                "translateX(105%)";
+
+                page.style.opacity="0";
 
             }
 
         }
     );
 
-}
+
+    counter.textContent=
+    `${currentPage+1} / ${pages.length}`;
 
 
-/* =========================================================
-   更新计数
-========================================================= */
-
-function updateCounter(){
-
-    counter.textContent =
-        `${currentPage + 1} / ${pages.length}`;
+    prevBtn.style.opacity=
+    currentPage===0
+    ? ".35"
+    : "1";
 
 
-    prevBtn.style.opacity =
-        currentPage === 0
-        ? ".35"
-        : "1";
-
-
-    nextBtn.style.opacity =
-        currentPage === pages.length - 1
-        ? ".35"
-        : "1";
-
-
-    if(currentPage>0){
-
-        swipeTip.style.opacity="0";
-
-    }
+    nextBtn.style.opacity=
+    currentPage===pages.length-1
+    ? ".35"
+    : "1";
 
 }
 
 
-/* =========================================================
+/* =========================================
    初始化
-========================================================= */
+========================================= */
 
-function initialize(){
+updatePages();
 
-    pages.forEach(
-        (page,index)=>{
 
-            page.style.transform="";
-
-        }
-    );
-
-    updateStack();
-
-    updateCounter();
-
-}
-
-initialize();
-
-
-/* =========================================================
-   计算当前页面
-========================================================= */
-
-function getCurrentPage(){
-
-    return pages[currentPage];
-
-}
-
-
-/* =========================================================
-   开始向后翻
-========================================================= */
-
-function beginNext(){
-
-    if(
-        currentPage >=
-        pages.length-1
-    ){
-
-        return false;
-
-    }
-
-    dragDirection="next";
-
-    dragPage=
-        pages[currentPage];
-
-    return true;
-
-}
-
-
-/* =========================================================
-   开始向前翻
-========================================================= */
-
-function beginPrev(){
-
-    if(currentPage<=0){
-
-        return false;
-
-    }
-
-    dragDirection="prev";
-
-    dragPage=
-        pages[currentPage-1];
-
-    return true;
-
-}
-
-
-/* =========================================================
-   设置翻页视觉
-========================================================= */
-
-function renderDrag(progress){
-
-    if(!dragPage){
-
-        return;
-
-    }
-
-
-    progress=
-        Math.max(
-            0,
-            Math.min(
-                1,
-                progress
-            )
-        );
-
-
-    dragProgress=progress;
-
-
-    /*
-       更自然的翻页角度
-
-       不直接从 0 到 180
-       而是增加一点透视
-    */
-
-    let angle;
-
-    if(dragDirection==="next"){
-
-        angle =
-            -178 *
-            progress;
-
-    }
-
-    else{
-
-        angle =
-            178 *
-            (1-progress);
-
-    }
-
-
-    /*
-       页面随着手指移动产生
-       一点上下位移
-    */
-
-    const lift =
-        Math.sin(
-            progress*Math.PI
-        ) * 9;
-
-
-    const scale =
-        1 -
-        Math.sin(
-            progress*Math.PI
-        ) * .012;
-
-
-    dragPage.style.transform =
-        `
-        translateY(${-lift}px)
-        scale(${scale})
-        rotateY(${angle}deg)
-        `;
-
-
-    /*
-       阴影
-
-       进度越大
-       阴影越明显
-    */
-
-    const shadow =
-        Math.sin(
-            progress*Math.PI
-        );
-
-
-    dragPage.style.boxShadow =
-        `
-        ${-18*shadow}px
-        ${10*shadow}px
-        ${35*shadow}px
-        rgba(60,40,20,${.18*shadow})
-        `;
-
-
-    /*
-       当前页面上添加动态折痕
-    */
-
-    let fold=
-        dragPage.querySelector(
-            ".dynamic-fold"
-        );
-
-    if(!fold){
-
-        fold=
-            document.createElement(
-                "div"
-            );
-
-        fold.className=
-            "dynamic-fold";
-
-        fold.style.position="absolute";
-        fold.style.top="0";
-        fold.style.bottom="0";
-        fold.style.right="0";
-        fold.style.width="0";
-        fold.style.pointerEvents="none";
-        fold.style.zIndex="1000";
-
-        dragPage.appendChild(
-            fold
-        );
-
-    }
-
-
-    fold.style.width =
-        `${progress*42}px`;
-
-
-    fold.style.opacity =
-        Math.sin(
-            progress*Math.PI
-        )*.8;
-
-
-    fold.style.background=
-        `
-        linear-gradient(
-            to left,
-            rgba(80,55,35,.26),
-            rgba(255,255,255,.13),
-            transparent
-        )
-        `;
-
-
-    /*
-       当前页层级
-    */
-
-    dragPage.style.zIndex=
-        pages.length+100;
-
-}
-
-
-/* =========================================================
-   完成翻页
-========================================================= */
-
-function finishTurn(){
-
-    if(!dragPage){
-
-        return;
-
-    }
-
-
-    const page=dragPage;
-
-
-    /*
-       先保持当前状态
-    */
-
-    page.style.transition=
-        "transform .52s cubic-bezier(.22,.7,.25,1)";
-
-
-    let finalAngle;
-
-    if(dragDirection==="next"){
-
-        finalAngle=-178;
-
-    }
-
-    else{
-
-        finalAngle=0;
-
-    }
-
-
-    page.style.transform=
-        `rotateY(${finalAngle}deg)`;
-
-
-    setTimeout(
-        function(){
-
-            page.style.transition="";
-
-            page.style.boxShadow="";
-
-            const fold=
-                page.querySelector(
-                    ".dynamic-fold"
-                );
-
-            if(fold){
-
-                fold.remove();
-
-            }
-
-
-            if(
-                dragDirection==="next"
-            ){
-
-                currentPage++;
-
-            }
-
-            else{
-
-                currentPage--;
-
-            }
-
-
-            dragPage=null;
-
-            dragDirection=null;
-
-            dragProgress=0;
-
-            updateStack();
-
-            updateCounter();
-
-        },
-        540
-    );
-
-}
-
-
-/* =========================================================
-   取消翻页
-========================================================= */
-
-function cancelTurn(){
-
-    if(!dragPage){
-
-        return;
-
-    }
-
-
-    const page=dragPage;
-
-
-    page.style.transition=
-        "transform .48s cubic-bezier(.2,.8,.25,1)";
-
-
-    /*
-       弹回
-    */
-
-    if(
-        dragDirection==="next"
-    ){
-
-        page.style.transform=
-            "rotateY(0deg)";
-
-    }
-
-    else{
-
-        page.style.transform=
-            "rotateY(-178deg)";
-
-    }
-
-
-    setTimeout(
-        function(){
-
-            page.style.transition="";
-
-            page.style.boxShadow="";
-
-            const fold=
-                page.querySelector(
-                    ".dynamic-fold"
-                );
-
-            if(fold){
-
-                fold.remove();
-
-            }
-
-            dragPage=null;
-
-            dragDirection=null;
-
-            dragProgress=0;
-
-            updateStack();
-
-        },
-        500
-    );
-
-}
-
-
-/* =========================================================
-   手指开始
-========================================================= */
-
-book.addEventListener(
-    "touchstart",
-    function(e){
-
-        if(
-            e.touches.length!==1
-        ){
-
-            return;
-
-        }
-
-
-        /*
-           如果点在按钮区域
-           不启动翻页
-        */
-
-        if(
-            e.target.closest(
-                ".nav,.back"
-            )
-        ){
-
-            return;
-
-        }
-
-
-        startX=
-            e.touches[0].clientX;
-
-        startY=
-            e.touches[0].clientY;
-
-        currentX=startX;
-
-        dragging=false;
-
-        dragDirection=null;
-
-        dragPage=null;
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-/* =========================================================
-   手指移动
-========================================================= */
-
-book.addEventListener(
-    "touchmove",
-    function(e){
-
-        if(
-            !e.touches ||
-            e.touches.length!==1
-        ){
-
-            return;
-
-        }
-
-
-        currentX=
-            e.touches[0].clientX;
-
-
-        const currentY=
-            e.touches[0].clientY;
-
-
-        const dx=
-            currentX-startX;
-
-        const dy=
-            currentY-startY;
-
-
-        /*
-           还没有确定方向
-
-           必须明显横向
-        */
-
-        if(!dragging){
-
-            if(
-                Math.abs(dx)<10 &&
-                Math.abs(dy)<10
-            ){
-
-                return;
-
-            }
-
-
-            if(
-                Math.abs(dx) <=
-                Math.abs(dy)*1.25
-            ){
-
-                return;
-
-            }
-
-
-            /*
-               左滑
-            */
-
-            if(dx<0){
-
-                if(!beginNext()){
-
-                    return;
-
-                }
-
-            }
-
-            /*
-               右滑
-            */
-
-            else{
-
-                if(!beginPrev()){
-
-                    return;
-
-                }
-
-            }
-
-
-            dragging=true;
-
-        }
-
-
-        /*
-           一旦确定为横向翻页
-           阻止浏览器页面横向动作
-        */
-
-        e.preventDefault();
-
-
-        const width=
-            book.getBoundingClientRect().width;
-
-
-        /*
-           翻页距离
-
-           允许拖动超过书本宽度
-           让翻页更自然
-        */
-
-        let progress;
-
-
-        if(
-            dragDirection==="next"
-        ){
-
-            progress=
-                Math.abs(dx)/width;
-
-        }
-
-        else{
-
-            progress=
-                1-
-                Math.abs(dx)/width;
-
-        }
-
-
-        renderDrag(progress);
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/* =========================================================
-   手指结束
-========================================================= */
-
-book.addEventListener(
-    "touchend",
-    function(){
-
-        if(!dragging){
-
-            return;
-
-        }
-
-
-        dragging=false;
-
-
-        /*
-           超过 42%
-           完成翻页
-
-           否则弹回
-        */
-
-        if(
-            dragProgress>.42
-        ){
-
-            finishTurn();
-
-        }
-
-        else{
-
-            cancelTurn();
-
-        }
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-/* =========================================================
-   鼠标拖动
-========================================================= */
-
-let mouseDragging=false;
-
-let mouseStartX=0;
-
-
-book.addEventListener(
-    "mousedown",
-    function(e){
-
-        mouseDragging=true;
-
-        mouseStartX=e.clientX;
-
-    }
-);
-
-
-window.addEventListener(
-    "mouseup",
-    function(e){
-
-        if(!mouseDragging){
-
-            return;
-
-        }
-
-
-        mouseDragging=false;
-
-
-        const dx=
-            e.clientX-
-            mouseStartX;
-
-
-        if(Math.abs(dx)>70){
-
-            if(dx<0){
-
-                nextPage();
-
-            }
-
-            else{
-
-                prevPage();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   普通下一页
-========================================================= */
+/* =========================================
+   翻到下一页
+========================================= */
 
 function nextPage(){
 
@@ -2660,129 +1860,429 @@ function nextPage(){
     }
 
 
-    beginNext();
+    const current=
+    pages[currentPage];
 
-    dragProgress=0;
+    const next=
+    pages[currentPage+1];
 
-    renderDrag(0);
+
+    next.style.transition=
+    "none";
+
+    next.style.transform=
+    "translateX(100%)";
+
+    next.style.opacity="1";
+
+    next.style.zIndex=101;
+
+
+    /*
+       强制浏览器完成一次布局
+       避免动画失效
+    */
+
+    next.offsetWidth;
+
+
+    current.classList.add(
+        "turning-next"
+    );
+
+
+    next.style.transition=
+    "transform .28s cubic-bezier(.25,.8,.25,1)";
+
+
+    current.style.transition=
+    "transform .28s cubic-bezier(.25,.8,.25,1)";
+
+
+    current.style.transform=
+    "translateX(-18%)";
+
+
+    next.style.transform=
+    "translateX(0)";
+
 
     setTimeout(
-        finishTurn,
-        30
+        ()=>{
+
+            currentPage++;
+
+            pages.forEach(
+                page=>{
+
+                    page.style.transition="";
+
+                }
+            );
+
+            current.classList.remove(
+                "turning-next"
+            );
+
+            updatePages();
+
+        },
+        290
     );
 
 }
 
 
-/* =========================================================
-   普通上一页
-========================================================= */
+/* =========================================
+   翻回上一页
+========================================= */
 
 function prevPage(){
 
-    if(currentPage<=0){
+    if(
+        currentPage<=0
+    ){
 
         return;
 
     }
 
 
-    beginPrev();
+    const current=
+    pages[currentPage];
 
-    dragProgress=1;
+    const previous=
+    pages[currentPage-1];
 
-    renderDrag(1);
+
+    previous.style.transition=
+    "none";
+
+    previous.style.transform=
+    "translateX(-100%)";
+
+    previous.style.opacity="1";
+
+    previous.style.zIndex=101;
+
+
+    previous.offsetWidth;
+
+
+    current.classList.add(
+        "turning-prev"
+    );
+
+
+    previous.style.transition=
+    "transform .28s cubic-bezier(.25,.8,.25,1)";
+
+
+    current.style.transition=
+    "transform .28s cubic-bezier(.25,.8,.25,1)";
+
+
+    current.style.transform=
+    "translateX(18%)";
+
+
+    previous.style.transform=
+    "translateX(0)";
+
 
     setTimeout(
-        finishTurn,
-        30
+        ()=>{
+
+            currentPage--;
+
+            pages.forEach(
+                page=>{
+
+                    page.style.transition="";
+
+                }
+            );
+
+            current.classList.remove(
+                "turning-prev"
+            );
+
+            updatePages();
+
+        },
+        290
     );
 
 }
 
 
-/* =========================================================
+/* =========================================
+   手机触摸
+========================================= */
+
+book.addEventListener(
+"touchstart",
+function(e){
+
+    if(
+        e.touches.length!==1
+    ){
+
+        return;
+
+    }
+
+
+    startX=
+    e.touches[0].clientX;
+
+    startY=
+    e.touches[0].clientY;
+
+    tracking=true;
+
+},
+{
+    passive:true
+});
+
+
+book.addEventListener(
+"touchend",
+function(e){
+
+    if(!tracking){
+
+        return;
+
+    }
+
+
+    tracking=false;
+
+
+    if(
+        !e.changedTouches ||
+        !e.changedTouches.length
+    ){
+
+        return;
+
+    }
+
+
+    const endX=
+    e.changedTouches[0].clientX;
+
+    const endY=
+    e.changedTouches[0].clientY;
+
+
+    const dx=
+    endX-startX;
+
+    const dy=
+    endY-startY;
+
+
+    /*
+       只有明显横向滑动
+       才触发翻页
+
+       这样上下滚动不会误触
+    */
+
+    if(
+        Math.abs(dx)<55
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        Math.abs(dx)<
+        Math.abs(dy)*1.25
+    ){
+
+        return;
+
+    }
+
+
+    if(dx<0){
+
+        nextPage();
+
+    }
+
+    else{
+
+        prevPage();
+
+    }
+
+},
+{
+    passive:true
+});
+
+
+/* =========================================
    按钮
-========================================================= */
+========================================= */
 
 nextBtn.addEventListener(
-    "click",
-    nextPage
+"click",
+nextPage
 );
 
 
 prevBtn.addEventListener(
-    "click",
-    prevPage
+"click",
+prevPage
 );
 
 
-/* =========================================================
+/* =========================================
    键盘
-========================================================= */
+========================================= */
 
 document.addEventListener(
-    "keydown",
-    function(e){
+"keydown",
+function(e){
 
-        if(
-            e.key==="ArrowRight"
-        ){
+    if(
+        e.key==="ArrowRight"
+    ){
 
-            nextPage();
-
-        }
-
-
-        if(
-            e.key==="ArrowLeft"
-        ){
-
-            prevPage();
-
-        }
+        nextPage();
 
     }
-);
 
 
-/* =========================================================
+    if(
+        e.key==="ArrowLeft"
+    ){
+
+        prevPage();
+
+    }
+
+});
+
+
+/* =========================================
+   鼠标
+========================================= */
+
+let mouseStartX=0;
+
+let mouseStartY=0;
+
+let mouseDown=false;
+
+
+book.addEventListener(
+"mousedown",
+function(e){
+
+    mouseDown=true;
+
+    mouseStartX=e.clientX;
+
+    mouseStartY=e.clientY;
+
+});
+
+
+window.addEventListener(
+"mouseup",
+function(e){
+
+    if(!mouseDown){
+
+        return;
+
+    }
+
+
+    mouseDown=false;
+
+
+    const dx=
+    e.clientX-mouseStartX;
+
+    const dy=
+    e.clientY-mouseStartY;
+
+
+    if(
+        Math.abs(dx)<55
+    ){
+
+        return;
+
+    }
+
+
+    if(
+        Math.abs(dx)<
+        Math.abs(dy)*1.25
+    ){
+
+        return;
+
+    }
+
+
+    if(dx<0){
+
+        nextPage();
+
+    }
+
+    else{
+
+        prevPage();
+
+    }
+
+});
+
+
+/* =========================================
    图片加载失败
-========================================================= */
+========================================= */
 
 document
 .querySelectorAll(".photo img")
 .forEach(
-    img=>{
+img=>{
 
-        img.addEventListener(
-            "error",
-            function(){
-
-                img.style.display=
-                    "none";
-
-                img.parentElement.innerHTML=
-                    "📷 以后放照片的位置";
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   提示
-========================================================= */
-
-setTimeout(
+    img.addEventListener(
+    "error",
     function(){
 
-        swipeTip.style.opacity="0";
+        img.style.display="none";
 
-    },
-    5000
+    });
+
+});
+
+
+/* =========================================
+   翻页提示自动消失
+========================================= */
+
+setTimeout(
+function(){
+
+    swipeTip.style.opacity="0";
+
+},
+5000
 );
 
 </script>
