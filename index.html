@@ -1,3 +1,4 @@
+```html id="p7k3mt"
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>佳源充满爱的小屋</title>
+
 
 <style>
 
@@ -21,9 +23,12 @@
 
 html,
 body{
+
     margin:0;
     padding:0;
+
     min-height:100%;
+
 }
 
 body{
@@ -31,26 +36,35 @@ body{
     min-height:100vh;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     padding:24px 18px;
 
+    /*
+       暖色奶油粉背景
+    */
+
     background:
+
     radial-gradient(
-        circle at 15% 15%,
-        rgba(255,210,225,0.55),
-        transparent 28%
-    ),
-    radial-gradient(
-        circle at 85% 85%,
-        rgba(255,225,235,0.6),
+        circle at 12% 12%,
+        rgba(255,198,215,0.58),
         transparent 30%
     ),
+
+    radial-gradient(
+        circle at 88% 88%,
+        rgba(255,213,201,0.48),
+        transparent 32%
+    ),
+
     linear-gradient(
         135deg,
-        #fff0f5,
-        #fffafd
+        #f9e5ec,
+        #fff0f3
     );
 
     font-family:
@@ -59,7 +73,7 @@ body{
     "Noto Sans SC",
     sans-serif;
 
-    color:#666;
+    color:#626262;
 
 }
 
@@ -73,21 +87,33 @@ body{
     position:relative;
 
     width:100%;
+
     max-width:430px;
 
-    padding:42px 27px 34px;
+    padding:
+    42px 27px 34px;
 
     background:
-    rgba(255,255,255,0.96);
+    rgba(255,253,253,0.97);
 
     border-radius:30px;
 
     text-align:center;
 
-    box-shadow:
-    0 18px 50px rgba(235,135,165,0.16);
+    /*
+       更明显的暖色阴影
+    */
 
-    border:1px solid rgba(255,255,255,0.9);
+    box-shadow:
+
+    0 20px 55px
+    rgba(190,105,130,0.18),
+
+    0 4px 12px
+    rgba(190,105,130,0.08);
+
+    border:
+    1px solid rgba(255,255,255,0.9);
 
     overflow:hidden;
 
@@ -105,11 +131,12 @@ body{
     position:absolute;
 
     top:15px;
+
     right:23px;
 
     font-size:24px;
 
-    color:#ffd0df;
+    color:#efb4c5;
 
     transform:rotate(12deg);
 
@@ -123,11 +150,12 @@ body{
     position:absolute;
 
     bottom:18px;
+
     left:20px;
 
     font-size:20px;
 
-    color:#ffe0e9;
+    color:#f2c8d4;
 
     transform:rotate(-12deg);
 
@@ -156,12 +184,14 @@ h1{
 
     letter-spacing:1px;
 
-    color:#f36f9b;
+    color:#e96891;
 
 }
 
 
-/* 小房子 */
+/* =========================
+   小房子
+========================= */
 
 .house{
 
@@ -169,8 +199,7 @@ h1{
 
     margin-bottom:7px;
 
-    font-family:
-    sans-serif;
+    font-family:sans-serif;
 
     font-size:30px;
 
@@ -184,6 +213,7 @@ h1{
 .subtitle{
 
     margin-top:12px;
+
     margin-bottom:30px;
 
     font-family:
@@ -198,7 +228,7 @@ h1{
 
     letter-spacing:0.5px;
 
-    color:#e993af;
+    color:#d77b9b;
 
 }
 
@@ -209,7 +239,8 @@ h1{
 
 .text{
 
-    padding:0 7px;
+    padding:
+    0 7px;
 
     font-size:16px;
 
@@ -217,7 +248,7 @@ h1{
 
     letter-spacing:0.3px;
 
-    color:#777;
+    color:#626262;
 
 }
 
@@ -226,14 +257,14 @@ h1{
 
     font-size:18px;
 
-    color:#666;
+    color:#5f5f5f;
 
 }
 
 
 .love{
 
-    color:#f38cac;
+    color:#e9789d;
 
 }
 
@@ -269,15 +300,26 @@ h1{
 
     margin:13px 0;
 
-    padding:14px 18px;
+    padding:
+    14px 18px;
 
     border-radius:18px;
 
-    background:#fff5f8;
+    /*
+       比之前明显一点的暖粉背景
+    */
 
-    border:1px solid #ffe0e9;
+    background:
+    linear-gradient(
+        135deg,
+        #fff0f4,
+        #ffe9ef
+    );
 
-    color:#e96f98;
+    border:
+    1px solid #f7ccd9;
+
+    color:#d96891;
 
     text-decoration:none;
 
@@ -286,41 +328,59 @@ h1{
     letter-spacing:0.5px;
 
     box-shadow:
-    0 5px 15px rgba(255,150,180,0.08);
+
+    0 5px 15px
+    rgba(220,115,145,0.09);
 
     transition:
+
     transform 0.2s ease,
+
     background 0.2s ease,
+
     box-shadow 0.2s ease;
 
 }
 
 
-/* 鼠标经过 */
+/* =========================
+   鼠标经过
+========================= */
 
 .buttons a:hover{
 
-    transform:translateY(-2px);
+    transform:
+    translateY(-2px);
 
-    background:#ffedf3;
+    background:
+    linear-gradient(
+        135deg,
+        #ffe9ef,
+        #ffe2ea
+    );
 
     box-shadow:
-    0 8px 20px rgba(255,150,180,0.14);
 
-}
-
-
-/* 点击 */
-
-.buttons a:active{
-
-    transform:scale(0.98);
+    0 9px 22px
+    rgba(220,115,145,0.15);
 
 }
 
 
 /* =========================
-   按钮中的文字
+   点击
+========================= */
+
+.buttons a:active{
+
+    transform:
+    scale(0.98);
+
+}
+
+
+/* =========================
+   按钮文字
 ========================= */
 
 .button-title{
@@ -346,7 +406,7 @@ h1{
 
     letter-spacing:1px;
 
-    color:#d9a7b8;
+    color:#cf9aaa;
 
 }
 
@@ -359,7 +419,8 @@ h1{
 
     body{
 
-        padding:18px 15px;
+        padding:
+        18px 15px;
 
     }
 
@@ -367,8 +428,7 @@ h1{
     .box{
 
         padding:
-        36px 22px
-        28px;
+        36px 22px 28px;
 
         border-radius:27px;
 
@@ -440,6 +500,15 @@ h1{
 
     }
 
+
+    .footer{
+
+        margin-top:24px;
+
+        font-size:12px;
+
+    }
+
 }
 
 </style>
@@ -453,7 +522,9 @@ h1{
 <div class="box">
 
 
-    <!-- 主标题 -->
+    <!-- =========================
+         主标题
+    ========================= -->
 
     <h1>
 
@@ -464,7 +535,9 @@ h1{
     </h1>
 
 
-    <!-- 副标题 -->
+    <!-- =========================
+         副标题
+    ========================= -->
 
     <div class="subtitle">
 
@@ -473,17 +546,23 @@ h1{
     </div>
 
 
-    <!-- 欢迎文字 -->
+    <!-- =========================
+         欢迎文字
+    ========================= -->
 
     <div class="text">
 
         <div class="welcome">
 
-            欢迎回来，佳源 <span class="love">♡</span>
+            欢迎回来，佳源
+
+            <span class="love">♡</span>
 
         </div>
 
+
         <br>
+
 
         这里藏着伟峰准备的小惊喜，
 
@@ -491,7 +570,9 @@ h1{
 
         也藏着属于我们的故事。
 
+
         <br><br>
+
 
         希望你每一次打开这里，
 
@@ -506,7 +587,9 @@ h1{
     </div>
 
 
-    <!-- 功能入口 -->
+    <!-- =========================
+         功能入口
+    ========================= -->
 
     <div class="buttons">
 
@@ -547,7 +630,9 @@ h1{
     </div>
 
 
-    <!-- 底部 -->
+    <!-- =========================
+         底部
+    ========================= -->
 
     <div class="footer">
 
@@ -562,3 +647,4 @@ h1{
 </body>
 
 </html>
+```
