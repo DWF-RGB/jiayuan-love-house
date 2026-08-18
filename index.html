@@ -13,13 +13,10 @@
 
 <style>
 
-/* =========================
-   基础
-========================= */
-
 *{
     box-sizing:border-box;
 }
+
 
 html,
 body{
@@ -32,6 +29,7 @@ body{
 
 }
 
+
 body{
 
     min-height:100vh;
@@ -42,13 +40,16 @@ body{
 
     align-items:center;
 
-    padding:
-    24px 18px;
+    padding:24px 18px;
 
 
     /*
 
-       明亮奶油粉背景
+       温暖柔和的奶油暖粉
+
+       不灰
+       不亮
+       不暗
 
     */
 
@@ -56,20 +57,20 @@ body{
 
     radial-gradient(
         circle at 8% 8%,
-        #ffdce8 0%,
+        #FFE8EE 0%,
         transparent 30%
     ),
 
     radial-gradient(
         circle at 92% 92%,
-        #ffe7d8 0%,
+        #FFE8E3 0%,
         transparent 30%
     ),
 
     linear-gradient(
         135deg,
-        #fff3f6,
-        #fff9f2
+        #FFF1F3,
+        #FFF8F3
     );
 
 
@@ -86,7 +87,7 @@ body{
 
 
 /* =========================
-   小屋主体
+   小屋卡片
 ========================= */
 
 .box{
@@ -101,8 +102,14 @@ body{
     42px 27px 34px;
 
 
-    background:
-    rgba(255,253,250,0.97);
+    /*
+
+       温暖米白
+       不使用纯白
+
+    */
+
+    background:#FFFBF8;
 
 
     border-radius:30px;
@@ -111,18 +118,22 @@ body{
     text-align:center;
 
 
+    /*
+       非常柔和的暖色阴影
+    */
+
     box-shadow:
 
-    0 20px 55px
-    rgba(245,150,175,0.16),
+    0 18px 45px
+    rgba(210,125,145,0.13),
 
-    0 4px 12px
-    rgba(245,150,175,0.07);
+    0 3px 10px
+    rgba(210,125,145,0.06);
 
 
     border:
     1px solid
-    rgba(255,255,255,0.95);
+    rgba(255,255,255,0.9);
 
 
     overflow:hidden;
@@ -146,7 +157,7 @@ body{
 
     font-size:24px;
 
-    color:#ffb1c8;
+    color:#EFB4C5;
 
     transform:rotate(12deg);
 
@@ -165,7 +176,7 @@ body{
 
     font-size:20px;
 
-    color:#ffc6d8;
+    color:#F2C8D4;
 
     transform:rotate(-12deg);
 
@@ -186,6 +197,7 @@ h1{
     "Microsoft YaHei",
     sans-serif;
 
+
     font-size:30px;
 
     font-weight:600;
@@ -196,12 +208,12 @@ h1{
 
 
     /*
-       更鲜艳、更明亮的珊瑚粉
+       柔和玫瑰粉
 
+       比上一版明显柔和
     */
 
-    color:#ff5f91;
-
+    color:#E87898;
 
 }
 
@@ -233,11 +245,13 @@ h1{
 
     margin-bottom:30px;
 
+
     font-family:
     "STKaiti",
     "KaiTi",
     "Microsoft YaHei",
     sans-serif;
+
 
     font-size:17px;
 
@@ -246,12 +260,7 @@ h1{
     letter-spacing:0.5px;
 
 
-    /*
-       更明亮的粉色
-
-    */
-
-    color:#f07ca1;
+    color:#D9859F;
 
 }
 
@@ -287,13 +296,13 @@ h1{
 
 .love{
 
-    color:#ff6d9b;
+    color:#E87898;
 
 }
 
 
 /* =========================
-   按钮区域
+   按钮
 ========================= */
 
 .buttons{
@@ -302,10 +311,6 @@ h1{
 
 }
 
-
-/* =========================
-   按钮
-========================= */
 
 .buttons a{
 
@@ -317,46 +322,44 @@ h1{
 
     justify-content:center;
 
+
     width:100%;
 
     min-height:58px;
 
+
     margin:13px 0;
 
-    padding:
-    14px 18px;
+    padding:14px 18px;
+
 
     border-radius:18px;
 
 
     /*
-       更明亮的粉色按钮
+       柔和暖粉
 
+       不刺眼
     */
 
     background:
 
     linear-gradient(
         135deg,
-        #ffeaf2,
-        #ffe1eb
+        #FDE8ED,
+        #FBE3E7
     );
 
 
     border:
-    1px solid
-    #ffc5d7;
+    1px solid #F3CBD7;
 
 
-    /*
-       更鲜艳的文字
-
-    */
-
-    color:#f45f8f;
+    color:#D96F91;
 
 
     text-decoration:none;
+
 
     font-size:16px;
 
@@ -366,7 +369,7 @@ h1{
     box-shadow:
 
     0 5px 15px
-    rgba(255,120,160,0.10);
+    rgba(210,120,145,0.08);
 
 
     transition:
@@ -394,15 +397,15 @@ h1{
 
     linear-gradient(
         135deg,
-        #ffe1eb,
-        #ffd8e5
+        #FBE1E8,
+        #F9DDE4
     );
 
 
     box-shadow:
 
-    0 9px 22px
-    rgba(255,110,150,0.18);
+    0 8px 20px
+    rgba(210,120,145,0.12);
 
 }
 
@@ -446,7 +449,7 @@ h1{
 
     letter-spacing:1px;
 
-    color:#f09ab5;
+    color:#D89BAE;
 
 }
 
@@ -562,8 +565,6 @@ h1{
 <div class="box">
 
 
-    <!-- 主标题 -->
-
     <h1>
 
         <span class="house">🏡</span>
@@ -573,16 +574,12 @@ h1{
     </h1>
 
 
-    <!-- 副标题 -->
-
     <div class="subtitle">
 
         伟峰给佳源的休闲爱乐园 💕
 
     </div>
 
-
-    <!-- 欢迎文字 -->
 
     <div class="text">
 
@@ -620,8 +617,6 @@ h1{
 
     </div>
 
-
-    <!-- 功能入口 -->
 
     <div class="buttons">
 
@@ -661,8 +656,6 @@ h1{
 
     </div>
 
-
-    <!-- 底部 -->
 
     <div class="footer">
 
