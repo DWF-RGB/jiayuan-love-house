@@ -1,4 +1,6 @@
+```html id="w6m2zp"
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -13,7 +15,7 @@
 <style>
 
 /* =========================
-   基础设置
+   基础
 ========================= */
 
 *{
@@ -24,6 +26,7 @@ html,
 body{
 
     margin:0;
+
     padding:0;
 
     min-height:100%;
@@ -40,30 +43,32 @@ body{
 
     align-items:center;
 
-    padding:24px 18px;
+    padding:
+    24px 18px;
 
     /*
-       暖色奶油粉背景
+       和 Chat 页面统一的
+       明亮奶油粉背景
     */
 
     background:
 
     radial-gradient(
-        circle at 12% 12%,
-        rgba(255,198,215,0.58),
+        circle at 8% 8%,
+        #ffdce8 0%,
         transparent 30%
     ),
 
     radial-gradient(
-        circle at 88% 88%,
-        rgba(255,213,201,0.48),
-        transparent 32%
+        circle at 92% 92%,
+        #ffe7d8 0%,
+        transparent 30%
     ),
 
     linear-gradient(
         135deg,
-        #f9e5ec,
-        #fff0f3
+        #fff3f6,
+        #fff9f2
     );
 
     font-family:
@@ -72,7 +77,7 @@ body{
     "Noto Sans SC",
     sans-serif;
 
-    color:#626262;
+    color:#555;
 
 }
 
@@ -92,27 +97,31 @@ body{
     padding:
     42px 27px 34px;
 
+    /*
+       奶油白
+    */
+
     background:
-    rgba(255,253,253,0.97);
+    rgba(255,253,250,0.97);
 
     border-radius:30px;
 
     text-align:center;
 
     /*
-       更明显的暖色阴影
+       明亮、轻盈的暖粉阴影
     */
 
     box-shadow:
 
     0 20px 55px
-    rgba(190,105,130,0.18),
+    rgba(245,150,175,0.16),
 
     0 4px 12px
-    rgba(190,105,130,0.08);
+    rgba(245,150,175,0.07);
 
     border:
-    1px solid rgba(255,255,255,0.9);
+    1px solid rgba(255,255,255,0.95);
 
     overflow:hidden;
 
@@ -135,7 +144,7 @@ body{
 
     font-size:24px;
 
-    color:#efb4c5;
+    color:#f3b6c9;
 
     transform:rotate(12deg);
 
@@ -154,7 +163,7 @@ body{
 
     font-size:20px;
 
-    color:#f2c8d4;
+    color:#f6cad8;
 
     transform:rotate(-12deg);
 
@@ -183,7 +192,11 @@ h1{
 
     letter-spacing:1px;
 
-    color:#e96891;
+    /*
+       明亮珊瑚粉
+    */
+
+    color:#ec7098;
 
 }
 
@@ -227,13 +240,17 @@ h1{
 
     letter-spacing:0.5px;
 
-    color:#d77b9b;
+    /*
+       不再使用灰粉
+    */
+
+    color:#df789b;
 
 }
 
 
 /* =========================
-   欢迎文字
+   正文
 ========================= */
 
 .text{
@@ -247,7 +264,7 @@ h1{
 
     letter-spacing:0.3px;
 
-    color:#626262;
+    color:#555;
 
 }
 
@@ -256,14 +273,14 @@ h1{
 
     font-size:18px;
 
-    color:#5f5f5f;
+    color:#4f4f4f;
 
 }
 
 
 .love{
 
-    color:#e9789d;
+    color:#f083a6;
 
 }
 
@@ -280,7 +297,7 @@ h1{
 
 
 /* =========================
-   单个按钮
+   按钮
 ========================= */
 
 .buttons a{
@@ -305,20 +322,21 @@ h1{
     border-radius:18px;
 
     /*
-       比之前明显一点的暖粉背景
+       明亮浅粉
     */
 
     background:
+
     linear-gradient(
         135deg,
-        #fff0f4,
-        #ffe9ef
+        #fff0f5,
+        #ffe8ef
     );
 
     border:
-    1px solid #f7ccd9;
+    1px solid #f7cbd9;
 
-    color:#d96891;
+    color:#df6f96;
 
     text-decoration:none;
 
@@ -329,7 +347,7 @@ h1{
     box-shadow:
 
     0 5px 15px
-    rgba(220,115,145,0.09);
+    rgba(245,130,160,0.09);
 
     transition:
 
@@ -352,16 +370,17 @@ h1{
     translateY(-2px);
 
     background:
+
     linear-gradient(
         135deg,
-        #ffe9ef,
-        #ffe2ea
+        #ffe8ef,
+        #ffdee8
     );
 
     box-shadow:
 
     0 9px 22px
-    rgba(220,115,145,0.15);
+    rgba(245,125,155,0.15);
 
 }
 
@@ -394,7 +413,7 @@ h1{
 
 
 /* =========================
-   底部小字
+   底部
 ========================= */
 
 .footer{
@@ -405,7 +424,7 @@ h1{
 
     letter-spacing:1px;
 
-    color:#cf9aaa;
+    color:#dc9caf;
 
 }
 
@@ -646,3 +665,4 @@ h1{
 </body>
 
 </html>
+```
